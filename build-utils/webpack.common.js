@@ -5,13 +5,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-    entry: path.resolve(__dirname, '..', './src/index.js'),
+    entry: path.resolve(__dirname, '..', './src/index.jsx'),
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: ['babel-loader', 'eslint-webpack-plugin']
+                use: ['babel-loader']
             }
         ]
     },
