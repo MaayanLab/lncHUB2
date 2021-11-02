@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ESLintWebpackPlugin = require('eslint-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
     entry: path.resolve(__dirname, '..', './src/index.js'),
@@ -20,7 +20,9 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new ESLintWebpackPlugin(),
+        new ESLintPlugin({
+            extensions: ["js", "jsx"]
+        }),
         new HtmlWebpackPlugin({
             title: 'lncRNAfp',
             template: path.resolve(__dirname, '..', './src/index.html'),
