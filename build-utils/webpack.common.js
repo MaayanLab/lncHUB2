@@ -12,7 +12,11 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader']
-            }
+            },
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader", "postcss-loader"],
+            },
         ]
     },
     resolve: {
@@ -27,7 +31,6 @@ module.exports = {
             title: 'lncRNAfp',
             template: path.resolve(__dirname, '..', './src/index.html'),
         }),
-        new webpack.HotModuleReplacementPlugin(),
     ],
     output: {
         path: path.resolve(__dirname, '..', './dist'),
