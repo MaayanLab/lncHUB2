@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
 
-class Dashboard extends React.Component {
+export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
 
     renderCard(appyter) {
         return (
-            <Card value={appyter}/>
+            <Card appyter_id={appyter_id}/>
         );
     }
 

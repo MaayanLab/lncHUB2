@@ -24,9 +24,9 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new ESLintPlugin({
-            extensions: ["js", "jsx"]
-        }),
+        // new ESLintPlugin({
+        //     extensions: ["js", "jsx"]
+        // }),
         new HtmlWebpackPlugin({
             title: 'lncRNAfp',
             template: path.resolve(__dirname, '..', './src/index.html'),
