@@ -13,7 +13,7 @@ export default class Search extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({value: event.target.value});
+        this.setState({ value: event.target.value });
     }
 
     retrieveAppyters(search) {
@@ -32,14 +32,14 @@ export default class Search extends React.Component {
                     value={this.state.search}
                     onChange={this.handleChange}
                 />
-                    <button
-                        className="btn btn-outline-secondary"
-                        type="button"
-                        id="search-button"
-                        onClick={this.retrieveAppyters(this.state.search)}
-                    >
-                        Search
-                    </button>
+                <button
+                    className="btn btn-outline-secondary"
+                    type="button"
+                    id="search-button"
+                    onClick={this.retrieveAppyters(this.state.search)}
+                >
+                    Search
+                </button>
             </div>
         );
     }
