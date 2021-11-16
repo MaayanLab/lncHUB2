@@ -5,7 +5,7 @@ export default class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: null,
+            search: '',
             appyters: null,
         };
         this.handleChange = this.handleChange.bind(this);

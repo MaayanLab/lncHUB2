@@ -6,18 +6,14 @@ import Search from './Search';
 import Dashboard from './Dashboard';
 import Brand from './Brand';
 
-class App extends React.Component {
-    render() {
-        return (
-            <>
-                <Header />
-                <Brand />
-                <Search />
-                <Dashboard />
-                <Footer />
-            </>
-        );
-    }
+export default function App() {
+    return (
+        <>
+            <Header />
+            <Brand />
+            <Search />
+            <Dashboard />
+            <Footer />
+        </>
+    );
 }
-
-export default App;

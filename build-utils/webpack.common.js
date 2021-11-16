@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
@@ -11,22 +11,22 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: ['babel-loader']
+                use: ['babel-loader'],
             },
             {
                 test: /\.css$/i,
-                use: ["style-loader", "css-loader", "postcss-loader"],
+                use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
-        ]
+        ],
     },
     resolve: {
-        extensions: ['*', '.js', '.jsx']
+        extensions: ['*', '.js', '.jsx'],
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new ESLintPlugin({
-            extensions: ["js", "jsx"]
-        }),
+        // new ESLintPlugin({
+        //     extensions: ['js', 'jsx'],
+        // }),
         new HtmlWebpackPlugin({
             title: 'lncRNAfp',
             template: path.resolve(__dirname, '..', './src/index.html'),
@@ -34,7 +34,7 @@ module.exports = {
     ],
     output: {
         path: path.resolve(__dirname, '..', './dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
     devServer: {
         static: path.resolve(__dirname, '..', './dist'),

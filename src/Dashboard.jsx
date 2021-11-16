@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import Card from './Card';
 
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -11,13 +12,15 @@ export default class Dashboard extends React.Component {
 
     renderCard(appyter) {
         return (
-            <Card appyter_id={appyter_id} />
+            <Card appyter={{ gene: 'HOTAIR', appyter: '001' }} />
         );
     }
 
     render() {
         return (
-            <div />
+            <div>
+                {this.renderCard('')}
+            </div>
         );
     }
 }

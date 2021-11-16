@@ -9,7 +9,7 @@ module.exports = {
                 __dirname,
                 '..',
                 '..',
-                './dist/report.html'
+                './dist/report.html',
             ),
             openAnalyzer: false,
         }),
