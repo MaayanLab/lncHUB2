@@ -29,96 +29,96 @@ export default class Appyter extends React.Component {
                         <div className="table-responsive-sm">
                             <table id="table1" className="table table-sm">
                                 <thead>
-                                <tr>
-                                    <th>Gene</th>
-                                    <th>Pearson's Correlation Coefficient</th>
-                                </tr>
+                                    <tr>
+                                        <th>Gene</th>
+                                        <th>Pearson's Correlation Coefficient</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th>HOXC11</th>
-                                    <td>0.911</td>
-                                </tr>
-                                <tr>
-                                    <th>ENSG00000277994</th>
-                                    <td>0.838</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC-AS3</th>
-                                    <td>0.829</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC10</th>
-                                    <td>0.819</td>
-                                </tr>
-                                <tr>
-                                    <th>ENSG00000275589</th>
-                                    <td>0.800</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC13</th>
-                                    <td>0.774</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC13-AS</th>
-                                    <td>0.759</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC-AS1</th>
-                                    <td>0.740</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC9</th>
-                                    <td>0.740</td>
-                                </tr>
-                                <tr>
-                                    <th>ENSG00000273049</th>
-                                    <td>0.732</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC-AS2</th>
-                                    <td>0.730</td>
-                                </tr>
-                                <tr>
-                                    <th>ENSG00000260597</th>
-                                    <td>0.720</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC6</th>
-                                    <td>0.719</td>
-                                </tr>
-                                <tr>
-                                    <th>ENSG00000274817</th>
-                                    <td>0.697</td>
-                                </tr>
-                                <tr>
-                                    <th>ENSG00000277129</th>
-                                    <td>0.695</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC8</th>
-                                    <td>0.690</td>
-                                </tr>
-                                <tr>
-                                    <th>ENSG00000273046</th>
-                                    <td>0.686</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC5</th>
-                                    <td>0.652</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXA11</th>
-                                    <td>0.638</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC12</th>
-                                    <td>0.637</td>
-                                </tr>
+                                    <tr>
+                                        <th>HOXC11</th>
+                                        <td>0.911</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ENSG00000277994</th>
+                                        <td>0.838</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC-AS3</th>
+                                        <td>0.829</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC10</th>
+                                        <td>0.819</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ENSG00000275589</th>
+                                        <td>0.800</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC13</th>
+                                        <td>0.774</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC13-AS</th>
+                                        <td>0.759</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC-AS1</th>
+                                        <td>0.740</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC9</th>
+                                        <td>0.740</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ENSG00000273049</th>
+                                        <td>0.732</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC-AS2</th>
+                                        <td>0.730</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ENSG00000260597</th>
+                                        <td>0.720</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC6</th>
+                                        <td>0.719</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ENSG00000274817</th>
+                                        <td>0.697</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ENSG00000277129</th>
+                                        <td>0.695</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC8</th>
+                                        <td>0.690</td>
+                                    </tr>
+                                    <tr>
+                                        <th>ENSG00000273046</th>
+                                        <td>0.686</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC5</th>
+                                        <td>0.652</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXA11</th>
+                                        <td>0.638</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC12</th>
+                                        <td>0.637</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Table 1. Top 20 genes that mostly correlate with HOTAIR ranked by
                             Pearson’s
                             correlation coefficients.
@@ -139,96 +139,96 @@ export default class Appyter extends React.Component {
                         <div className="table-responsive-sm">
                             <table id="table2" className="table table-sm">
                                 <thead>
-                                <tr>
-                                    <th>Gene</th>
-                                    <th>Pearson's Correlation Coefficient</th>
-                                </tr>
+                                    <tr>
+                                        <th>Gene</th>
+                                        <th>Pearson's Correlation Coefficient</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <th>HOXC-AS3</th>
-                                    <td>0.829</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC13-AS</th>
-                                    <td>0.759</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC-AS1</th>
-                                    <td>0.740</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXC-AS2</th>
-                                    <td>0.730</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXA11-AS</th>
-                                    <td>0.618</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXD-AS2</th>
-                                    <td>0.517</td>
-                                </tr>
-                                <tr>
-                                    <th>TFAP2A-AS1</th>
-                                    <td>0.508</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXA-AS3</th>
-                                    <td>0.500</td>
-                                </tr>
-                                <tr>
-                                    <th>HOXA10-AS</th>
-                                    <td>0.487</td>
-                                </tr>
-                                <tr>
-                                    <th>LNCOC1</th>
-                                    <td>0.471</td>
-                                </tr>
-                                <tr>
-                                    <th>LINC01116</th>
-                                    <td>0.467</td>
-                                </tr>
-                                <tr>
-                                    <th>DLX2-DT</th>
-                                    <td>0.466</td>
-                                </tr>
-                                <tr>
-                                    <th>FOXD1-AS1</th>
-                                    <td>0.463</td>
-                                </tr>
-                                <tr>
-                                    <th>LINC01117</th>
-                                    <td>0.454</td>
-                                </tr>
-                                <tr>
-                                    <th>HCG15</th>
-                                    <td>0.451</td>
-                                </tr>
-                                <tr>
-                                    <th>HOTTIP</th>
-                                    <td>0.447</td>
-                                </tr>
-                                <tr>
-                                    <th>MNX1-AS1</th>
-                                    <td>0.437</td>
-                                </tr>
-                                <tr>
-                                    <th>LINC02593</th>
-                                    <td>0.432</td>
-                                </tr>
-                                <tr>
-                                    <th>CRNDE</th>
-                                    <td>0.432</td>
-                                </tr>
-                                <tr>
-                                    <th>FOXF2-DT</th>
-                                    <td>0.430</td>
-                                </tr>
+                                    <tr>
+                                        <th>HOXC-AS3</th>
+                                        <td>0.829</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC13-AS</th>
+                                        <td>0.759</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC-AS1</th>
+                                        <td>0.740</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXC-AS2</th>
+                                        <td>0.730</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXA11-AS</th>
+                                        <td>0.618</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXD-AS2</th>
+                                        <td>0.517</td>
+                                    </tr>
+                                    <tr>
+                                        <th>TFAP2A-AS1</th>
+                                        <td>0.508</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXA-AS3</th>
+                                        <td>0.500</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOXA10-AS</th>
+                                        <td>0.487</td>
+                                    </tr>
+                                    <tr>
+                                        <th>LNCOC1</th>
+                                        <td>0.471</td>
+                                    </tr>
+                                    <tr>
+                                        <th>LINC01116</th>
+                                        <td>0.467</td>
+                                    </tr>
+                                    <tr>
+                                        <th>DLX2-DT</th>
+                                        <td>0.466</td>
+                                    </tr>
+                                    <tr>
+                                        <th>FOXD1-AS1</th>
+                                        <td>0.463</td>
+                                    </tr>
+                                    <tr>
+                                        <th>LINC01117</th>
+                                        <td>0.454</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HCG15</th>
+                                        <td>0.451</td>
+                                    </tr>
+                                    <tr>
+                                        <th>HOTTIP</th>
+                                        <td>0.447</td>
+                                    </tr>
+                                    <tr>
+                                        <th>MNX1-AS1</th>
+                                        <td>0.437</td>
+                                    </tr>
+                                    <tr>
+                                        <th>LINC02593</th>
+                                        <td>0.432</td>
+                                    </tr>
+                                    <tr>
+                                        <th>CRNDE</th>
+                                        <td>0.432</td>
+                                    </tr>
+                                    <tr>
+                                        <th>FOXF2-DT</th>
+                                        <td>0.430</td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Table 2. Top 20 lncRNAs that mostly correlate with HOTAIR ranked
                             by Pearson’s
                             correlation coefficients.
@@ -272,9 +272,10 @@ export default class Appyter extends React.Component {
                                 className="image-fluid w-100"
                                 id="fig1"
                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
+                                alt="Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA HOTAIR. Terms are ranked by the mean Pearson correlation between HOTAIR and the associated gene sets."
                             />
                         </p>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Figure 1. Predicted MGI Mammalian Phenotypes and GO Biological
                             Processes for
                             the
@@ -303,9 +304,10 @@ export default class Appyter extends React.Component {
                                 className="image-fluid w-100"
                                 id="fig2"
                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
+                                alt="Predicted KEGG pathways and DisGeNET disease terms for the lncRNA HOTAIR. Terms are ranked by the mean Pearson correlation between HOTAIR and the associated gene sets."
                             />
                         </p>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Figure 2. Predicted KEGG pathways and DisGeNET disease terms for
                             the lncRNA
                             HOTAIR.
@@ -324,163 +326,164 @@ export default class Appyter extends React.Component {
                 </div>
 
                 <h4>Tissue and Cell Line Expression Levels of HOTAIR</h4>
-                <p style={{fontWeight: '600'}}>
+                <p style={{ fontWeight: '600' }}>
                     This part of the report provides the Z-score (Normalized Median Expression)
                     for the
                     lncRNA in various tissues and cell lines.
-                    <p>
-                        Samples from Recount3 [1] were automatically labelled by their tissue type or cell line of
-                        origin. Tissue and
-                        cell line samples were log2 transformed and quantile normalized separately. For HOTAIR, the
-                        median expression
-                        was then calculated for each tissue type and cell line. Tissues and cell lines with less than 20
-                        samples were
-                        removed. Z-scoring was then applied along the lncRNA axis to compare expression levels across
-                        all tissues and
-                        cell lines.
-                    </p>
-                    <div className="row">
-                        <div className="col-6">
-                            <p>
-                                <img
-                                    className="image-fluid w-100"
-                                    id="fig3"
-                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
-                                    alt="Z-score (median expression) for the lncRNA HOTAIR in various tissue types."
-                                />
-                            </p>
-                            <p style={{fontStyle: 'italic'}}>
-                                Figure 3. Z-score (median expression) for the lncRNA HOTAIR
-                                in various tissue
-                                types.
-                            </p>
-                            <p>
-                                Download table for z-score (median expression)in tissue types:
-                                <a
-                                    href=""
-                                >
-                                    tissue_and_cell_line_expression/HOTAIR_tissue_zscore.csv
-                                </a>
-                            </p>
-                        </div>
-                        <div className="col-6">
-                            <p>
-                                <img
-                                    className="image-fluid w-100"
-                                    id="fig4"
-                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
-                                    alt="Z-score (median expression) for the lncRNA HOTAIR in the top 30 cell lines."
-                                />
-                            </p>
-                            <p style={{fontStyle: 'italic'}}>
-                                Figure 4. Z-score (median expression) for the lncRNA HOTAIR
-                                in the top 30
-                                cell
-                                lines.
-                            </p>
-                            <p>
-                                Download table for z-score (median expression)in cell lines:
-                                <a
-                                    href=""
-                                >
-                                    tissue_and_cell_line_expression/HOTAIR_cell_line_zscore.csv
-                                </a>
-                            </p>
-                        </div>
+                </p>
+                <p>
+                    Samples from Recount3 [1] were automatically labelled by their tissue type or cell line of
+                    origin. Tissue and
+                    cell line samples were log2 transformed and quantile normalized separately. For HOTAIR, the
+                    median expression
+                    was then calculated for each tissue type and cell line. Tissues and cell lines with less than 20
+                    samples were
+                    removed. Z-scoring was then applied along the lncRNA axis to compare expression levels across
+                    all tissues and
+                    cell lines.
+                </p>
+                <div className="row">
+                    <div className="col-6">
+                        <p>
+                            <img
+                                className="image-fluid w-100"
+                                id="fig3"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
+                                alt="Z-score (median expression) for the lncRNA HOTAIR in various tissue types."
+                            />
+                        </p>
+                        <p style={{ fontStyle: 'italic' }}>
+                            Figure 3. Z-score (median expression) for the lncRNA HOTAIR
+                            in various tissue
+                            types.
+                        </p>
+                        <p>
+                            Download table for z-score (median expression)in tissue types:
+                            <a
+                                href=""
+                            >
+                                tissue_and_cell_line_expression/HOTAIR_tissue_zscore.csv
+                            </a>
+                        </p>
                     </div>
-                    <div className="row">
-                        <div className="col-6">
-                            <h4>Visualizing all lncRNAs based on their gene expression similarity across tissues</h4>
-                            <p>
-                                UMAP visualization [5] was applied to 2,000 randomly selected samples (with tissue type
-                                labels) from
-                                Recount3[1].
-                                Samples were first log2 transformed and quantile normalized (samples as features) before
-                                applying UMAP.
-                                Each
-                                data point is a lncRNA (n=5,050). Use the drop-down menu to color lncRNAs by z-score in
-                                a specific
-                                tissue. The
-                                black arrow is pointing to the location of HOTAIR.
-                            </p>
-                            <p>
-                                <img
-                                    className="image-fluid w-100"
-                                    id="fig5"
-                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
-                                    alt="UMAP was applied to 2,000 randomly selected samples (with tissue type labels) from Recount3. Samples were first log2 transformed and quantile normalized (samples as features) before applying UMAP. Each data point is a lncRNA (n=5,050) and are colored by z-score (median expression) in testis."
-                                />
-                            </p>
-                            <p style={{fontStyle: 'italic'}}>
-                                Figure 5. UMAP was applied to 2,000 randomly selected samples
-                                (with tissue
-                                type
-                                labels) from Recount3. Samples were first log2 transformed and quantile normalized
-                                (samples as features)
-                                before
-                                applying UMAP. Each data point is a lncRNA (n=5,050) and are colored by z-score (median
-                                expression) in
-                                testis.
-                            </p>
-                        </div>
-                        <div className="col-6">
-                            <h4>Visualizing all lncRNAs based on their gene expression similarity across cell lines</h4>
-                            <p>
-                                UMAP visualization [5] was applied to 2,000 randomly selected samples (with cell line
-                                labels) from
-                                Recount3
-                                [1].
-                                Samples were first log2 transformed and quantile normalized (samples as features) before
-                                applying UMAP.
-                                Each
-                                data point is a lncRNA (n=5,050). Use the drop-down menu to color lncRNAs by z-score in
-                                a specific cell
-                                line.
-                                The black arrow is pointing to the location of HOTAIR.
-                            </p>
-                            <p>
-                                <img
-                                    className="image-fluid w-100"
-                                    id="fig6"
-                                    src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
-                                    alt="UMAP was applied to 2,000 randomly selected samples (with cell line labels) from Recount3. Samples were first log2 transformed and quantile normalized (samples as features) before applying UMAP. Each data point is a lncRNA (n=5,050) and are colored by z-score (median expression) in FUJI."
-                                />
-                            </p>
-                            <p style={{fontStyle: 'italic'}}>
-                                Figure 6. UMAP was applied to 2,000 randomly selected samples
-                                (with cell line
-                                labels)
-                                from Recount3. Samples were first log2 transformed and quantile normalized (samples as
-                                features) before
-                                applying
-                                UMAP. Each data point is a lncRNA (n=5,050) and are colored by z-score (median
-                                expression) in FUJI.
-                            </p>
-                        </div>
+                    <div className="col-6">
+                        <p>
+                            <img
+                                className="image-fluid w-100"
+                                id="fig4"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
+                                alt="Z-score (median expression) for the lncRNA HOTAIR in the top 30 cell lines."
+                            />
+                        </p>
+                        <p style={{ fontStyle: 'italic' }}>
+                            Figure 4. Z-score (median expression) for the lncRNA HOTAIR
+                            in the top 30
+                            cell
+                            lines.
+                        </p>
+                        <p>
+                            Download table for z-score (median expression)in cell lines:
+                            <a
+                                href=""
+                            >
+                                tissue_and_cell_line_expression/HOTAIR_cell_line_zscore.csv
+                            </a>
+                        </p>
                     </div>
-                    <h4>L1000 Small Molecules Predicted to Modulate HOTAIR</h4>
-                    <p>
-                        ~1.4 million L1000 chemical perturbation gene expression signatures (Level 5) were downloaded
-                        from SigCom LINCS
-                        (https://maayanlab.cloud/sigcom-lincs) [6]. For each signature, all 5,050 lncRNAs were ranked by
-                        mean Pearson’s
-                        correlation coefficients and the top 250 lncRNAs were retained for each signature. These
-                        lncRNA-L1000 signature
-                        associations are reported here. The signatures are ranked by their mean Pearson’s correlation
-                        coefficients to
-                        modulate the expression of HOTAIR. These associations are also separated by direction. If HOTAIR
-                        is highly
-                        correlated with the up-regulated genes for a specific small molecule, then this small molecule
-                        is predicted to
-                        up-regulate HOTAIR.
-                    </p>
-                    <h4>L1000 Small Molecules Predicted to Up-Regulate HOTAIR</h4>
-                    <p>The prioritized small molecules below are predicted to specifically up-regulate HOTAIR.</p>
-                    <div className="table-responsive-sm">
-                        <table id="table3" className="table table-sm">
-                            <thead>
+                </div>
+                <div className="row">
+                    <div className="col-6">
+                        <h4>Visualizing all lncRNAs based on their gene expression similarity across tissues</h4>
+                        <p>
+                            UMAP visualization [5] was applied to 2,000 randomly selected samples (with tissue type
+                            labels) from
+                            Recount3[1].
+                            Samples were first log2 transformed and quantile normalized (samples as features) before
+                            applying UMAP.
+                            Each
+                            data point is a lncRNA (n=5,050). Use the drop-down menu to color lncRNAs by z-score in
+                            a specific
+                            tissue. The
+                            black arrow is pointing to the location of HOTAIR.
+                        </p>
+                        <p>
+                            <img
+                                className="image-fluid w-100"
+                                id="fig5"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
+                                alt="UMAP was applied to 2,000 randomly selected samples (with tissue type labels) from Recount3. Samples were first log2 transformed and quantile normalized (samples as features) before applying UMAP. Each data point is a lncRNA (n=5,050) and are colored by z-score (median expression) in testis."
+                            />
+                        </p>
+                        <p style={{ fontStyle: 'italic' }}>
+                            Figure 5. UMAP was applied to 2,000 randomly selected samples
+                            (with tissue
+                            type
+                            labels) from Recount3. Samples were first log2 transformed and quantile normalized
+                            (samples as features)
+                            before
+                            applying UMAP. Each data point is a lncRNA (n=5,050) and are colored by z-score (median
+                            expression) in
+                            testis.
+                        </p>
+                    </div>
+                    <div className="col-6">
+                        <h4>Visualizing all lncRNAs based on their gene expression similarity across cell lines</h4>
+                        <p>
+                            UMAP visualization [5] was applied to 2,000 randomly selected samples (with cell line
+                            labels) from
+                            Recount3
+                            [1].
+                            Samples were first log2 transformed and quantile normalized (samples as features) before
+                            applying UMAP.
+                            Each
+                            data point is a lncRNA (n=5,050). Use the drop-down menu to color lncRNAs by z-score in
+                            a specific cell
+                            line.
+                            The black arrow is pointing to the location of HOTAIR.
+                        </p>
+                        <p>
+                            <img
+                                className="image-fluid w-100"
+                                id="fig6"
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
+                                alt="UMAP was applied to 2,000 randomly selected samples (with cell line labels) from Recount3. Samples were first log2 transformed and quantile normalized (samples as features) before applying UMAP. Each data point is a lncRNA (n=5,050) and are colored by z-score (median expression) in FUJI."
+                            />
+                        </p>
+                        <p style={{ fontStyle: 'italic' }}>
+                            Figure 6. UMAP was applied to 2,000 randomly selected samples
+                            (with cell line
+                            labels)
+                            from Recount3. Samples were first log2 transformed and quantile normalized (samples as
+                            features) before
+                            applying
+                            UMAP. Each data point is a lncRNA (n=5,050) and are colored by z-score (median
+                            expression) in FUJI.
+                        </p>
+                    </div>
+                </div>
+                <h4>L1000 Small Molecules Predicted to Modulate HOTAIR</h4>
+                <p>
+                    ~1.4 million L1000 chemical perturbation gene expression signatures (Level 5) were downloaded
+                    from SigCom LINCS
+                    (https://maayanlab.cloud/sigcom-lincs) [6]. For each signature, all 5,050 lncRNAs were ranked by
+                    mean Pearson’s
+                    correlation coefficients and the top 250 lncRNAs were retained for each signature. These
+                    lncRNA-L1000 signature
+                    associations are reported here. The signatures are ranked by their mean Pearson’s correlation
+                    coefficients to
+                    modulate the expression of HOTAIR. These associations are also separated by direction. If HOTAIR
+                    is highly
+                    correlated with the up-regulated genes for a specific small molecule, then this small molecule
+                    is predicted to
+                    up-regulate HOTAIR.
+                </p>
+                <h4>L1000 Small Molecules Predicted to Up-Regulate HOTAIR</h4>
+                <p>The prioritized small molecules below are predicted to specifically up-regulate HOTAIR.</p>
+                <div className="table-responsive-sm">
+                    <table id="table3" className="table table-sm">
+                        <thead>
                             <tr>
-                                <th/>
+                                <th />
                                 <th>L1000 Signature ID</th>
                                 <th>Drug</th>
                                 <th>Up/Down</th>
@@ -489,8 +492,8 @@ export default class Appyter extends React.Component {
                                 <th>Time point</th>
                                 <th>Mean Pearson Correlation</th>
                             </tr>
-                            </thead>
-                            <tbody>
+                        </thead>
+                        <tbody>
                             <tr>
                                 <th>0</th>
                                 <td>ERG005_VCAP_24H_I06_genistein_1.11uM up</td>
@@ -691,29 +694,29 @@ export default class Appyter extends React.Component {
                                 <td>6H</td>
                                 <td>0.160179</td>
                             </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p style={{fontStyle: 'italic'}}>
-                        Table 3. L1000 small molecules predicted to up-regulate the lncRNA
-                        HOTAIR. L1000 up
-                        signatures are prioritized by their Pearson’s correlation coefficients with HOTAIR.
-                    </p>
-                    <p>
-                        Download the table of ranked L1000 small molecules predicted to up-regulate HOTAIR:
-                        <a
-                            href=""
-                        >
-                            l1000_sm_predictions/HOTAIR_l1000_sm_predictions_up.csv
-                        </a>
-                    </p>
-                    <h4>L1000 Small Molecules Predicted to Down-Regulate HOTAIR</h4>
-                    <p>The prioritized small molecules below are predicted to specifically down-regulate HOTAIR.</p>
-                    <div className="table-responsive-sm">
-                        <table id="table4" className="table table-sm">
-                            <thead>
+                        </tbody>
+                    </table>
+                </div>
+                <p style={{ fontStyle: 'italic' }}>
+                    Table 3. L1000 small molecules predicted to up-regulate the lncRNA
+                    HOTAIR. L1000 up
+                    signatures are prioritized by their Pearson’s correlation coefficients with HOTAIR.
+                </p>
+                <p>
+                    Download the table of ranked L1000 small molecules predicted to up-regulate HOTAIR:
+                    <a
+                        href=""
+                    >
+                        l1000_sm_predictions/HOTAIR_l1000_sm_predictions_up.csv
+                    </a>
+                </p>
+                <h4>L1000 Small Molecules Predicted to Down-Regulate HOTAIR</h4>
+                <p>The prioritized small molecules below are predicted to specifically down-regulate HOTAIR.</p>
+                <div className="table-responsive-sm">
+                    <table id="table4" className="table table-sm">
+                        <thead>
                             <tr>
-                                <th/>
+                                <th />
                                 <th>L1000 Signature ID</th>
                                 <th>Drug</th>
                                 <th>Up/Down</th>
@@ -722,8 +725,8 @@ export default class Appyter extends React.Component {
                                 <th>Time point</th>
                                 <th>Mean Pearson Correlation</th>
                             </tr>
-                            </thead>
-                            <tbody>
+                        </thead>
+                        <tbody>
                             <tr>
                                 <th>0</th>
                                 <td>REP.B016_THP1_24H_A19_palbociclib_2.22uM down</td>
@@ -924,57 +927,56 @@ export default class Appyter extends React.Component {
                                 <td>24H</td>
                                 <td>0.196024</td>
                             </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p style={{fontStyle: 'italic'}}>
-                        Table 4. L1000 small molecules predicted to down-regulate the lncRNA
-                        HOTAIR. L1000
-                        down signatures are prioritized by their Pearson’s correlation coefficients with HOTAIR.
-                    </p>
-                    <p>
-                        Download the table of ranked L1000 small molecules predicted to down-regulate HOTAIR:
-                        <a
-                            href=""
-                        >
-                            l1000_sm_predictions/HOTAIR_l1000_sm_predictions_down.csv
-                        </a>
-                    </p>
-                    <h4>References</h4>
-                    <p>
-                        [1] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling JP, Imada EL, Zhang D, Joseph L, Leek
-                        JT: recount3:
-                        summaries and queries for large-scale RNA-seq expression and splicing. bioRxiv
-                        2021:2021.2005.2021.445138.
-                    </p>
-                    <p>
-                        [2] Xie Z, Bailey A, Kuleshov MV, Clarke DJB, Evangelista JE, Jenkins SL, Lachmann A,
-                        Wojciechowicz ML,
-                        Kropiwnicki E, Jagodnik KM: Gene Set Knowledge Discovery with Enrichr. Current Protocols 2021,
-                        1(3):e90.
-                    </p>
-                    <p>
-                        [3] Chen EY, Tan CM, Kou Y, Duan Q, Wang Z, Meirelles GV, Clark NR, Ma’ayan A: Enrichr:
-                        interactive and
-                        collaborative HTML5 gene list enrichment analysis tool. BMC Bioinformatics 2013, 14(1):128.
-                    </p>
-                    <p>
-                        [4] Kuleshov MV, Jones MR, Rouillard AD, Fernandez NF, Duan Q, Wang Z, Koplev S, Jenkins SL,
-                        Jagodnik KM,
-                        Lachmann A: Enrichr: a comprehensive gene set enrichment analysis web server 2016 update.
-                        Nucleic Acids Research
-                        2016, 44(W1):W90-W97.
-                    </p>
-                    <p>
-                        [5] McInnes L, Healy J, Melville J: Umap: Uniform manifold approximation and projection for
-                        dimension reduction.
-                        arXiv preprint arXiv:180203426 2018.
-                    </p>
-                    <p>
-                        [6] Evangelista et al. SigCom LINCS: Data and Metadata Search Engine for Gene Expression
-                        Signatures. 2021. In
-                        preparation.
-                    </p>
+                        </tbody>
+                    </table>
+                </div>
+                <p style={{ fontStyle: 'italic' }}>
+                    Table 4. L1000 small molecules predicted to down-regulate the lncRNA
+                    HOTAIR. L1000
+                    down signatures are prioritized by their Pearson’s correlation coefficients with HOTAIR.
+                </p>
+                <p>
+                    Download the table of ranked L1000 small molecules predicted to down-regulate HOTAIR:
+                    <a
+                        href=""
+                    >
+                        l1000_sm_predictions/HOTAIR_l1000_sm_predictions_down.csv
+                    </a>
+                </p>
+                <h4>References</h4>
+                <p>
+                    [1] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling JP, Imada EL, Zhang D, Joseph L, Leek
+                    JT: recount3:
+                    summaries and queries for large-scale RNA-seq expression and splicing. bioRxiv
+                    2021:2021.2005.2021.445138.
+                </p>
+                <p>
+                    [2] Xie Z, Bailey A, Kuleshov MV, Clarke DJB, Evangelista JE, Jenkins SL, Lachmann A,
+                    Wojciechowicz ML,
+                    Kropiwnicki E, Jagodnik KM: Gene Set Knowledge Discovery with Enrichr. Current Protocols 2021,
+                    1(3):e90.
+                </p>
+                <p>
+                    [3] Chen EY, Tan CM, Kou Y, Duan Q, Wang Z, Meirelles GV, Clark NR, Ma’ayan A: Enrichr:
+                    interactive and
+                    collaborative HTML5 gene list enrichment analysis tool. BMC Bioinformatics 2013, 14(1):128.
+                </p>
+                <p>
+                    [4] Kuleshov MV, Jones MR, Rouillard AD, Fernandez NF, Duan Q, Wang Z, Koplev S, Jenkins SL,
+                    Jagodnik KM,
+                    Lachmann A: Enrichr: a comprehensive gene set enrichment analysis web server 2016 update.
+                    Nucleic Acids Research
+                    2016, 44(W1):W90-W97.
+                </p>
+                <p>
+                    [5] McInnes L, Healy J, Melville J: Umap: Uniform manifold approximation and projection for
+                    dimension reduction.
+                    arXiv preprint arXiv:180203426 2018.
+                </p>
+                <p>
+                    [6] Evangelista et al. SigCom LINCS: Data and Metadata Search Engine for Gene Expression
+                    Signatures. 2021. In
+                    preparation.
                 </p>
             </div>
         );
