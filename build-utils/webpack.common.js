@@ -17,6 +17,13 @@ module.exports = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader', 'postcss-loader'],
             },
+            // {
+            //     test: /\.(jpe?g|png|gif|svg)$/i,
+            //     loader: 'file-loader',
+            //     options: {
+            //         name: '/public/[name].[ext]'
+            //     }
+            // }
         ],
     },
     resolve: {
