@@ -1,12 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import Card from './Card';
+import AppytersList from '../public/appyters.json'
 
 export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            appyters: JSON.parse('/public/appyters.json'),
+            appyters: AppytersList,
         };
     }
 
