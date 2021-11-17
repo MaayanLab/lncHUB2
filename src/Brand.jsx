@@ -1,10 +1,16 @@
 import React from 'react';
+import lncRNALogo from '../public/logo.png';
 
 export default function Brand() {
     return (
         <div className="row mt-2">
             <div className="d-flex justify-content-center align-items-start">
-                <img className="img-fluid mx-2" style={{ width: '60px' }} src="/public/logo.png" alt="lncRNA logo" />
+                <img
+                    className="img-fluid mx-2"
+                    style={{ width: '60px' }}
+                    src={lncRNALogo}
+                    alt="lncRNA logo" 
+                />
                 <h1 className="display-5">lncRNA function prediction</h1>
             </div>
             <p className="text-center">

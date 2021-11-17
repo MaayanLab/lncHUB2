@@ -20,6 +20,7 @@ export default class Dashboard extends React.Component {
     render() {
         const cards = [];
         for (const appyter of this.state.appyters) {
+            console.log(appyter);
             cards.push(<div>{this.renderCard(appyter.id)}</div>);
         }
         return (

@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import Appyter from './Appyter';
+import mockPlot from '../public/mock_plot.png';
 
 export default class Card extends React.Component {
     constructor(props) {
@@ -19,7 +20,7 @@ export default class Card extends React.Component {
                     <div className="col-4">
                         {/* img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/${this.props.appyter_id}/mock_plot.png" */}
                         <img
-                            src="/public/mock_plot.png"
+                            src={mockPlot}
                             style={{ width: '200px', height: '160px' }}
                             className="card-img-left p-2"
                             alt="..."

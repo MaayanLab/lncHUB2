@@ -4,7 +4,9 @@ import React from 'react';
 export default class Table extends React.Component {
     constructor(props) {
         super(props);
-        this.state = null;
+        this.state = {
+            table: props.table,
+        };
     }
 
     render() {
