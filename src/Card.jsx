@@ -3,7 +3,16 @@ import React from 'react';
 import Appyter from './Appyter';
 
 export default class Card extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            appyter: { gene: '', id: '' },
+        };
+    }
+
     render() {
+        const { gene } = this.state.appyter;
+        console.log(gene);
         return (
             <div className="card m-2" style={{ width: '35rem' }}>
                 <div className="row no-gutters">

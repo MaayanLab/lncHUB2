@@ -2,5 +2,21 @@
   {
     "id":"2b5f344e1ed92b3cf8bd50ffcdabcaf146c7a891",
     "gene":"HOTAIR"
+  },
+  {
+    "id":"5802a5b202701bc00ef331b878b3e3784eaeddc3",
+    "gene":"HOTAIRM1"
+  },
+  {
+    "id":"f545f52bc69e8452a0133618caec5c990e793305",
+    "gene":"AIRN"
+  },
+  {
+    "id":"17a024d5050e76d7d017a32e465b4e3c7907ea2a",
+    "gene":"HOTTIP"
+  },
+  {
+    "id":"d84df2321dbaaab1264413e008ffce6960555be8",
+    "gene":"LASTR"
   }
 ]

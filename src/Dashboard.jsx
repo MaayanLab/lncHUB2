@@ -6,20 +6,24 @@ export default class Dashboard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            appyters: null,
+            appyters: JSON.parse('/public/appyters.json'),
         };
     }
 
     renderCard(appyter) {
         return (
-            <Card appyter={{ gene: 'HOTAIR', appyter: '001' }} />
+            <Card appyter={{ appyter }} />
         );
     }
 
     render() {
+        const cards = [];
+        for (const appyter of this.state.appyters) {
+            cards.push(<div>{this.renderCard(appyter.id)}</div>);
+        }
         return (
             <div>
-                {this.renderCard('')}
+                {cards}
             </div>
         );
     }
