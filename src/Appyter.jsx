@@ -9,6 +9,9 @@ export default class Appyter extends React.Component {
 
     render() {
         const { appyter } = this.props.appyter;
+        let table1 = '';
+        fetch(`https://appyters.maayanlab.cloud/lncRNA_Appyter/${appyter.id}/gene_correlations/${appyter.gene}_correlated_genes.csv`)
+            .then((response) => {table1 = response.text();})
         return (
             <div className="container">
                 <h3>Report about the Long Non-coding RNA (lncRNA) {appyter.gene}</h3>
