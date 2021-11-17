@@ -1,7 +1,8 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import AppytersList from '../public/appyters.json';
+
 import Card from './Card';
-import AppytersList from '../public/appyters.json'
 
 export default class Dashboard extends React.Component {
     constructor(props) {
@@ -20,11 +21,10 @@ export default class Dashboard extends React.Component {
     render() {
         const cards = [];
         for (const appyter of this.state.appyters) {
-            console.log(appyter);
-            cards.push(<div>{this.renderCard(appyter.id)}</div>);
+            cards.push(<div>{this.renderCard(appyter)}</div>);
         }
         return (
-            <div>
+            <div className="row justify-content-center my-3">
                 {cards}
             </div>
         );

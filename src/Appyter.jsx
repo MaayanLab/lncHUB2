@@ -8,23 +8,24 @@ export default class Appyter extends React.Component {
     }
 
     render() {
+        const { appyter } = this.props.appyter;
         return (
             <div className="container">
-                <h3>Report about the Long Non-coding RNA (lncRNA) HOTAIR</h3>
+                <h3>Report about the Long Non-coding RNA (lncRNA) {appyter.gene}</h3>
                 <p>
                     Based on lncRNA-gene co-expression, this report provides predictions about the biological functions
-                    of HOTAIR,
-                    displays the average expression of HOTAIR across tissues and cell-lines, and lists predictions of
+                    of {appyter.gene},
+                    displays the average expression of {appyter.gene} across tissues and cell-lines, and lists predictions of
                     small
-                    molecules that may specifically up- or down-regulate the expression of HOTAIR.
+                    molecules that may specifically up- or down-regulate the expression of {appyter.gene}.
                 </p>
                 <div className="row">
                     <div className="col-6">
-                        <h4>Top correlated genes with HOTAIR</h4>
+                        <h4>Top correlated genes with {appyter.gene}</h4>
                         <p>
                             Using the loaded gene-lncRNA correlation matrix, we report the genes that mostly correlate
                             with
-                            HOTAIR.
+                            {appyter.gene}.
                         </p>
                         <div className="table-responsive-sm">
                             <table id="table1" className="table table-sm">
@@ -119,21 +120,21 @@ export default class Appyter extends React.Component {
                             </table>
                         </div>
                         <p style={{ fontStyle: 'italic' }}>
-                            Table 1. Top 20 genes that mostly correlate with HOTAIR ranked by
+                            Table 1. Top 20 genes that mostly correlate with {appyter.gene} ranked by
                             Pearson’s
                             correlation coefficients.
                         </p>
                         <p>
                             Download Table 1:
-                            <a href="">gene_correlations/HOTAIR_correlated_genes.csv</a>
+                            <a href="">gene_correlations/{appyter.gene}_correlated_genes.csv</a>
                         </p>
                     </div>
                     <div className="col-6">
-                        <h4>Top correlated lncRNAs with HOTAIR</h4>
+                        <h4>Top correlated lncRNAs with {appyter.gene}</h4>
                         <p>
                             Below we list the top lncRNAs, out of all 5,050 lncRNAs within our database, that mostly
                             correlate with
-                            HOTAIR
+                            {appyter.gene}
                             based on their Pearson’s correlation coefficients.
                         </p>
                         <div className="table-responsive-sm">
@@ -229,27 +230,27 @@ export default class Appyter extends React.Component {
                             </table>
                         </div>
                         <p style={{ fontStyle: 'italic' }}>
-                            Table 2. Top 20 lncRNAs that mostly correlate with HOTAIR ranked
+                            Table 2. Top 20 lncRNAs that mostly correlate with {appyter.gene} ranked
                             by Pearson’s
                             correlation coefficients.
                         </p>
                         <p>
                             Download Table 2:
-                            <a href="">gene_correlations/HOTAIR_correlated_lncRNAs.csv</a>
+                            <a href="">gene_correlations/{appyter.gene}_correlated_lncRNAs.csv</a>
                         </p>
                     </div>
                 </div>
 
-                <h4>Enrichment analysis applied to the top 200 most correlated genes with HOTAIR</h4>
+                <h4>Enrichment analysis applied to the top 200 most correlated genes with {appyter.gene}</h4>
                 <p>
-                    The top 200 most correlated genes with HOTAIR were submitted to Enrichr [2-4] for enrichment
+                    The top 200 most correlated genes with {appyter.gene} were submitted to Enrichr [2-4] for enrichment
                     analysis. NOTE: Only
                     genes with official Entrez gene symbols are submitted to Enrichr. Ensembl IDs that do not map to an
                     official
                     gene symbol were dropped.
                 </p>
                 <p>
-                    Access the enrichment analysis results for HOTAIR 200 most correlated genes here:
+                    Access the enrichment analysis results for {appyter.gene} 200 most correlated genes here:
                     <a
                         href=""
                     >
@@ -257,13 +258,13 @@ export default class Appyter extends React.Component {
                     </a>
                 </p>
 
-                <h4>Predicted Biological Functions of HOTAIR</h4>
+                <h4>Predicted Biological Functions of {appyter.gene}</h4>
                 <p>
                     For each Enrichr library, the mean Pearson’s correlation coefficients are calculated between each
                     gene set and
-                    HOTAIR. Terms with a high mean Pearson’s correlation coefficients are prioritized. These terms are
+                    {appyter.gene}. Terms with a high mean Pearson’s correlation coefficients are prioritized. These terms are
                     predicted to
-                    be associated with HOTAIR.
+                    be associated with {appyter.gene}.
                 </p>
                 <div className="row">
                     <div className="col-6">
@@ -272,14 +273,14 @@ export default class Appyter extends React.Component {
                                 className="image-fluid w-100"
                                 id="fig1"
                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
-                                alt="Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA HOTAIR. Terms are ranked by the mean Pearson correlation between HOTAIR and the associated gene sets."
+                                alt="Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA {appyter.gene}}. Terms are ranked by the mean Pearson correlation between {appyter.gene}} and the associated gene sets."
                             />
                         </p>
                         <p style={{ fontStyle: 'italic' }}>
                             Figure 1. Predicted MGI Mammalian Phenotypes and GO Biological
                             Processes for
                             the
-                            lncRNA HOTAIR. Terms are ranked by the mean Pearson correlation between HOTAIR and the
+                            lncRNA {appyter.gene}. Terms are ranked by the mean Pearson correlation between {appyter.gene} and the
                             associated gene
                             sets.
                         </p>
@@ -287,14 +288,14 @@ export default class Appyter extends React.Component {
                             Download predictions:
                             <a href="">
                                 predicted_functions/MGI Mammalian Phenotype Level 4
-                                2021_HOTAIR.csv
+                                2021_{appyter.gene}.csv
                             </a>
                         </p>
                         <p>
                             Download predictions:
                             <a href="">
                                 predicted_functions/GO Biological Process
-                                2021_HOTAIR.csv
+                                2021_{appyter.gene}.csv
                             </a>
                         </p>
                     </div>
@@ -304,28 +305,28 @@ export default class Appyter extends React.Component {
                                 className="image-fluid w-100"
                                 id="fig2"
                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
-                                alt="Predicted KEGG pathways and DisGeNET disease terms for the lncRNA HOTAIR. Terms are ranked by the mean Pearson correlation between HOTAIR and the associated gene sets."
+                                alt="Predicted KEGG pathways and DisGeNET disease terms for the lncRNA {appyter.gene}}. Terms are ranked by the mean Pearson correlation between {appyter.gene}} and the associated gene sets."
                             />
                         </p>
                         <p style={{ fontStyle: 'italic' }}>
                             Figure 2. Predicted KEGG pathways and DisGeNET disease terms for
                             the lncRNA
-                            HOTAIR.
-                            Terms are ranked by the mean Pearson correlation between HOTAIR and the associated gene
+                            {appyter.gene}.
+                            Terms are ranked by the mean Pearson correlation between {appyter.gene} and the associated gene
                             sets.
                         </p>
                         <p>
                             Download predictions:
-                            <a href="">predicted_functions/KEGG 2021 Human_HOTAIR.csv</a>
+                            <a href="">predicted_functions/KEGG 2021 Human_{appyter.gene}.csv</a>
                         </p>
                         <p>
                             Download predictions:
-                            <a href="">predicted_functions/DisGeNET_HOTAIR.csv</a>
+                            <a href="">predicted_functions/DisGeNET_{appyter.gene}.csv</a>
                         </p>
                     </div>
                 </div>
 
-                <h4>Tissue and Cell Line Expression Levels of HOTAIR</h4>
+                <h4>Tissue and Cell Line Expression Levels of {appyter.gene}</h4>
                 <p style={{ fontWeight: '600' }}>
                     This part of the report provides the Z-score (Normalized Median Expression)
                     for the
@@ -334,7 +335,7 @@ export default class Appyter extends React.Component {
                 <p>
                     Samples from Recount3 [1] were automatically labelled by their tissue type or cell line of
                     origin. Tissue and
-                    cell line samples were log2 transformed and quantile normalized separately. For HOTAIR, the
+                    cell line samples were log2 transformed and quantile normalized separately. For {appyter.gene}, the
                     median expression
                     was then calculated for each tissue type and cell line. Tissues and cell lines with less than 20
                     samples were
@@ -349,20 +350,18 @@ export default class Appyter extends React.Component {
                                 className="image-fluid w-100"
                                 id="fig3"
                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
-                                alt="Z-score (median expression) for the lncRNA HOTAIR in various tissue types."
+                                alt="Z-score (median expression) for the lncRNA {appyter.gene}} in various tissue types."
                             />
                         </p>
                         <p style={{ fontStyle: 'italic' }}>
-                            Figure 3. Z-score (median expression) for the lncRNA HOTAIR
-                            in various tissue
-                            types.
+                            Figure 3. Z-score (median expression) for the lncRNA {appyter.gene} in various tissue types.
                         </p>
                         <p>
                             Download table for z-score (median expression)in tissue types:
                             <a
                                 href=""
                             >
-                                tissue_and_cell_line_expression/HOTAIR_tissue_zscore.csv
+                                tissue_and_cell_line_expression/{appyter.gene}_tissue_zscore.csv
                             </a>
                         </p>
                     </div>
@@ -372,21 +371,18 @@ export default class Appyter extends React.Component {
                                 className="image-fluid w-100"
                                 id="fig4"
                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
-                                alt="Z-score (median expression) for the lncRNA HOTAIR in the top 30 cell lines."
+                                alt="Z-score (median expression) for the lncRNA {appyter.gene}} in the top 30 cell lines."
                             />
                         </p>
                         <p style={{ fontStyle: 'italic' }}>
-                            Figure 4. Z-score (median expression) for the lncRNA HOTAIR
-                            in the top 30
-                            cell
-                            lines.
+                            Figure 4. Z-score (median expression) for the lncRNA {appyter.gene} in the top 30 cell lines.
                         </p>
                         <p>
                             Download table for z-score (median expression)in cell lines:
                             <a
                                 href=""
                             >
-                                tissue_and_cell_line_expression/HOTAIR_cell_line_zscore.csv
+                                tissue_and_cell_line_expression/{appyter.gene}_cell_line_zscore.csv
                             </a>
                         </p>
                     </div>
@@ -404,7 +400,7 @@ export default class Appyter extends React.Component {
                             data point is a lncRNA (n=5,050). Use the drop-down menu to color lncRNAs by z-score in
                             a specific
                             tissue. The
-                            black arrow is pointing to the location of HOTAIR.
+                            black arrow is pointing to the location of {appyter.gene}.
                         </p>
                         <p>
                             <img
@@ -439,7 +435,7 @@ export default class Appyter extends React.Component {
                             data point is a lncRNA (n=5,050). Use the drop-down menu to color lncRNAs by z-score in
                             a specific cell
                             line.
-                            The black arrow is pointing to the location of HOTAIR.
+                            The black arrow is pointing to the location of {appyter.gene}.
                         </p>
                         <p>
                             <img
@@ -461,7 +457,7 @@ export default class Appyter extends React.Component {
                         </p>
                     </div>
                 </div>
-                <h4>L1000 Small Molecules Predicted to Modulate HOTAIR</h4>
+                <h4>L1000 Small Molecules Predicted to Modulate {appyter.gene}</h4>
                 <p>
                     ~1.4 million L1000 chemical perturbation gene expression signatures (Level 5) were downloaded
                     from SigCom LINCS
@@ -471,14 +467,14 @@ export default class Appyter extends React.Component {
                     lncRNA-L1000 signature
                     associations are reported here. The signatures are ranked by their mean Pearson’s correlation
                     coefficients to
-                    modulate the expression of HOTAIR. These associations are also separated by direction. If HOTAIR
+                    modulate the expression of {appyter.gene}. These associations are also separated by direction. If {appyter.gene}
                     is highly
                     correlated with the up-regulated genes for a specific small molecule, then this small molecule
                     is predicted to
-                    up-regulate HOTAIR.
+                    up-regulate {appyter.gene}.
                 </p>
-                <h4>L1000 Small Molecules Predicted to Up-Regulate HOTAIR</h4>
-                <p>The prioritized small molecules below are predicted to specifically up-regulate HOTAIR.</p>
+                <h4>L1000 Small Molecules Predicted to Up-Regulate {appyter.gene}</h4>
+                <p>The prioritized small molecules below are predicted to specifically up-regulate {appyter.gene}.</p>
                 <div className="table-responsive-sm">
                     <table id="table3" className="table table-sm">
                         <thead>
@@ -699,19 +695,19 @@ export default class Appyter extends React.Component {
                 </div>
                 <p style={{ fontStyle: 'italic' }}>
                     Table 3. L1000 small molecules predicted to up-regulate the lncRNA
-                    HOTAIR. L1000 up
-                    signatures are prioritized by their Pearson’s correlation coefficients with HOTAIR.
+                    {appyter.gene}. L1000 up
+                    signatures are prioritized by their Pearson’s correlation coefficients with {appyter.gene}.
                 </p>
                 <p>
-                    Download the table of ranked L1000 small molecules predicted to up-regulate HOTAIR:
+                    Download the table of ranked L1000 small molecules predicted to up-regulate {appyter.gene}:
                     <a
                         href=""
                     >
-                        l1000_sm_predictions/HOTAIR_l1000_sm_predictions_up.csv
+                        l1000_sm_predictions/{appyter.gene}_l1000_sm_predictions_up.csv
                     </a>
                 </p>
-                <h4>L1000 Small Molecules Predicted to Down-Regulate HOTAIR</h4>
-                <p>The prioritized small molecules below are predicted to specifically down-regulate HOTAIR.</p>
+                <h4>L1000 Small Molecules Predicted to Down-Regulate {appyter.gene}</h4>
+                <p>The prioritized small molecules below are predicted to specifically down-regulate {appyter.gene}.</p>
                 <div className="table-responsive-sm">
                     <table id="table4" className="table table-sm">
                         <thead>
@@ -932,15 +928,15 @@ export default class Appyter extends React.Component {
                 </div>
                 <p style={{ fontStyle: 'italic' }}>
                     Table 4. L1000 small molecules predicted to down-regulate the lncRNA
-                    HOTAIR. L1000
-                    down signatures are prioritized by their Pearson’s correlation coefficients with HOTAIR.
+                    {appyter.gene}. L1000
+                    down signatures are prioritized by their Pearson’s correlation coefficients with {appyter.gene}.
                 </p>
                 <p>
-                    Download the table of ranked L1000 small molecules predicted to down-regulate HOTAIR:
+                    Download the table of ranked L1000 small molecules predicted to down-regulate {appyter.gene}:
                     <a
                         href=""
                     >
-                        l1000_sm_predictions/HOTAIR_l1000_sm_predictions_down.csv
+                        l1000_sm_predictions/{appyter.gene}_l1000_sm_predictions_down.csv
                     </a>
                 </p>
                 <h4>References</h4>

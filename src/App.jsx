@@ -8,12 +8,12 @@ import Brand from './Brand';
 
 export default function App() {
     return (
-        <>
+        <div className="container">
             <Header />
             <Brand />
             <Search />
             <Dashboard />
             <Footer />
-        </>
+        </div>
     );
 }
