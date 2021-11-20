@@ -71,7 +71,7 @@ export default class Appyter extends React.Component {
             <div className="container">
                 <h3>
                     Report about the Long Non-coding RNA (lncRNA)
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                 </h3>
                 <p>
                     Based on lncRNA-gene co-expression, this report provides predictions about the biological functions
@@ -94,12 +94,12 @@ export default class Appyter extends React.Component {
                     <div className="col-6">
                         <h4>
                             Top correlated genes with
-                            {appyter.gene}
+                            {' '}{appyter.gene}
                         </h4>
                         <p>
                             Using the loaded gene-lncRNA correlation matrix, we report the genes that mostly correlate
                             with
-                            {appyter.gene}
+                            {' '}{appyter.gene}
                             .
                         </p>
                         <div className="table-responsive-sm">
@@ -126,12 +126,12 @@ export default class Appyter extends React.Component {
                     <div className="col-6">
                         <h4>
                             Top correlated lncRNAs with
-                            {appyter.gene}
+                            {' '}{appyter.gene}{' '}
                         </h4>
                         <p>
                             Below we list the top lncRNAs, out of all 5,050 lncRNAs within our database, that mostly
                             correlate with
-                            {appyter.gene}
+                            {' '}{appyter.gene}{' '}
                             based on their Pearson’s correlation coefficients.
                         </p>
                         <div className="table-responsive-sm">
@@ -159,7 +159,7 @@ export default class Appyter extends React.Component {
 
                 <h4>
                     Enrichment analysis applied to the top 200 most correlated genes with
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                 </h4>
                 <p>
                     The top 200 most correlated genes with
@@ -187,16 +187,16 @@ export default class Appyter extends React.Component {
 
                 <h4>
                     Predicted Biological Functions of
-                    {appyter.gene}
+                    {' '}{appyter.gene}{' '}
                 </h4>
                 <p>
                     For each Enrichr library, the mean Pearson’s correlation coefficients are calculated between each
                     gene set and
-                    {appyter.gene}
+                    {' '}{appyter.gene}{' '}
                     . Terms with a high mean Pearson’s correlation coefficients are prioritized. These terms are
                     predicted to
                     be associated with
-                    {appyter.gene}
+                    {' '}{appyter.gene}{' '}
                     .
                 </p>
                 <div className="row">
@@ -249,15 +249,16 @@ export default class Appyter extends React.Component {
                                 className="image-fluid w-100"
                                 id="fig2"
                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' id='visual' viewBox='0 0 900 600' width='900' height='600'%3E%3Crect x='0' y='0' width='900' height='600' fill='%23aaaaaa'%3E%3C/rect%3E%3C/svg%3E"
-                                alt="Predicted KEGG pathways and DisGeNET disease terms for the lncRNA {appyter.gene}}. Terms are ranked by the mean Pearson correlation between {appyter.gene}} and the associated gene sets."
+                                alt="Predicted KEGG pathways and DisGeNET disease terms for the lncRNA {appyter.gene}. Terms are ranked by the mean Pearson correlation between {appyter.gene} and the associated gene sets."
                             />
                         </p>
                         <p style={{fontStyle: 'italic'}}>
                             Figure 2. Predicted KEGG pathways and DisGeNET disease terms for
-                            the lncRNA
+                            the lncRNA{' '}
                             {appyter.gene}
                             .
                             Terms are ranked by the mean Pearson correlation between
+                            {' '}
                             {appyter.gene}
                             {' '}
                             and the associated gene
@@ -284,7 +285,7 @@ export default class Appyter extends React.Component {
 
                 <h4>
                     Tissue and Cell Line Expression Levels of
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                 </h4>
                 <p style={{fontWeight: '600'}}>
                     This part of the report provides the Z-score (Normalized Median Expression)
@@ -439,7 +440,7 @@ export default class Appyter extends React.Component {
                 </div>
                 <h4>
                     L1000 Small Molecules Predicted to Modulate
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                 </h4>
                 <p>
                     ~1.4 million L1000 chemical perturbation gene expression signatures (Level 5) were downloaded
@@ -466,11 +467,11 @@ export default class Appyter extends React.Component {
                 </p>
                 <h4>
                     L1000 Small Molecules Predicted to Up-Regulate
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                 </h4>
                 <p>
                     The prioritized small molecules below are predicted to specifically up-regulate
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                     .
                 </p>
                 <div className="table-responsive-sm">
@@ -478,10 +479,10 @@ export default class Appyter extends React.Component {
                 </div>
                 <p style={{fontStyle: 'italic'}}>
                     Table 3. L1000 small molecules predicted to up-regulate the lncRNA
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                     . L1000 up
                     signatures are prioritized by their Pearson’s correlation coefficients with
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                     .
                 </p>
                 <p>
@@ -499,11 +500,11 @@ export default class Appyter extends React.Component {
                 </p>
                 <h4>
                     L1000 Small Molecules Predicted to Down-Regulate
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                 </h4>
                 <p>
                     The prioritized small molecules below are predicted to specifically down-regulate
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                     .
                 </p>
                 <div className="table-responsive-sm">
@@ -511,10 +512,10 @@ export default class Appyter extends React.Component {
                 </div>
                 <p style={{fontStyle: 'italic'}}>
                     Table 4. L1000 small molecules predicted to down-regulate the lncRNA
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                     . L1000
                     down signatures are prioritized by their Pearson’s correlation coefficients with
-                    {appyter.gene}
+                    {' '}{appyter.gene}
                     .
                 </p>
                 <p>
