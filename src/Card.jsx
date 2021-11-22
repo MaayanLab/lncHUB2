@@ -5,6 +5,7 @@ import mockPlot from '../public/mock_plot.png';
 
 export default function Card(props) {
     const { appyter } = props.appyter;
+
     return (
         <div className="card m-2">
             <div className="row no-gutters">
@@ -28,33 +29,27 @@ export default function Card(props) {
                     </div>
                 </div>
                 <div className="card-footer" style={{ background: 'white' }}>
-                    <div className="accordion accordion-flush" id="accordion1">
+                    <div className="accordion accordion-flush" id={"accordion"+appyter.id}>
                         <div className="accordion-item">
-                            <h2 className="accordion-header" id="flush-heading1">
+                            <h2 className="accordion-header" id={"flush-heading"+appyter.id}>
                                 <button
                                     className="accordion-button collapsed"
                                     type="button"
                                     data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapse1"
+                                    data-bs-target={"#flush-collapse"+appyter.id}
                                     aria-expanded="false"
-                                    aria-controls="flush-collapse1"
+                                    aria-controls={"flush-collapse"+appyter.id}
                                 >
-                                    <Appyter appyter={props.appyter} />
                                 </button>
                             </h2>
                             <div
-                                id="flush-collapse1"
+                                id={"flush-collapse"+appyter.id}
                                 className="accordion-collapse collapse"
-                                aria-labelledby="flush-heading1"
-                                data-bs-parent="#accordion1"
+                                aria-labelledby={"flush-heading"+appyter.id}
+                                data-bs-parent={"#accordion"+appyter.id}
                             >
                                 <div className="accordion-body">
-                                    Placeholder content for this accordion, which is
-                                    intended to demonstrate the
-                                    <code>.accordion-flush</code>
-                                    {' '}
-                                    class. This is the
-                                    first item&apos;s accordion body.
+                                    <Appyter appyter={props.appyter} />
                                 </div>
                             </div>
                         </div>

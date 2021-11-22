@@ -14,7 +14,7 @@ export default class Dashboard extends React.Component {
 
     renderCard(appyter) {
         return (
-            <Card appyter={{ appyter }} />
+            <Card appyter={{ appyter }} key={ appyter.id } />
         );
     }
 

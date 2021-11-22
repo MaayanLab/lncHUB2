@@ -6,8 +6,6 @@ export default function Table(props) {
     const header = csv[0];
     const body = csv.slice(1, props.top);
 
-    console.log(csv)
-
     const renderedHeader = (
         <thead>
             <tr>
