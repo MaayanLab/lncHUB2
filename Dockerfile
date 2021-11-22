@@ -1,6 +1,6 @@
 FROM node
 WORKDIR /app
-EXPOSE 3000
+EXPOSE 8080
 
 COPY package.json /app/package.json
 RUN npm install

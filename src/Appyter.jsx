@@ -17,7 +17,7 @@ export default class Appyter extends React.Component {
     }
 
     render() {
-        const {appyter} = this.props.appyter;
+        const { appyter } = this.props.appyter;
         // const table1 = await this.fetchTable(`https://appyters.maayanlab.cloud/lncRNA_Appyter/${appyter.id}/gene_correlations/${appyter.gene}_correlated_genes.csv`);
         // const table2 = await this.fetchTable(`https://appyters.maayanlab.cloud/lncRNA_Appyter/${appyter.id}/gene_correlations/${appyter.gene}_correlated_lncRNAs.csv`);
         // const table3 = await this.fetchTable(`https://appyters.maayanlab.cloud/lncRNA_Appyter/${appyter.id}/l1000_sm_predictions/${appyter.gene}_l1000_sm_predictions_up.csv`);

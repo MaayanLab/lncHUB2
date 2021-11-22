@@ -5,4 +5,6 @@ The web service to predict the biological functions of long non-coding RNAs from
 ### Run in dev
 ```npm start```
 ### Build for production
-```npm build```
+```npm run build```
+### Push to Docker
+```docker-compose build app && docker-compose push```
