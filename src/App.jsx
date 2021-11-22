@@ -5,6 +5,7 @@ import Header from './Header';
 import Search from './Search';
 import Dashboard from './Dashboard';
 import Brand from './Brand';
+import AppytersList from '../public/appyters.json';
 
 export default function App() {
     return (
@@ -12,7 +13,7 @@ export default function App() {
             <Header />
             <Brand />
             <Search />
-            <Dashboard />
+            <Dashboard appyters={ AppytersList } />
             <Footer />
         </div>
     );
