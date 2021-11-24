@@ -9,7 +9,7 @@ export default function Brand() {
                     className="img-fluid mx-2"
                     style={{ width: '60px' }}
                     src={lncRNALogo}
-                    alt="lncRNA logo" 
+                    alt="lncRNA logo"
                 />
                 <h1 className="display-5">lncRNA function prediction</h1>
             </div>

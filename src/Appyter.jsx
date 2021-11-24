@@ -3,14 +3,13 @@ import React from 'react';
 import Table from './Table';
 
 export default class Appyter extends React.Component {
-
     fetchTable = async (url) => {
         const table = await fetch(url);
         if (table.ok) {
-            const { data, success } = await table.text()
+            const { data, success } = await table.text();
             if ((Array.isArray(data)) && success) {
                 if (data.length > 0) {
-                    return data
+                    return data;
                 }
             }
         }
@@ -22,97 +21,79 @@ export default class Appyter extends React.Component {
         // const table2 = await this.fetchTable(`https://appyters.maayanlab.cloud/lncRNA_Appyter/${appyter.id}/gene_correlations/${appyter.gene}_correlated_lncRNAs.csv`);
         // const table3 = await this.fetchTable(`https://appyters.maayanlab.cloud/lncRNA_Appyter/${appyter.id}/l1000_sm_predictions/${appyter.gene}_l1000_sm_predictions_up.csv`);
         // const table4 = await this.fetchTable(`https://appyters.maayanlab.cloud/lncRNA_Appyter/${appyter.id}/l1000_sm_predictions/${appyter.gene}_l1000_sm_predictions_down.csv`);
-        const table1 = ',Pearson\'s Correlation Coefficient\n' +
-            'HOXC11,0.911\n' +
-            'ENSG00000277994,0.838\n' +
-            'HOXC-AS3,0.829\n' +
-            'HOXC10,0.819\n' +
-            'ENSG00000275589,0.8\n' +
-            'HOXC13,0.774\n' +
-            'HOXC13-AS,0.759\n' +
-            'HOXC-AS1,0.74\n' +
-            'HOXC9,0.74\n' +
-            'ENSG00000273049,0.732';
-        const table2 = ',Pearson\'s Correlation Coefficient\n' +
-            'HOXC11,0.911\n' +
-            'ENSG00000277994,0.838\n' +
-            'HOXC-AS3,0.829\n' +
-            'HOXC10,0.819\n' +
-            'ENSG00000275589,0.8\n' +
-            'HOXC13,0.774\n' +
-            'HOXC13-AS,0.759\n' +
-            'HOXC-AS1,0.74\n' +
-            'HOXC9,0.74\n' +
-            'ENSG00000273049,0.732';
-        const table3 = ',L1000 Signature ID,Drug,Up/Down,Dose,Cell line,Time point,Mean Pearson Correlation\n' +
-            '0,ERG005_VCAP_24H_I06_genistein_1.11uM up,genistein,up,1.11uM,VCAP,24H,0.2415403\n' +
-            '1,ERG005_VCAP_24H_J08_fluphenazine_4uM up,fluphenazine,up,4uM,VCAP,24H,0.22278596\n' +
-            '2,ERG005_VCAP_24H_I12_thioridazine_1.11uM up,thioridazine,up,1.11uM,VCAP,24H,0.21826123\n' +
-            '3,ERG005_VCAP_24H_E09_tretinoin_1.11uM up,tretinoin,up,1.11uM,VCAP,24H,0.20618293\n' +
-            '4,ERG015_VCAP_24H_H19_BRD-K61612515_10uM up,BRD-K61612515,up,10uM,VCAP,24H,0.19852242\n' +
-            '5,ERG005_VCAP_24H_J09_fulvestrant_4uM up,fulvestrant,up,4uM,VCAP,24H,0.19416192\n' +
-            '6,ERG005_VCAP_24H_K06_genistein_20uM up,genistein,up,20uM,VCAP,24H,0.19216326\n' +
-            '7,ERG005_VCAP_24H_I08_fluphenazine_1.11uM up,fluphenazine,up,1.11uM,VCAP,24H,0.18521222\n' +
-            '8,ERG005_VCAP_24H_K09_fulvestrant_20uM up,fulvestrant,up,20uM,VCAP,24H,0.18519919\n' +
-            '9,ERG005_VCAP_24H_J06_genistein_4uM up,genistein,up,4uM,VCAP,24H,0.18281928';
-        const table4 = ',L1000 Signature ID,Drug,Up/Down,Dose,Cell line,Time point,Mean Pearson Correlation\n' +
-            '0,REP.B016_THP1_24H_A19_palbociclib_2.22uM down,palbociclib,down,2.22uM,THP1,24H,0.22592276\n' +
-            '1,CPD003_MCF7_24H_G01_fluorouracil_10uM down,fluorouracil,down,10uM,MCF7,24H,0.21683468\n' +
-            '2,REP.A016_JURKAT_24H_A19_palbociclib_10uM down,palbociclib,down,10uM,JURKAT,24H,0.21424589\n' +
-            '3,REP.B018_A375_24H_J19_AMG-232_2.22uM down,AMG-232,down,2.22uM,A375,24H,0.21319427\n' +
-            '4,REP.B016_JURKAT_24H_A19_palbociclib_2.22uM down,palbociclib,down,2.22uM,JURKAT,24H,0.21065862\n' +
-            '5,ERG005_VCAP_24H_C12_sirolimus_20uM down,sirolimus,down,20uM,VCAP,24H,0.20663004\n' +
-            '6,DPK.CP001_A549_24H_L04_nutlin-3_10uM down,nutlin-3,down,10uM,A549,24H,0.2043536\n' +
-            '7,REP.B018_A375_24H_C08_RG-7388_0.74uM down,RG-7388,down,0.74uM,A375,24H,0.20251021\n' +
-            '8,REP.B016_THP1_24H_A20_palbociclib_0.74uM down,palbociclib,down,0.74uM,THP1,24H,0.20169379\n' +
-            '9,DOS012_VCAP_24H_B08_BRD-K39597586_4uM down,BRD-K39597586,down,4uM,VCAP,24H,0.19981126';
+        const table1 = ',Pearson\'s Correlation Coefficient\n'
+            + 'HOXC11,0.911\n'
+            + 'ENSG00000277994,0.838\n'
+            + 'HOXC-AS3,0.829\n'
+            + 'HOXC10,0.819\n'
+            + 'ENSG00000275589,0.8\n'
+            + 'HOXC13,0.774\n'
+            + 'HOXC13-AS,0.759\n'
+            + 'HOXC-AS1,0.74\n'
+            + 'HOXC9,0.74\n'
+            + 'ENSG00000273049,0.732';
+        const table2 = ',Pearson\'s Correlation Coefficient\n'
+            + 'HOXC11,0.911\n'
+            + 'ENSG00000277994,0.838\n'
+            + 'HOXC-AS3,0.829\n'
+            + 'HOXC10,0.819\n'
+            + 'ENSG00000275589,0.8\n'
+            + 'HOXC13,0.774\n'
+            + 'HOXC13-AS,0.759\n'
+            + 'HOXC-AS1,0.74\n'
+            + 'HOXC9,0.74\n'
+            + 'ENSG00000273049,0.732';
+        const table3 = ',L1000 Signature ID,Drug,Up/Down,Dose,Cell line,Time point,Mean Pearson Correlation\n'
+            + '0,ERG005_VCAP_24H_I06_genistein_1.11uM up,genistein,up,1.11uM,VCAP,24H,0.2415403\n'
+            + '1,ERG005_VCAP_24H_J08_fluphenazine_4uM up,fluphenazine,up,4uM,VCAP,24H,0.22278596\n'
+            + '2,ERG005_VCAP_24H_I12_thioridazine_1.11uM up,thioridazine,up,1.11uM,VCAP,24H,0.21826123\n'
+            + '3,ERG005_VCAP_24H_E09_tretinoin_1.11uM up,tretinoin,up,1.11uM,VCAP,24H,0.20618293\n'
+            + '4,ERG015_VCAP_24H_H19_BRD-K61612515_10uM up,BRD-K61612515,up,10uM,VCAP,24H,0.19852242\n'
+            + '5,ERG005_VCAP_24H_J09_fulvestrant_4uM up,fulvestrant,up,4uM,VCAP,24H,0.19416192\n'
+            + '6,ERG005_VCAP_24H_K06_genistein_20uM up,genistein,up,20uM,VCAP,24H,0.19216326\n'
+            + '7,ERG005_VCAP_24H_I08_fluphenazine_1.11uM up,fluphenazine,up,1.11uM,VCAP,24H,0.18521222\n'
+            + '8,ERG005_VCAP_24H_K09_fulvestrant_20uM up,fulvestrant,up,20uM,VCAP,24H,0.18519919\n'
+            + '9,ERG005_VCAP_24H_J06_genistein_4uM up,genistein,up,4uM,VCAP,24H,0.18281928';
+        const table4 = ',L1000 Signature ID,Drug,Up/Down,Dose,Cell line,Time point,Mean Pearson Correlation\n'
+            + '0,REP.B016_THP1_24H_A19_palbociclib_2.22uM down,palbociclib,down,2.22uM,THP1,24H,0.22592276\n'
+            + '1,CPD003_MCF7_24H_G01_fluorouracil_10uM down,fluorouracil,down,10uM,MCF7,24H,0.21683468\n'
+            + '2,REP.A016_JURKAT_24H_A19_palbociclib_10uM down,palbociclib,down,10uM,JURKAT,24H,0.21424589\n'
+            + '3,REP.B018_A375_24H_J19_AMG-232_2.22uM down,AMG-232,down,2.22uM,A375,24H,0.21319427\n'
+            + '4,REP.B016_JURKAT_24H_A19_palbociclib_2.22uM down,palbociclib,down,2.22uM,JURKAT,24H,0.21065862\n'
+            + '5,ERG005_VCAP_24H_C12_sirolimus_20uM down,sirolimus,down,20uM,VCAP,24H,0.20663004\n'
+            + '6,DPK.CP001_A549_24H_L04_nutlin-3_10uM down,nutlin-3,down,10uM,A549,24H,0.2043536\n'
+            + '7,REP.B018_A375_24H_C08_RG-7388_0.74uM down,RG-7388,down,0.74uM,A375,24H,0.20251021\n'
+            + '8,REP.B016_THP1_24H_A20_palbociclib_0.74uM down,palbociclib,down,0.74uM,THP1,24H,0.20169379\n'
+            + '9,DOS012_VCAP_24H_B08_BRD-K39597586_4uM down,BRD-K39597586,down,4uM,VCAP,24H,0.19981126';
 
         return (
             <div className="container">
                 <h3>
                     Report about the Long Non-coding RNA (lncRNA)
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                 </h3>
                 <p>
-                    Based on lncRNA-gene co-expression, this report provides predictions about the biological functions
-                    of
-                    {' '}
-                    {appyter.gene}
-                    ,
-                    displays the average expression of
-                    {' '}
-                    {appyter.gene}
-                    {' '}
-                    across tissues and cell-lines, and lists predictions of
-                    small
-                    molecules that may specifically up- or down-regulate the expression of
-                    {' '}
-                    {appyter.gene}
-                    .
+                    Based on lncRNA-gene co-expression, this report provides predictions on the biological functions of {' '}{appyter.gene}{' '}, displays the average expression of {' '}{appyter.gene}{' '} across tissues and cell-lines, and predicts small molecules that may specifically up- or down-regulate the expression of {' '}{appyter.gene}.
                 </p>
                 <div className="row">
                     <div className="col-6">
                         <h4>
-                            Top correlated genes with
-                            {' '}{appyter.gene}
+                            Top genes correlated with
+                            {' '}
+                            {appyter.gene}
                         </h4>
                         <p>
-                            Using the loaded gene-lncRNA correlation matrix, we report the genes that mostly correlate
-                            with
-                            {' '}{appyter.gene}
+                            Using the loaded lncRNA-gene correlation matrix, we report the genes that are most correlated with
+                            {' '}
+                            {appyter.gene}
                             .
                         </p>
                         <div className="table-responsive-sm">
-                            <Table table={table1} top={10}/>
+                            <Table table={table1} top={10} />
                         </div>
-                        <p style={{fontStyle: 'italic'}}>
-                            Table 1. Top 20 genes that mostly correlate with
-                            {' '}
-                            {appyter.gene}
-                            {' '}
-                            ranked by
-                            Pearson’s
-                            correlation coefficients.
+                        <p style={{ fontStyle: 'italic' }}>
+                            Table 1. The Top 20 genes correlated with {' '}{appyter.gene}{' '} ranked by Pearson’s correlation coefficients.
                         </p>
                         <p>
                             Download Table 1:
@@ -126,18 +107,22 @@ export default class Appyter extends React.Component {
                     <div className="col-6">
                         <h4>
                             Top correlated lncRNAs with
-                            {' '}{appyter.gene}{' '}
+                            {' '}
+                            {appyter.gene}
+                            {' '}
                         </h4>
                         <p>
                             Below we list the top lncRNAs, out of all 5,050 lncRNAs within our database, that mostly
                             correlate with
-                            {' '}{appyter.gene}{' '}
+                            {' '}
+                            {appyter.gene}
+                            {' '}
                             based on their Pearson’s correlation coefficients.
                         </p>
                         <div className="table-responsive-sm">
-                            <Table table={table2} top={10}/>
+                            <Table table={table2} top={10} />
                         </div>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Table 2. Top 20 lncRNAs that mostly correlate with
                             {' '}
                             {appyter.gene}
@@ -159,7 +144,8 @@ export default class Appyter extends React.Component {
 
                 <h4>
                     Enrichment analysis applied to the top 200 most correlated genes with
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                 </h4>
                 <p>
                     The top 200 most correlated genes with
@@ -187,16 +173,22 @@ export default class Appyter extends React.Component {
 
                 <h4>
                     Predicted Biological Functions of
-                    {' '}{appyter.gene}{' '}
+                    {' '}
+                    {appyter.gene}
+                    {' '}
                 </h4>
                 <p>
                     For each Enrichr library, the mean Pearson’s correlation coefficients are calculated between each
                     gene set and
-                    {' '}{appyter.gene}{' '}
+                    {' '}
+                    {appyter.gene}
+                    {' '}
                     . Terms with a high mean Pearson’s correlation coefficients are prioritized. These terms are
                     predicted to
                     be associated with
-                    {' '}{appyter.gene}{' '}
+                    {' '}
+                    {appyter.gene}
+                    {' '}
                     .
                 </p>
                 <div className="row">
@@ -209,7 +201,7 @@ export default class Appyter extends React.Component {
                                 alt="Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA {appyter.gene}}. Terms are ranked by the mean Pearson correlation between {appyter.gene}} and the associated gene sets."
                             />
                         </p>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Figure 1. Predicted MGI Mammalian Phenotypes and GO Biological
                             Processes for
                             the
@@ -252,9 +244,10 @@ export default class Appyter extends React.Component {
                                 alt="Predicted KEGG pathways and DisGeNET disease terms for the lncRNA {appyter.gene}. Terms are ranked by the mean Pearson correlation between {appyter.gene} and the associated gene sets."
                             />
                         </p>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Figure 2. Predicted KEGG pathways and DisGeNET disease terms for
-                            the lncRNA{' '}
+                            the lncRNA
+                            {' '}
                             {appyter.gene}
                             .
                             Terms are ranked by the mean Pearson correlation between
@@ -285,9 +278,10 @@ export default class Appyter extends React.Component {
 
                 <h4>
                     Tissue and Cell Line Expression Levels of
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                 </h4>
-                <p style={{fontWeight: '600'}}>
+                <p style={{ fontWeight: '600' }}>
                     This part of the report provides the Z-score (Normalized Median Expression)
                     for the
                     lncRNA in various tissues and cell lines.
@@ -316,7 +310,7 @@ export default class Appyter extends React.Component {
                                 alt="Z-score (median expression) for the lncRNA {appyter.gene}} in various tissue types."
                             />
                         </p>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Figure 3. Z-score (median expression) for the lncRNA
                             {' '}
                             {appyter.gene}
@@ -343,7 +337,7 @@ export default class Appyter extends React.Component {
                                 alt="Z-score (median expression) for the lncRNA {appyter.gene}} in the top 30 cell lines."
                             />
                         </p>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Figure 4. Z-score (median expression) for the lncRNA
                             {' '}
                             {appyter.gene}
@@ -388,7 +382,7 @@ export default class Appyter extends React.Component {
                                 alt="UMAP was applied to 2,000 randomly selected samples (with tissue type labels) from Recount3. Samples were first log2 transformed and quantile normalized (samples as features) before applying UMAP. Each data point is a lncRNA (n=5,050) and are colored by z-score (median expression) in testis."
                             />
                         </p>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Figure 5. UMAP was applied to 2,000 randomly selected samples
                             (with tissue
                             type
@@ -426,7 +420,7 @@ export default class Appyter extends React.Component {
                                 alt="UMAP was applied to 2,000 randomly selected samples (with cell line labels) from Recount3. Samples were first log2 transformed and quantile normalized (samples as features) before applying UMAP. Each data point is a lncRNA (n=5,050) and are colored by z-score (median expression) in FUJI."
                             />
                         </p>
-                        <p style={{fontStyle: 'italic'}}>
+                        <p style={{ fontStyle: 'italic' }}>
                             Figure 6. UMAP was applied to 2,000 randomly selected samples
                             (with cell line
                             labels)
@@ -440,7 +434,8 @@ export default class Appyter extends React.Component {
                 </div>
                 <h4>
                     L1000 Small Molecules Predicted to Modulate
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                 </h4>
                 <p>
                     ~1.4 million L1000 chemical perturbation gene expression signatures (Level 5) were downloaded
@@ -467,22 +462,26 @@ export default class Appyter extends React.Component {
                 </p>
                 <h4>
                     L1000 Small Molecules Predicted to Up-Regulate
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                 </h4>
                 <p>
                     The prioritized small molecules below are predicted to specifically up-regulate
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                     .
                 </p>
                 <div className="table-responsive-sm">
-                    <Table table={table3} top={10}/>
+                    <Table table={table3} top={10} />
                 </div>
-                <p style={{fontStyle: 'italic'}}>
+                <p style={{ fontStyle: 'italic' }}>
                     Table 3. L1000 small molecules predicted to up-regulate the lncRNA
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                     . L1000 up
                     signatures are prioritized by their Pearson’s correlation coefficients with
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                     .
                 </p>
                 <p>
@@ -500,22 +499,26 @@ export default class Appyter extends React.Component {
                 </p>
                 <h4>
                     L1000 Small Molecules Predicted to Down-Regulate
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                 </h4>
                 <p>
                     The prioritized small molecules below are predicted to specifically down-regulate
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                     .
                 </p>
                 <div className="table-responsive-sm">
-                    <Table table={table4} top={10}/>
+                    <Table table={table4} top={10} />
                 </div>
-                <p style={{fontStyle: 'italic'}}>
+                <p style={{ fontStyle: 'italic' }}>
                     Table 4. L1000 small molecules predicted to down-regulate the lncRNA
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                     . L1000
                     down signatures are prioritized by their Pearson’s correlation coefficients with
-                    {' '}{appyter.gene}
+                    {' '}
+                    {appyter.gene}
                     .
                 </p>
                 <p>
