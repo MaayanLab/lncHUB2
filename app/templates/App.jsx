@@ -5,7 +5,7 @@ import Header from './Header';
 import Search from './Search';
 import Dashboard from './Dashboard';
 import Brand from './Brand';
-import AppytersList from '../public/appyters.json';
+import AppytersList from '../static/appyters.json';
 
 export default function App() {
     return (

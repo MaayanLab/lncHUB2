@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import Appyter from './Appyter';
-import mockPlot from '../public/mock_plot.png';
+import mockPlot from '../static/mock_plot.png';
 
 window.bootstrap = require('bootstrap');
 
@@ -12,7 +12,7 @@ export default function Card(props) {
         <div className="card m-2">
             <div className="row no-gutters">
                 <div className="col-4">
-                    {/* img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/${this.props.appyter_id}/mock_plot.png" */}
+                    {/* img templates="https://appyters.maayanlab.cloud/lncRNA_Appyter/${this.props.appyter_id}/mock_plot.png" */}
                     <img
                         src={mockPlot}
                         style={{ width: '200px', height: '160px' }}

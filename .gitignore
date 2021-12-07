@@ -1,6 +1,7 @@
 .DS_Store
+.env
+.env.prod
 .idea
-dist
-node_modules
-.env.development
-.env.production
+__pycache__
+app/__init__\.pyc
+venv

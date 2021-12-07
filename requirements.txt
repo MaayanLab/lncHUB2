@@ -1,0 +1,6 @@
+# Python dependencies
+Flask
+cryptography
+python-dotenv
+requests
+uwsgi

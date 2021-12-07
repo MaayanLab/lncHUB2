@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block og %}
+<meta property="og:url" content="https://{{ base_path }}/lncrnafp"/>
+<meta property="og:title" content="lncRNA function prediction"/>
+<meta property="og:description"
+      content="A collection of drug and gene sets related to COVID-19 research contributed by the community"/>
+{% endblock %}
+{% block head %}
+<title>The COVID-19 Drug and Gene Set Library</title>
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <p>{{ error }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

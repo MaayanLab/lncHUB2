@@ -1,5 +1,5 @@
 import React from 'react';
-import lncRNALogo from '../public/logo.png';
+import lncRNALogo from '../static/logo.png';
 
 export default function Brand() {
     return (
