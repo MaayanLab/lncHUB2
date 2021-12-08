@@ -124,6 +124,39 @@
         arrow is pointing to the location of {{ appyter.gene }}.</p>
 
 
+    <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/umap/"
+         alt="Figure 6. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in FUJI">
+    <p style="font-style: italic">Figure 6. UMAP was applied to 3,000 randomly selected samples (with cell line labels)
+        from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in
+        FUJI</p>
+
+
+    <h4>L1000 small molecules predicted to modulate HOTAIR</h4>
+    <p>~1.4 million Level 5 L1000 chemical perturbation gene expression signatures were downloaded from SigCom LINCS
+        (https://maayanlab.cloud/sigcom-lincs) [6]. For each unique signature and lncRNA pair, a mean Pearson
+        correlation coefficient was computed by taking the average Pearson coefficient between the lncRNA and all genes
+        in the signature. All 15,862 lncRNAs were then ranked by mean Pearson correlation coefficient, and the top 1,000
+        lncRNAs with the highest coefficients were retained for each signature. The top 500 lncRNA-L1000 signature
+        associations are reported here for HOTAIR, separated by direction. If HOTAIR is highly correlated with the
+        up-regulated genes for a specific small molecule, then this small molecule is predicted to up-regulate
+        HOTAIR.</p>
+    <h4>L1000 small molecules predicted to up-Regulate HOTAIR</h4>
+    <p>The prioritized small molecules below are predicted to specifically up-regulate HOTAIR.</p>
+
+    <p style="font-style: italic">Table 3. L1000 small molecules predicted to up-regulate the lncRNA HOTAIR.</p>
+    <p>Download table of L1000 small molecules predicted to up-regulate HOTAIR: <a
+            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/l1000_sm_predictions/HOTAIR_l1000_sm_predictions_up.csv">l1000_sm_predictions/HOTAIR_l1000_sm_predictions_up.csv</a>
+    </p>
+
+    <h4>L1000 small molecules predicted to down-regulate HOTAIR</h4>
+    <p>The prioritized small molecules below are predicted to specifically down-regulate HOTAIR.</p>
+
+
+    <p style="font-style: italic">Table 4. L1000 small molecules predicted to down-regulate the lncRNA HOTAIR.</p>
+    <p>Download table of L1000 small molecules predicted to down-regulate HOTAIR: <a
+            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/l1000_sm_predictions/HOTAIR_l1000_sm_predictions_down.csv">l1000_sm_predictions/HOTAIR_l1000_sm_predictions_down.csv</a>
+    </p>
+
     <h4>References</h4>
     <p>[1] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling JP, Imada EL, Zhang D, Joseph L, Leek JT: recount3:
         summaries and queries for large-scale RNA-seq expression and splicing. bioRxiv 2021:2021.2005.2021.445138.</p>
