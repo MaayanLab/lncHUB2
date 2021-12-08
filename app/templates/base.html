@@ -28,6 +28,7 @@
 <body>
 {% block body %}
 {% endblock %}
+</body>
 <footer class="footer">
     <div class="container">
         <div class="row justify-content-center m-5">
@@ -83,12 +84,12 @@
 <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0"></script>
 <script>
-    $(document).ready(function () {
+    (function () {
         // Force https if not on dev
         if ((location.protocol !== 'https:') && (location.hostname !== '0.0.0.0')) {
             location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
         }
-    });
+    })();
 </script>
 {% block script %}
 {% endblock %}

@@ -4,7 +4,6 @@ from app.app import app
 
 DEBUG_PORT = json.loads(os.environ.get('DEBUG_PORT', 'null'))
 DEBUG = json.loads(os.environ.get('DEBUG', 'true'))
-# HOST = os.environ.get('HOST', '0.0.0.0')
 PORT = json.loads(os.environ.get('PORT', '8080'))
 
 if DEBUG_PORT is not None:
