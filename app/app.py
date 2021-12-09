@@ -1,7 +1,6 @@
 import os
 import json
 import flask
-import datetime
 from app import utils
 
 ROOT_PATH = os.environ.get('ROOT_PATH', '/lncrnafp/')
@@ -20,9 +19,13 @@ def route_index():
 
 @app.route(f'{ROOT_PATH}/appyter/<appyter_id>', methods=['GET'])
 def route_appyter(appyter_id):
-    return flask.render_template('appyter.html', appyter=a_appyters[appyter_id], base_path=BASE_PATH)
+    appyter = a_appyters[appyter_id]
+    appyter['data'] = utils.fetch_appyter_data(appyter['id'], appyter['gene'])
+    return flask.render_template('appyter.html', appyter=appyter, base_path=BASE_PATH)
 
 
 @app.route(f'{ROOT_PATH}/gene/<gene>', methods=['GET'])
 def route_gene(gene):
-    return flask.render_template('appyter.html', appyter=g_appyters[gene], base_path=BASE_PATH)
+    appyter = g_appyters[gene]
+    appyter['data'] = utils.fetch_appyter_data(appyter['id'], appyter['gene'])
+    return flask.render_template('appyter.html', appyter=appyter, base_path=BASE_PATH)

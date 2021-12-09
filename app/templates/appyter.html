@@ -10,30 +10,36 @@
         specifically up- or down-regulate the expression of {{ appyter.gene }}.</p>
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-sm">
             <h4>Top genes correlated with {{ appyter.gene }}</h4>
             <p>Using the loaded lncRNA-gene correlation matrix, we report the genes that are most correlated with {{
                 appyter.gene }}.</p>
             <div class="table-responsive-sm">
+                <table id="table1-{{ appyter.id }}" class="table compact hover order-column row-border"
+                       style="width:100%"></table>
             </div>
-            <p style="font-style: italic">Table 1. The Top 20 genes correlated with {{ appyter.gene }} ranked by
+            <p style="font-size: 0.8rem">Table 1. The Top 20 genes correlated with {{ appyter.gene }} ranked by
                 Pearson’s correlation coefficients.</p>
-            <p>Download Table 1: <a
+            <p style="font-size: 0.8rem">Download Table 1: <a
                     href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/gene_correlations/{{ appyter.gene }}_correlated_genes.csv">gene_correlations/{{
                 appyter.gene }}_correlated_genes.csv</a></p>
         </div>
-        <div class="col-6">
+        <div class="col-sm">
             <h4>Top lncRNAs correlated with {{ appyter.gene }}</h4>
             <p>Below we list the top 20 lncRNAs, out of all 15,862 lncRNAs within our database, that correlate most with
                 {{ appyter.gene }} based on their Pearson correlation coefficients.</p>
-            <div class="table-responsive-sm"></div>
-            <p style="font-style: italic">Table 2. Top 20 lncRNAs that correlate most with {{ appyter.gene }} ranked by
+            <div class="table-responsive-sm">
+                <table id="table2-{{ appyter.id }}" class="table compact hover order-column row-border"
+                       style="width:100%"></table>
+            </div>
+            <p style="font-size: 0.8rem">Table 2. Top 20 lncRNAs that correlate most with {{ appyter.gene }} ranked by
                 Pearson correlation coefficients.</p>
-            <p>Download Table 2: <a
+            <p style="font-size: 0.8rem">Download Table 2: <a
                     href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/gene_correlations/{{ appyter.gene }}_correlated_lncRNAs.csv">gene_correlations/{{
                 appyter.gene }}_correlated_lncRNAs.csv</a></p>
         </div>
     </div>
+
     <h4>Interactive network visualization of the top 100 genes correlated with {{ appyter.gene }}</h4>
     <p>Interactive network visualization of the top 100 genes correlated with {{ appyter.gene }}. Each node represents a
         gene and is colored by chromosome location, except for the bright red node which represents the lncRNA {{
@@ -46,16 +52,16 @@
         dropped. At the start, a hub node is defined as a node with > 10 edges. The pruning process is repeated until
         the network has an average of < 3 edges per node. The top 5 edges for {{ appyter.gene }} are shown regardless of
         their weights.</p>
-    <p style="font-style: italic">Figure 1. Interactive network visualization of the top 100 genes correlated with {{
+    <p style="font-size: 0.8rem">Figure 1. Interactive network visualization of the top 100 genes correlated with {{
         appyter.gene }}.</p>
 
-    <p>Download Figure 1: <a
+    <p style="font-size: 0.8rem">Download Figure 1: <a
             href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/coexpression_network/{{ appyter.gene }}_network.html">coexpression_network/{{
         appyter.gene }}_network.html</a></p>
-    <p>Download Node metadata: <a
+    <p style="font-size: 0.8rem">Download Node metadata: <a
             href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/coexpression_network/{{ appyter.gene }}_network_node_metadata.csv">coexpression_network/{{
         appyter.gene }}_network_node_metadata.csv</a></p>
-    <p>Download Edge metadata: <a
+    <p style="font-size: 0.8rem">Download Edge metadata: <a
             href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/coexpression_network/{{ appyter.gene }}_network_edge_metadata.csv">coexpression_network/{{
         appyter.gene }}_network_edge_metadata.csv</a></p>
 
@@ -65,97 +71,148 @@
         Pearson correlation coefficients are prioritized. These terms are predicted to be associated with {{
         appyter.gene }}.</p>
 
-    <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/{{ appyter.gene }}_biological_function_predictions_figure2.png"
-         alt="Figure 2. Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA {{ appyter.gene }}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and {{ appyter.gene }}.">
-    <p style="font-style: italic">Figure 2. Predicted MGI Mammalian Phenotypes and GO Biological Processes for the
-        lncRNA {{ appyter.gene }}. Terms are ranked by averaging the mean Pearson correlation coefficients between each
-        gene in a gene set and {{ appyter.gene }}.</p>
-    <p>Download predictions: <a
-            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/MGI Mammalian Phenotype Level 4 2021_{{ appyter.gene }}.csv">predicted_functions/MGI
-        Mammalian Phenotype Level 4 2021_{{ appyter.gene }}.csv</a></p>
-    <p>Download predictions: <a
-            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/GO Biological Process 2021_{{ appyter.gene }}.csv">predicted_functions/GO
-        Biological Process 2021_{{ appyter.gene }}.csv</a></p>
-
-    <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/{{ appyter.gene }}_biological_function_predictions_figure3.png"
-         alt="Figure 3. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA {{ appyter.gene }}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and {{ appyter.gene }}.">
-    <p style="font-style: italic">Figure 3. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA {{
-        appyter.gene }}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a
-        gene set and {{ appyter.gene }}.</p>
-    <p>Download predictions: <a
-            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/KEGG 2021 Human_{{ appyter.gene }}.csv">predicted_functions/KEGG
-        2021 Human_{{ appyter.gene }}.csv</a></p>
-    <p>Download predictions: <a
-            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/DisGeNET_{{ appyter.gene }}.csv">predicted_functions/DisGeNET_{{
-        appyter.gene }}.csv</a></p>
+    <div class="row">
+        <div class="col-sm">
+            <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/{{ appyter.gene }}_biological_function_predictions_figure2.png"
+                 class="img-fluid p-3 bg-light"
+                 alt="Figure 2. Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA {{ appyter.gene }}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and {{ appyter.gene }}.">
+            <p style="font-size: 0.8rem" class="px-3 pb-2 bg-light">Figure 2. Predicted MGI Mammalian Phenotypes and GO
+                Biological Processes for
+                the
+                lncRNA {{ appyter.gene }}. Terms are ranked by averaging the mean Pearson correlation coefficients
+                between each
+                gene in a gene set and {{ appyter.gene }}.</p>
+            <p style="font-size: 0.8rem">Download predictions: <a
+                    href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/MGI Mammalian Phenotype Level 4 2021_{{ appyter.gene }}.csv">predicted_functions/MGI
+                Mammalian Phenotype Level 4 2021_{{ appyter.gene }}.csv</a></p>
+            <p style="font-size: 0.8rem">Download predictions: <a
+                    href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/GO Biological Process 2021_{{ appyter.gene }}.csv">predicted_functions/GO
+                Biological Process 2021_{{ appyter.gene }}.csv</a></p>
+        </div>
+        <div class="col-sm">
+            <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/{{ appyter.gene }}_biological_function_predictions_figure3.png"
+                 class="img-fluid p-3 bg-light"
+                 alt="Figure 3. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA {{ appyter.gene }}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and {{ appyter.gene }}.">
+            <p style="font-size: 0.8rem" class="px-3 pb-2 bg-light">Figure 3. Predicted KEGG pathways and DisGeNET
+                disease terms for the lncRNA {{
+                appyter.gene }}. Terms are ranked by averaging the mean Pearson correlation coefficients between each
+                gene in a
+                gene set and {{ appyter.gene }}.</p>
+            <p style="font-size: 0.8rem">Download predictions: <a
+                    href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/KEGG 2021 Human_{{ appyter.gene }}.csv">predicted_functions/KEGG
+                2021 Human_{{ appyter.gene }}.csv</a></p>
+            <p style="font-size: 0.8rem">Download predictions: <a
+                    href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/predicted_functions/DisGeNET_{{ appyter.gene }}.csv">predicted_functions/DisGeNET_{{
+                appyter.gene }}.csv</a></p>
+        </div>
+    </div>
 
     <h4>Expression of {{ appyter.gene }} across tissues and cell lines</h4>
-    <p style="font-weight: 600">This part of the report provides the Z-score (Normalized Median Expression) for the
-        lncRNA {{ appyter.gene }} in various tissues and cell lines.</p>
-    <p>Samples from Recount3 [1] were automatically labelled by tissue type or cell line of origin. Tissue and cell line
+    <p>This part of the report provides the Z-score (Normalized Median Expression) for the
+        lncRNA {{ appyter.gene }} in various tissues and cell lines. Samples from Recount3 [1] were automatically
+        labelled by tissue type or cell line of origin. Tissue and cell line
         samples were log2 transformed and quantile normalized separately. Tissues and cell lines with less than 20
         samples were removed, and z-scores were computed along the lncRNA axis to compare expression levels across all
         tissues and cell lines. The median expression of {{ appyter.gene }} was then calculated for each tissue type and
         cell line.</p>
 
-
-    <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/tissue_and_cell_line_expression/{{ appyter.gene }}_zscore_tissue_expression.png"
-         alt="Figure 4. Z-score (median expression) for the lncRNA {{ appyter.gene }} in various tissue types.">
-    <p style="font-style: italic">Figure 4. Z-score (median expression) for the lncRNA {{ appyter.gene }} in various
-        tissue types.</p>
-    <p>Download table with z-score (median expression) values for {{ appyter.gene }} in various tissue types: <a
-            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/tissue_and_cell_line_expression/{{ appyter.gene }}_tissue_zscore.csv">tissue_and_cell_line_expression/{{
-        appyter.gene }}_tissue_zscore.csv</a></p>
-
-
-    <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/tissue_and_cell_line_expression/{{ appyter.gene }}_zscore_cell_line_expression.png"
-         alt="Figure 5. Z-score (median expression) for the lncRNA {{ appyter.gene }} in the top 30 cell lines.">
-    <p style="font-style: italic">Figure 5. Z-score (median expression) for the lncRNA {{ appyter.gene }} in the top 30
-        cell lines.</p>
-    <p>Download table with z-score (median expression) values for {{ appyter.gene }} in various cell lines: <a
-            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/tissue_and_cell_line_expression/{{ appyter.gene }}_cell_line_zscore.csv">tissue_and_cell_line_expression/{{
-        appyter.gene }}_cell_line_zscore.csv</a></p>
-
-    <h4>Visualizing all lncRNAs based on their gene expression similarity across tissues</h4>
+    <div class="row">
+        <div class="col-sm">
+            <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/tissue_and_cell_line_expression/{{ appyter.gene }}_zscore_tissue_expression.png"
+                 class="img-fluid p-3 bg-light"
+                 alt="Figure 4. Z-score (median expression) for the lncRNA {{ appyter.gene }} in various tissue types.">
+            <p style="font-size: 0.8rem" class="px-3 pb-2 bg-light">Figure 4. Z-score (median expression) for the lncRNA
+                {{ appyter.gene }} in
+                various
+                tissue types.</p>
+            <p style="font-size: 0.8rem">Download table with z-score (median expression) values for {{ appyter.gene }}
+                in various tissue types: <a
+                        href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/tissue_and_cell_line_expression/{{ appyter.gene }}_tissue_zscore.csv">tissue_and_cell_line_expression/{{
+                    appyter.gene }}_tissue_zscore.csv</a></p>
+        </div>
+        <div class="col-sm">
+            <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/tissue_and_cell_line_expression/{{ appyter.gene }}_zscore_cell_line_expression.png"
+                 class="img-fluid p-3 bg-light"
+                 alt="Figure 5. Z-score (median expression) for the lncRNA {{ appyter.gene }} in the top 30 cell lines.">
+            <p style="font-size: 0.8rem" class="px-3 pb-2 bg-light">Figure 5. Z-score (median expression) for the lncRNA
+                {{ appyter.gene }} in the
+                top 30
+                cell lines.</p>
+            <p style="font-size: 0.8rem">Download table with z-score (median expression) values for {{ appyter.gene }}
+                in various cell lines: <a
+                        href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/tissue_and_cell_line_expression/{{ appyter.gene }}_cell_line_zscore.csv">tissue_and_cell_line_expression/{{
+                    appyter.gene }}_cell_line_zscore.csv</a></p>
+        </div>
+    </div>
+    <h4>Visualizing lncRNAs based on their gene expression similarity across tissues and cell lines</h4>
     <p>We applied UMAP [5] to visualize lncRNA expression across 3,000 randomly selected samples (with tissue type
-        labels) from Recount3[1]. Samples were first log2 transformed and quantile normalized along the gene axis, then
-        UMAP was applied to the lncRNA expression data with samples as features. Each data point represents a single
-        lncRNA (n=15,862). Use the drop-down menu to color lncRNAs by expression z-score in a specific tissue. The black
-        arrow is pointing to the location of {{ appyter.gene }}.</p>
+        and cell line labels) from Recount3[1]. Samples were first log2 transformed and quantile normalized along
+        the gene axis, then UMAP was applied to the lncRNA expression data with samples as features. Each data point
+        represents a single lncRNA (n=15,862). The black arrow is pointing to the location of {{ appyter.gene
+        }}.</p>
+    <div class="row">
+        <div class="col-sm">
+            <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/umap/tissues/figures/static/{{ appyter.gene }}_{{ appyter.data.fig6_tissue }}_rank1.png"
+                 class="img-fluid p-3 bg-light"
+                 alt="Figure 6. UMAP was applied to 3,000 randomly selected samples (with tissue type labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in {{ appyter.data.fig6_tissue }}.">
+            <p style="font-size: 0.8rem" class="px-3 pb-2 bg-light">Figure 6. UMAP was applied to 3,000 randomly
+                selected samples (with tissue type labels) from Recount3.
+                Each data
+                point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in {{
+                appyter.data.fig6_tissue }}.</p>
+        </div>
+        <div class="col-sm">
+            <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/umap/cell_lines/figures/static/{{ appyter.gene }}_{{ appyter.data.fig7_cell_line }}_rank1.png"
+                 class="img-fluid p-3 bg-light"
+                 alt="Figure 7. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in {{ appyter.data.fig6_cell_line }}.">
+            <p style="font-size: 0.8rem" class="px-3 pb-2 bg-light">Figure 7. UMAP was applied to 3,000 randomly
+                selected samples (with cell line labels) from Recount3. Each
+                data
+                point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in {{
+                appyter.data.fig7_cell_line }}.</p>
+        </div>
+    </div>
 
-
-    <img src="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/umap/"
-         alt="Figure 6. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in FUJI">
-    <p style="font-style: italic">Figure 6. UMAP was applied to 3,000 randomly selected samples (with cell line labels)
-        from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in
-        FUJI</p>
-
-
-    <h4>L1000 small molecules predicted to modulate HOTAIR</h4>
+    <h4>L1000 small molecules predicted to modulate {{ appyter.gene }}</h4>
     <p>~1.4 million Level 5 L1000 chemical perturbation gene expression signatures were downloaded from SigCom LINCS
         (https://maayanlab.cloud/sigcom-lincs) [6]. For each unique signature and lncRNA pair, a mean Pearson
         correlation coefficient was computed by taking the average Pearson coefficient between the lncRNA and all genes
         in the signature. All 15,862 lncRNAs were then ranked by mean Pearson correlation coefficient, and the top 1,000
         lncRNAs with the highest coefficients were retained for each signature. The top 500 lncRNA-L1000 signature
-        associations are reported here for HOTAIR, separated by direction. If HOTAIR is highly correlated with the
+        associations are reported here for {{ appyter.gene }}, separated by direction. If {{ appyter.gene }} is highly
+        correlated with the
         up-regulated genes for a specific small molecule, then this small molecule is predicted to up-regulate
-        HOTAIR.</p>
-    <h4>L1000 small molecules predicted to up-Regulate HOTAIR</h4>
-    <p>The prioritized small molecules below are predicted to specifically up-regulate HOTAIR.</p>
+        {{ appyter.gene }}.</p>
+    <h4>L1000 small molecules predicted to up-Regulate {{ appyter.gene }}</h4>
+    <p>The prioritized small molecules below are predicted to specifically up-regulate {{ appyter.gene }}.</p>
 
-    <p style="font-style: italic">Table 3. L1000 small molecules predicted to up-regulate the lncRNA HOTAIR.</p>
-    <p>Download table of L1000 small molecules predicted to up-regulate HOTAIR: <a
-            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/l1000_sm_predictions/HOTAIR_l1000_sm_predictions_up.csv">l1000_sm_predictions/HOTAIR_l1000_sm_predictions_up.csv</a>
+    <div class="table-responsive-sm">
+        <table id="table3-{{ appyter.id }}" class="table compact hover order-column row-border"
+               style="width:100%"></table>
+    </div>
+
+    <p style="font-size: 0.8rem">Table 3. L1000 small molecules predicted to up-regulate the lncRNA {{ appyter.gene
+        }}.</p>
+    <p style="font-size: 0.8rem">Download table of L1000 small molecules predicted to up-regulate {{ appyter.gene }}: <a
+            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/l1000_sm_predictions/{{ appyter.gene }}_l1000_sm_predictions_up.csv">l1000_sm_predictions/{{
+        appyter.gene }}_l1000_sm_predictions_up.csv</a>
     </p>
 
-    <h4>L1000 small molecules predicted to down-regulate HOTAIR</h4>
-    <p>The prioritized small molecules below are predicted to specifically down-regulate HOTAIR.</p>
+    <h4>L1000 small molecules predicted to down-regulate {{ appyter.gene }}</h4>
+    <p>The prioritized small molecules below are predicted to specifically down-regulate {{ appyter.gene }}.</p>
 
-
-    <p style="font-style: italic">Table 4. L1000 small molecules predicted to down-regulate the lncRNA HOTAIR.</p>
-    <p>Download table of L1000 small molecules predicted to down-regulate HOTAIR: <a
-            href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/l1000_sm_predictions/HOTAIR_l1000_sm_predictions_down.csv">l1000_sm_predictions/HOTAIR_l1000_sm_predictions_down.csv</a>
+    <div class="table-responsive-sm">
+        <table id="table4-{{ appyter.id }}" class="table compact hover order-column row-border"
+               style="width:100%"></table>
+    </div>
+    <p style="font-size: 0.8rem">Table 4. L1000 small molecules predicted to down-regulate the lncRNA {{ appyter.gene
+        }}.</p>
+    <p style="font-size: 0.8rem">Download table of L1000 small molecules predicted to down-regulate {{ appyter.gene }}:
+        <a
+                href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/l1000_sm_predictions/{{ appyter.gene }}_l1000_sm_predictions_down.csv">l1000_sm_predictions/{{
+            appyter.gene }}_l1000_sm_predictions_down.csv</a>
     </p>
+
 
     <h4>References</h4>
     <p>[1] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling JP, Imada EL, Zhang D, Joseph L, Leek JT: recount3:
@@ -173,4 +230,12 @@
         preparation.</p>
 
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+    let appyter_id = "{{ appyter.id|safe }}";
+    let gene = "{{ appyter.gene|safe }}"
+</script>
+<script type="text/javascript" src="{{ url_for('static', filename='appyter.js') }}"></script>
 {% endblock %}
