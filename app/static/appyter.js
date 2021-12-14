@@ -2,7 +2,6 @@
     fetch(`https://appyters.maayanlab.cloud/lncRNA_Appyter/${appyter_id}/gene_correlations/${gene}_correlated_genes.csv`)
         .then(response => response.text())
         .then(data => {
-            console.log(data)
                 let dataSet = data.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
                 $(`#table1-${appyter_id}`).DataTable(
                     {
@@ -19,7 +18,6 @@
     fetch(`https://appyters.maayanlab.cloud/lncRNA_Appyter/${appyter_id}/gene_correlations/${gene}_correlated_lncRNAs.csv`)
         .then(response => response.text())
         .then(data => {
-            console.log(data)
             let dataSet = data.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
 
             $(`#table2-${appyter_id}`).DataTable(
