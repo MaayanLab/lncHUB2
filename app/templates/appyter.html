@@ -2,7 +2,7 @@
 
 {% block body %}
 <div class="container mt-5">
-    <h4>Report about the Long Non-coding RNA (lncRNA) {{ appyter.gene }}</h4>
+    <h4>Report about the Long Non-coding RNA (lncRNA) {{ appyter.gene }} <a class="ml-2 p-1" style="font-size: 1rem; font-weight: 400; background: aliceblue; border-radius: 4px; border: 1px solid #bddffd;" target="_blank" rel="noopener noreferrer" href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}">Open in <img src="{{ url_for('static', filename='appyters_logo.svg') }}" class="img-fluid" style="width: 10%" alt="Appyters"></a></h4>
     <p>Based on lncRNA-gene co-expression, this report provides predictions on the biological functions of {{
         appyter.gene }},
         displays the median expression of {{ appyter.gene }} across tissues and cell-lines, and predicts small molecules

@@ -17,14 +17,19 @@
         <img class="img-fluid mx-2" style="width: 60px;" src="{{ url_for('static', filename='logo.png') }}"
              alt="lncRNA logo">
         <h1 class="display-5">lncRNA function prediction</h1>
-        <p class="text-center">Functional predictions of long non-coding RNAs from Recount3 using lncRNA-gene
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-7">
+        <p style="font-weight: 300; font-size: 1rem" class="text-center">Functional predictions of long non-coding RNAs from Recount3 using lncRNA-gene
             co-expression.</p>
+        </div>
     </div>
     <!--  Header  -->
     <!-- Search -->
-    <div class="row justify-content-center my-3">
+    <div class="row justify-content-center my-5">
         <div class="col-8">
-            <div class="input-group mb-3">
+            <p>A long non-coding RNA (lncRNA) is a transcript with more than 200 nucleotides that is not translated into protein. Based on gene expression data from Recount3 processed RNA-seq samples, we present 15,862 long noncoding RNAs' median expression across tissues and cell lines, and predict the small molecules that regulate their expression.</p>
+            <div class="input-group mt-4 mb-2">
                 <input id="search" type="text" class="form-control" placeholder="Input a gene symbol or Ensembl ID"
                        aria-label="lncRNA"
                        aria-describedby="search-button"/>
@@ -36,7 +41,7 @@
     <!-- Search -->
     <!-- Results -->
     <div id="results" class="row justify-content-center my-3">
-        <p id="results__not-processed" style="font-style: italic; display: none;">An appyter for this lncRNA is not processed yet.</p>
+        <p id="results__not-in-db" style="font-style: italic; display: none;"></p>
         <div id="results__appyter-card" class="col card m-2" style="display: none;">
             <div class="card-body">
                 <iframe id="results__appyter-iframe" style="width: 100%; height: 5300px; border: none"></iframe>
