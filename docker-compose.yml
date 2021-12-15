@@ -4,7 +4,7 @@ services:
     build: .
     image: maayanlab/lncrnafp:0.1.5
     environment:
-      - ROOT_PATH=/lncHub2/
+      - ROOT_PATH=/lncHUB2/
       - BASE_PATH=https://maayanalab.cloud
       - DEBUG=true
     ports:

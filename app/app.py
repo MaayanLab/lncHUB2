@@ -3,7 +3,7 @@ import json
 import flask
 from app import utils
 
-ROOT_PATH = os.environ.get('ROOT_PATH', '/lncHub2/')
+ROOT_PATH = os.environ.get('ROOT_PATH', '/lncHUB2/')
 BASE_PATH = os.environ.get('BASE_PATH', 'maayanlab.cloud')
 
 app = flask.Flask(__name__, static_url_path=ROOT_PATH + 'static')

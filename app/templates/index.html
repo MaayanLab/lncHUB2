@@ -1,13 +1,12 @@
 {% extends "base.html" %}
 
 {% block og %}
-<meta property="og:url" content="https://{{ base_path }}/lncHub2"/>
+<meta property="og:url" content="https://{{ base_path }}/lncHUB2"/>
 <meta property="og:description"
-      content="Functional predictions of long non-coding RNAs from Recount3 using lncRNA-gene
-            co-expression."/>
+      content="Functional predictions of human long non-coding RNAs based on lncRNA-gene co-expression correlations."/>
 {% endblock %}
 {% block head %}
-<title>lncRNA function prediction</title>
+<title>lncHUB2: Predicted biological functions for long non-coding RNAs based on co-expression</title>
 {% endblock %}
 
 {% block body %}
@@ -16,26 +15,32 @@
     <div class="row mt-5 justify-content-center">
         <img class="img-fluid mx-2" style="width: 60px;" src="{{ url_for('static', filename='logo.png') }}"
              alt="lncRNA logo">
-        <h1 class="display-5">lncRNA function prediction</h1>
+        <h1 class="display-5">lncHUB2: Predicted biological functions for long non-coding RNAs based on co-expression</h1>
     </div>
     <div class="row justify-content-center">
         <div class="col-7">
-        <p style="font-weight: 300; font-size: 1rem" class="text-center">Functional predictions of long non-coding RNAs from Recount3 using lncRNA-gene
-            co-expression.</p>
+            <p style="font-weight: 300; font-size: 1rem" class="text-center">Functional predictions of human long
+                non-coding RNAs based on lncRNA-gene co-expression correlations.</p>
         </div>
     </div>
     <!--  Header  -->
     <!-- Search -->
     <div class="row justify-content-center my-5">
         <div class="col-8">
-            <p>A long non-coding RNA (lncRNA) is a transcript with more than 200 nucleotides that is not translated into protein. Based on gene expression data from Recount3 processed RNA-seq samples, we present 15,862 long noncoding RNAs' median expression across tissues and cell lines, and predict the small molecules that regulate their expression.</p>
+            <p>A long non-coding RNA (lncRNA) is a transcript with more than 200 nucleotides that is not translated into
+                protein. Based on gene-gene co-expression correlations created from Recount3's processed RNA-seq
+                samples, we present 15,862 landing pages for long non-coding RNAs that include median expression across
+                tissues and cell lines, predicted biological functions, pathway membership, and predicted small
+                molecules that may regulate their expression.</p>
             <div class="input-group mt-4 mb-2">
-                <input id="search" type="text" class="form-control" placeholder="Input a gene symbol or Ensembl ID"
+                <input id="search" type="text" class="form-control" placeholder="Input a gene symbol or an Ensembl ID"
                        aria-label="lncRNA"
                        aria-describedby="search-button"/>
-                <button class="btn btn-outline-secondary" type="button" id="search-button" onclick="search($('#search').val())">Search</button>
+                <button class="btn btn-outline-secondary" type="button" id="search-button"
+                        onclick="search($('#search').val())">Search
+                </button>
             </div>
-            <p class="small text-muted">For example <a href="#" onclick="example('HOTAIR');">HOTAIR</a></p>
+            <p class="small text-muted">For example <a href="#" onclick="example('HOTAIR');">HOTAIR</a>, <a href="#" onclick="example('MALAT1');">MALAT1</a>, <a href="#" onclick="example('NEAT1');">NEAT1</a></p>
         </div>
     </div>
     <!-- Search -->
@@ -82,23 +87,23 @@
                 <div class="row my-2 ml-2">
                     <!-- Twitted share button -->
                     <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
-                       data-text="lncRNA function prediction"
-                       data-url="https://{{ base_path }}/lncHub2" data-via="MaayanLab"
+                       data-text="lncHUB2: Predicted biological functions for long non-coding RNAs based on co-expression"
+                       data-url="https://{{ base_path }}/lncHUB2" data-via="MaayanLab"
                        data-hashtags="lncRNA, long non-coding RNA"
                        data-show-count="false">Tweet</a>
                 </div>
                 <div class="row my-2 ml-2">
                     <!-- LinkedIn share button -->
-                    <script type="IN/Share" data-url="https://{{ base_path }}/lncHub2"></script>
+                    <script type="IN/Share" data-url="https://{{ base_path }}/lncHUB2"></script>
                 </div>
                 <!-- Facebook share button -->
                 <div class="row my-2 ml-2">
-                    <div class="fb-share-button" data-href="https://{{ base_path }}/lncHub2"
+                    <div class="fb-share-button" data-href="https://{{ base_path }}/lncHUB2"
                          data-layout="button" data-size="small">
-                        <div class="fb-share-button" data-href="https://{{ base_path }}/lncHub2" data-layout="button"
+                        <div class="fb-share-button" data-href="https://{{ base_path }}/lncHUB2" data-layout="button"
                              data-size="small">
                             <a target="_blank"
-                               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F{{ base_path }}%lncHub2&amp;src=sdkpreparse"
+                               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F{{ base_path }}%lncHUB2&amp;src=sdkpreparse"
                                class="fb-xfbml-parse-ignore">Share</a></div>
                     </div>
                 </div>
