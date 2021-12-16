@@ -22,22 +22,35 @@ function example(gene) {
     search(gene);
 }
 
-function search(gene) {
+function search_split(appyter_gene) {
     let appyter = undefined;
-
     if (appyters === '') {
         fetch('static/appyters.json')
             .then(response => response.json())
             .then(data => {
                 appyters = data;
-                appyter = data.filter(a => a['gene'] === gene)[0];
-                display_results(appyter, gene);
+                appyter = data.filter(a => a['gene'] === appyter_gene)[0];
+                display_results(appyter, appyter_gene);
             })
     } else {
-        appyter = appyters.filter(a => a['gene'] === gene);
-        display_results(appyter, gene);
+        appyter = appyters.filter(a => a['gene'] === appyter_gene);
+        display_results(appyter, appyter_gene);
     }
+}
 
+function search(gene) {
+    let appyter_gene = gene;
+    if (appyter_gene.toUpperCase().slice(0, 4) === "ENSG") {
+        fetch('static/ens_lncrna_mapping.json')
+            .then(response => response.json())
+            .then(data => {
+                appyter_gene = data[appyter_gene];
+                search_split(appyter_gene);
+            })
+    }
+    else {
+        appyter_gene(appyter_gene)
+    }
 }
 
 (function () {
