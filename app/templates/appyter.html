@@ -61,6 +61,12 @@
             href="https://appyters.maayanlab.cloud/lncRNA_Appyter/{{ appyter.id}}/coexpression_network/{{ appyter.gene }}_network_edge_metadata.csv">coexpression_network/{{
         appyter.gene }}_network_edge_metadata.csv</a></p>
 
+    <h5 class="mt-4">Enrichment analysis applied to the top 200 genes most correlated with {{ appyter.gene }}</h5>
+
+    <p>The top 200 genes most correlated with {{ appyter.gene }} are submitted to Enrichr [2-4] for enrichment analysis. NOTE: Only genes with official Entrez gene symbols are submitted to Enrichr. Ensembl IDs that do not map to an official gene symbol were dropped.</p>
+    <p><a href="{{ appyter.data.enrichr }}" target="_blank">Access the enrichment analysis results</a> at Enrichr.</p>
+
+
     <h5 class="mt-4">Predicted biological functions of {{ appyter.gene }}</h5>
     <p>For each Enrichr library, we compute the mean Pearson correlation coefficients for each gene set by averaging the
         Pearson correlation coefficients between each gene in the gene set and {{ appyter.gene }}. Terms with high mean
