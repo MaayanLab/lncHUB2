@@ -39,4 +39,4 @@ def fetch_appyter_data(gene):
 
 
 if __name__ == '__main__':
-    check_status('d736aae7e751d9be83cb6a5565750e7b3fa2a8b2', 'HOTAIR')
+    print()
