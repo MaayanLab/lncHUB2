@@ -1,19 +1,123 @@
-let appyters = '';
-let ens_lncrna = '';
+function draw_tables(gene){
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_correlated_genes.csv`)
+        .then(response => response.text())
+        .then(data => {
+                let dataSet = data.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
+                $('#table1').DataTable(
+                    {
+                        data: dataSet,
+                        order: [],
+                        columns: [
+                            {'title': 'Gene'},
+                            {'title': 'Pearson\'s Correlation Coefficient'}
+                        ]
+                    })
+            }
+        );
 
-function display_results(appyter, gene) {
-    let appyter_card = $('#results__appyter-card'),
-        not_in_db = $('#results__not-in-db');
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_correlated_lncRNAs.csv`)
+        .then(response => response.text())
+        .then(data => {
+            let dataSet = data.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
 
-    appyter_card.hide();
-    not_in_db.hide();
-    if (appyter !== undefined) {
-        appyter_card.show()
-        $('#results__appyter-iframe').attr('src', `gene\\${appyter.gene}`);
-    } else {
-        not_in_db.text(`"${gene}" is missing from the database.`)
-        not_in_db.show();
-    }
+            $('#table2').DataTable(
+                {
+                    data: dataSet,
+                    order: [],
+                    columns: [
+                        {'title': 'Gene'},
+                        {'title': 'Pearson\'s Correlation Coefficient'}
+                    ]
+                })
+        });
+
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/l1000_sm_predictions/${gene}_l1000_sm_predictions_up.csv`)
+        .then(response => response.text())
+        .then(data => {
+            let dataSet = data.trim().split('\n').slice(1, 100).map(x => {
+                    let s = x.split(',');
+                    return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7])]
+                }
+            );
+            $('#table3').DataTable(
+                {
+                    data: dataSet,
+                    order: [],
+                    columns: [
+                        {'title': ''},
+                        {'title': 'L1000 Signature ID'},
+                        {'title': 'Drug'},
+                        {'title': 'Up/Down'},
+                        {'title': 'Dose'},
+                        {'title': 'Cell line'},
+                        {'title': 'Time point'},
+                        {'title': 'Mean Pearson Correlation'}
+                    ]
+                })
+        });
+
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/l1000_sm_predictions/${gene}_l1000_sm_predictions_down.csv`)
+        .then(response => response.text())
+        .then(data => {
+            let dataSet = data.trim().split('\n').slice(1, 100).map(x => {
+                    let s = x.split(',');
+                    return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7])]
+                }
+            );
+            $('#table4').DataTable(
+                {
+                    data: dataSet,
+                    order: [],
+                    columns: [
+                        {'title': ''},
+                        {'title': 'L1000 Signature ID'},
+                        {'title': 'Drug'},
+                        {'title': 'Up/Down'},
+                        {'title': 'Dose'},
+                        {'title': 'Cell line'},
+                        {'title': 'Time point'},
+                        {'title': 'Mean Pearson Correlation'}
+                    ]
+                })
+        });
+}
+
+function display_results(data) {
+    // Update all gene names in text
+    $("span.gene-name").each(function (element) {
+        $(this).text(data.gene)
+    });
+    draw_tables(data.gene)
+    $('#appyter-url').attr('href', `https://appyters.maayanlab.cloud/lncRNA_Appyter/${data.appyter_id}`)
+    $('#appyter-tab1').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/gene_correlations/${data.gene}_correlated_genes.csv`)
+    $('#appyter-tab2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/gene_correlations/${data.gene}_correlated_lncRNAs.csv`)
+    $('#appyter-fig1-net').attr('href', `"https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network.html`)
+    $('#appyter-fig1-node-meta').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network_node_metadata.csv`)
+    $('#appyter-fig1-edge-meta').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network_edge_metadata.csv`)
+    $('#appyter-enrichr-url').attr('href', data.fig_data.enrichr)
+    $('#fig2-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure2.png`)
+    $('#fig2-img').attr('alt', `Figure 2. Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
+    $('#fig2-down1').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/MGI Mammalian Phenotype Level 4 2021_${data.gene}.csv`)
+    $('#fig2-down2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/GO Biological Process 2021_${data.gene}.csv`)
+    $('#fig3-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure3.png`)
+    $('#fig3-img').attr('alt', `Figure 3. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
+    $('#fig3-down1').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/KEGG 2021 Human_${data.gene}.csv`)
+    $('#fig3-down2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/DisGeNET_${data.gene}.csv`)
+    $('#fig4-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_zscore_tissue_expression.png`)
+    $('#fig4-img').attr('alt', `Figure 4. Z-score (median expression) for the lncRNA ${data.gene} in various tissue types.`)
+    $('#fig4-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_tissue_zscore.csv`)
+    $('#fig5-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_zscore_cell_line_expression.png`)
+    $('#fig5-img').attr('alt', `Figure 5. Z-score (median expression) for the lncRNA ${data.gene} in the top 30 cell lines.`)
+    $('#fig5-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_cell_line_zscore.csv`)
+    $('#fig6-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/tissues/figures/static/${data.gene}_${data.fig_data.fig6_tissue}_rank1.png`)
+    $('#fig6-img').attr('alt', `Figure 6. UMAP was applied to 3,000 randomly selected samples (with tissue type labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig6_tissue}.`)
+    $('#fig6-tissue').text(data.fig_data.fig6_tissue)
+    $('#fig7-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/cell_lines/figures/static/${data.gene}_${data.fig_data.fig7_cell_line}_rank1.png`)
+    $('#fig7-img').attr('alt', `Figure 7. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig7_cell_line}.`)
+    $('#fig7-cell').text(data.fig_data.fig7_cell_line)
+    $('#tab7-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_up.csv`)
+    $('#tab8-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_down.csv`)
+    $('#results__appyter-card').show();
 }
 
 function example(gene) {
@@ -21,40 +125,14 @@ function example(gene) {
     search(gene);
 }
 
-function search_split(appyter_gene) {
-    let appyter = undefined;
-    if (appyters === '') {
-        fetch('static/appyters.json')
-            .then(response => response.json())
-            .then(data => {
-                appyters = data;
-                appyter = data.filter(a => a['gene'] === appyter_gene)[0];
-                display_results(appyter, appyter_gene);
-            })
-    } else {
-        appyter = appyters.filter(a => a['gene'] === appyter_gene)[0];
-        display_results(appyter, appyter_gene);
-    }
-}
 
 function search(gene) {
-    let appyter_gene = gene;
-    if (appyter_gene.toUpperCase().slice(0, 4) === "ENSG") {
-        if (ens_lncrna === '') {
-            fetch('static/ens_lncrna_mapping.json')
-                .then(response => response.json())
-                .then(data => {
-                    ens_lncrna = data;
-                    appyter_gene = ens_lncrna[appyter_gene];
-                    search_split(appyter_gene);
-                })
-        } else {
-            appyter_gene = ens_lncrna[appyter_gene];
-            search_split(appyter_gene);
-        }
-    } else {
-        search_split(appyter_gene)
-    }
+    $('#results__appyter-card').hide();
+    fetch(`search/${gene}`)
+        .then(response => response.json())
+        .then(r => {
+            display_results(r.data);
+        });
 }
 
 (function () {
