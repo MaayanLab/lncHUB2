@@ -178,16 +178,60 @@ function search(gene) {
 
 (function () {
     $('#search').val('');
-    $.getJSON(`static/lncRNAs.json`, function (json) {
-        $('#search').autocomplete({
-                source: json,
-                minLength: 2,
-                delay: 200,
-                autoFocus: true,
-                select: function (event, ui) {
-                    search(ui.item.label)
-                },
+
+    const autoCompleteJS = new autoComplete({
+        selector: "#search",
+        placeHolder: "Input a gene symbol or an Ensembl ID",
+        data: {
+            src: async () => {
+                try {
+                    // Loading placeholder text
+                    document
+                        .getElementById("search")
+                        .setAttribute("placeholder", "Loading...");
+                    // Fetch External Data Source
+                    const source = await fetch(
+                        "static/lncRNAs.json"
+                    );
+                    const data = await source.json();
+                    // Post Loading placeholder text
+                    document
+                        .getElementById("search")
+                        .setAttribute("placeholder", autoCompleteJS.placeHolder);
+                    // Returns Fetched data
+                    return data;
+                } catch (error) {
+                    return error;
+                }
+            },
+            cache: true,
+        },
+        resultsList: {
+            element: (list, data) => {
+                const info = document.createElement("p");
+                if (data.results.length > 0) {
+                    info.innerHTML = `Displaying <strong>${data.results.length}</strong> out of <strong>${data.matches.length}</strong> results`;
+                } else {
+                    info.innerHTML = `Found <strong>${data.matches.length}</strong> matching results for <strong>"${data.query}"</strong>`;
+                }
+                list.prepend(info);
+            },
+            noResults: true,
+            maxResults: 15,
+            tabSelect: true
+        },
+        resultItem: {
+            highlight: true
+        },
+        events: {
+            input: {
+                selection: (event) => {
+                    const selection = event.detail.selection.value;
+                    autoCompleteJS.input.value = selection;
+                    search(event.detail.selection.value);
+                }
             }
-        );
+        }
     });
+
 })();
