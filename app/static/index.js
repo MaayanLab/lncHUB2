@@ -93,8 +93,7 @@ function draw_tables(gene) {
 function display_results(data) {
     if (data.is_ready === true) {
         $('#appyter-action').text('Open in ')
-    }
-    else {
+    } else {
         $('#appyter-action').text('Start a new appyter in ')
     }
 
@@ -125,25 +124,31 @@ function display_results(data) {
     $('#fig3-mod-title').text(`Figure 3. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
     $('#fig3-down1').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/KEGG 2021 Human_${data.gene}.csv`)
     $('#fig3-down2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/DisGeNET_${data.gene}.csv`)
+    $('#fig8-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure4.png`)
+    $('#fig8-img').attr('alt', `Figure 4. Predicted transcription factors from ChEA 2016 and ENCODE ChIP-seq 2015 libraries for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
+    $('#fig8-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure4.png`)
+    $('#fig8-mod-title').text(`Figure 4. Predicted transcription factors from ChEA 2016 and ENCODE ChIP-seq 2015 libraries for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
+    $('#fig8-down1').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/ChEA_${data.gene}.csv`)
+    $('#fig8-down2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/ENCODE_${data.gene}.csv`)
     $('#fig4-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_zscore_tissue_expression.png`)
-    $('#fig4-img').attr('alt', `Figure 4. Z-score (median expression) for the lncRNA ${data.gene} in various tissue types.`)
+    $('#fig4-img').attr('alt', `Figure 5. Z-score (median expression) for the lncRNA ${data.gene} in various tissue types.`)
     $('#fig4-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_zscore_tissue_expression.png`)
-    $('#fig4-mod-title').text(`Figure 4. Z-score (median expression) for the lncRNA ${data.gene} in various tissue types.`)
+    $('#fig4-mod-title').text(`Figure 5. Z-score (median expression) for the lncRNA ${data.gene} in various tissue types.`)
     $('#fig4-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_tissue_zscore.csv`)
     $('#fig5-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_zscore_cell_line_expression.png`)
-    $('#fig5-img').attr('alt', `Figure 5. Z-score (median expression) for the lncRNA ${data.gene} in the top 30 cell lines.`)
+    $('#fig5-img').attr('alt', `Figure 6. Z-score (median expression) for the lncRNA ${data.gene} in the top 30 cell lines.`)
     $('#fig5-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_zscore_cell_line_expression.png`)
-    $('#fig5-mod-title').text(`Figure 5. Z-score (median expression) for the lncRNA ${data.gene} in the top 30 cell lines.`)
+    $('#fig5-mod-title').text(`Figure 6. Z-score (median expression) for the lncRNA ${data.gene} in the top 30 cell lines.`)
     $('#fig5-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_cell_line_zscore.csv`)
     $('#fig6-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/tissues/figures/static/${data.gene}_${data.fig_data.fig6_tissue}_rank1.png`)
-    $('#fig6-img').attr('alt', `Figure 6. UMAP was applied to 3,000 randomly selected samples (with tissue type labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig6_tissue}.`)
+    $('#fig6-img').attr('alt', `Figure 7. UMAP was applied to 3,000 randomly selected samples (with tissue type labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig6_tissue}.`)
     $('#fig6-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/tissues/figures/static/${data.gene}_${data.fig_data.fig6_tissue}_rank1.png`)
-    $('#fig6-mod-title').text(`Figure 6. UMAP was applied to 3,000 randomly selected samples (with tissue type labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig6_tissue}.`)
+    $('#fig6-mod-title').text(`Figure 7. UMAP was applied to 3,000 randomly selected samples (with tissue type labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig6_tissue}.`)
     $('#fig6-tissue').text(data.fig_data.fig6_tissue)
     $('#fig7-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/cell_lines/figures/static/${data.gene}_${data.fig_data.fig7_cell_line}_rank1.png`)
-    $('#fig7-img').attr('alt', `Figure 7. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig7_cell_line}.`)
+    $('#fig7-img').attr('alt', `Figure 8. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig7_cell_line}.`)
     $('#fig7-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/cell_lines/figures/static/${data.gene}_${data.fig_data.fig7_cell_line}_rank1.png`)
-    $('#fig7-mod-title').text(`Figure 7. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig7_cell_line}.`)
+    $('#fig7-mod-title').text(`Figure 8. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig7_cell_line}.`)
     $('#fig7-cell').text(data.fig_data.fig7_cell_line)
     $('#tab7-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_up.csv`)
     $('#tab8-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_down.csv`)
@@ -158,10 +163,16 @@ function example(gene) {
 
 function search(gene) {
     $('#results__appyter-card').hide();
+    $('#not-lncRNA').hide()
     fetch(`search/${gene}`)
         .then(response => response.json())
         .then(r => {
-            display_results(r.data);
+            if (r.data.lncrna === true) {
+                display_results(r.data);
+            } else {
+                $('#not-lncRNA').show()
+                $('#not-lncRNA-msg').text(`${gene} does not appear among the 15,862 processed long non-coding RNAs.`)
+            }
         });
 }
 

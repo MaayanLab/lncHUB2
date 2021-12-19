@@ -14,11 +14,11 @@
     <!--  Header  -->
     <div class="row mt-5 justify-content-center">
         <div class="col-1">
-        <img class="img-fluid float-end" style="width: 65px;" src="{{ url_for('static', filename='logo.png') }}"
-             alt="lncRNA logo">
+            <img class="img-fluid float-end" style="width: 65px;" src="{{ url_for('static', filename='logo.png') }}"
+                 alt="lncRNA logo">
         </div>
         <div class="col-2 ps-0">
-        <h2 class="display-5">lncHUB2</h2>
+            <h2 class="display-5">lncHUB2</h2>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -57,6 +57,10 @@
     <div id="appyter-loader" class="row justify-content-center my-3" style="display: none;">
         <p>Loading...</p>
     </div>
+    <!--  Not lncRNA  -->
+    <div id="not-lncRNA" class="row justify-content-center my-3" style="display: none;">
+        <p id="not-lncRNA-msg" style="font-style: italic;"></p>
+    </div>
     <!-- Appyter Loader -->
     <div id="results" class="row justify-content-center my-3">
         <p id="results__not-in-db" style="font-style: italic; display: none;"></p>
@@ -83,11 +87,12 @@
 
                 <div class="row justify-content-center">
                     <div class="col-10 col-sm-6">
-                <img id="struct-img" src="" class="img-fluid" alt="">
-                <p id="struct-desc" style="font-size: 0.8rem; font-style: italic;"><a
+                        <img id="struct-img" src="" class="img-fluid" alt="">
+                        <p id="struct-desc" style="font-size: 0.8rem; font-style: italic;"><a
                                 id="struct-img-down"
                                 href=""><i
-                                class="fas fa-file-download"></i></a> Predicted secondary structure of <span class="gene-name">.</span></p>
+                                class="fas fa-file-download"></i></a> Predicted secondary structure of <span
+                                class="gene-name">.</span></p>
                     </div>
                 </div>
 
@@ -157,9 +162,9 @@
                 <p class="mb-2" style="font-size: 0.8rem">Download interactive network
                     visualization of the
                     top 100 genes correlated with <span class="gene-name"></span>: <a
-                        id="appyter-fig1-net"
-                        href="">coexpression_network/<span
-                        class="gene-name"></span>_network.html</a></p>
+                            id="appyter-fig1-net"
+                            href="">coexpression_network/<span
+                            class="gene-name"></span>_network.html</a></p>
                 <p class="mb-2" style="font-size: 0.8rem">Download Node metadata: <a
                         id="appyter-fig1-node-meta"
                         href="">coexpression_network/<span
@@ -273,6 +278,43 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col col-sm-6">
+                        <img id="fig8-img" src="" class="img-fluid p-3 bg-light" alt="">
+                        <p id="fig8-desc" style="font-size: 0.8rem; font-style: italic;"
+                           class="mb-2 px-3 pb-2 bg-light">
+                            <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
+                                    data-bs-target="#fig8-mod">
+                                <i class="fas fa-expand-arrows-alt"></i>
+                            </button>
+                            Figure 4. Predicted transcription factors from ChEA 2016 and ENCODE ChIP-seq 2015 libraries for the
+                            lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients
+                            between each gene in a gene set and <span class="gene-name"></span>.
+                        </p>
+                        <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig8-down1"
+                                                                                           href="">predicted_functions/ChEA_<span class="gene-name"></span>.csv</a></p>
+                        <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig8-down2"
+                                                                                           href="">predicted_functions/ENCODE_<span class="gene-name"></span>.csv</a></p>
+                        <div class="modal fade" id="fig8-mod" tabindex="-1" aria-labelledby="fig8-mod-title"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img id="fig8-mod-img" src="" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <p class="modal-title" id="fig8-mod-title"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <h5 class="mt-4">Expression of <span class="gene-name"></span> across tissues and cell lines</h5>
                 <p>This part of the report provides the Z-score (Normalized Median Expression) for the
                     lncRNA <span class="gene-name"></span> in various tissues and cell lines. Samples from Recount3 [1]
@@ -298,7 +340,7 @@
                                     data-bs-target="#fig4-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 4.
+                            Figure 5.
                             Z-score (median
                             expression) for the lncRNA
                             <span class="gene-name"></span> in
@@ -337,7 +379,7 @@
                                     data-bs-target="#fig5-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 5.
+                            Figure 6.
                             Z-score (median
                             expression) for the lncRNA
                             <span class="gene-name"></span> in the
@@ -390,7 +432,7 @@
                                     data-bs-target="#fig6-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 6. UMAP
+                            Figure 7. UMAP
                             was applied
                             to 3,000 randomly
                             selected samples (with tissue type labels) from Recount3.
@@ -425,7 +467,7 @@
                                     data-bs-target="#fig7-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 7. UMAP
+                            Figure 8. UMAP
                             was applied
                             to 3,000 randomly
                             selected samples (with cell line labels) from Recount3. Each

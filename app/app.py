@@ -23,6 +23,7 @@ def route_search(gene):
     gene = lncrns.get(gene, '')
     data['gene'] = gene
     lncrna = True if gene else False
+    data['lncrna'] = lncrna
     if lncrna:
         appyter_id = utils.get_appyter_id(gene)
         data['appyter_id'] = appyter_id
