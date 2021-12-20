@@ -1,9 +1,42 @@
 function draw_tables(gene) {
+    $('#table1-blank').hide()
     fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_correlated_genes.csv`)
-        .then(response => response.text())
-        .then(data => {
-                let dataSet = data.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
-                $('#table1').DataTable(
+        .then(response => {
+            return {ok: response.ok, text: response.text()}
+        })
+        .then(async data => {
+                if (data.ok) {
+                    let text = await data.text;
+                    let dataSet = text.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
+                    $('#table1').DataTable(
+                        {
+                            data: dataSet,
+                            destroy: true,
+                            responsive: true,
+                            order: [],
+                            columns: [
+                                {'title': 'Gene'},
+                                {'title': 'Pearson\'s Correlation Coefficient'}
+                            ]
+                        })
+                    $('#tab1-down').show()
+                } else {
+                    $('#table1-blank').show();
+                    $('#tab1-down').hide();
+                }
+            }
+        );
+
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_correlated_lncRNAs.csv`)
+        .then(response => {
+            return {ok: response.ok, text: response.text()}
+        })
+        .then(async data => {
+            $('#table2-blank').hide()
+            if (data.ok) {
+                let text = await data.text;
+                let dataSet = text.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
+                $('#table2').DataTable(
                     {
                         data: dataSet,
                         destroy: true,
@@ -14,79 +47,85 @@ function draw_tables(gene) {
                             {'title': 'Pearson\'s Correlation Coefficient'}
                         ]
                     })
+                $('#tab2-down').show()
+            } else {
+                $('#table2-blank').show()
+                $('#tab2-down').hide()
             }
-        );
-
-    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_correlated_lncRNAs.csv`)
-        .then(response => response.text())
-        .then(data => {
-            let dataSet = data.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
-
-            $('#table2').DataTable(
-                {
-                    data: dataSet,
-                    destroy: true,
-                    responsive: true,
-                    order: [],
-                    columns: [
-                        {'title': 'Gene'},
-                        {'title': 'Pearson\'s Correlation Coefficient'}
-                    ]
-                })
         });
 
     fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/l1000_sm_predictions/${gene}_l1000_sm_predictions_up.csv`)
-        .then(response => response.text())
-        .then(data => {
-            let dataSet = data.trim().split('\n').slice(1, 100).map(x => {
-                    let s = x.split(',');
-                    return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7])]
-                }
-            );
-            $('#table3').DataTable(
-                {
-                    data: dataSet,
-                    destroy: true,
-                    responsive: true,
-                    order: [],
-                    columns: [
-                        {'title': ''},
-                        {'title': 'L1000 Signature ID'},
-                        {'title': 'Drug'},
-                        {'title': 'Up/Down'},
-                        {'title': 'Dose'},
-                        {'title': 'Cell line'},
-                        {'title': 'Time point'},
-                        {'title': 'Mean Pearson Correlation'}
-                    ]
-                })
+        .then(response => {
+            return {ok: response.ok, text: response.text()}
+        })
+        .then(async data => {
+            $('#table3-blank').hide()
+            if (data.ok) {
+                let text = await data.text;
+                let dataSet = text.trim().split('\n').slice(1, 100).map(x => {
+                        let s = x.split(',');
+                        return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7])]
+                    }
+                );
+                $('#table3').DataTable(
+                    {
+                        data: dataSet,
+                        destroy: true,
+                        responsive: true,
+                        order: [],
+                        columns: [
+                            {'title': ''},
+                            {'title': 'L1000 Signature ID'},
+                            {'title': 'Drug'},
+                            {'title': 'Up/Down'},
+                            {'title': 'Dose'},
+                            {'title': 'Cell line'},
+                            {'title': 'Time point'},
+                            {'title': 'Mean Pearson Correlation'}
+                        ]
+                    })
+                $('#tab3-down').show()
+            } else {
+                $('#table3-blank').show()
+                $('#tab3-down').hide()
+            }
         });
 
     fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/l1000_sm_predictions/${gene}_l1000_sm_predictions_down.csv`)
-        .then(response => response.text())
-        .then(data => {
-            let dataSet = data.trim().split('\n').slice(1, 100).map(x => {
-                    let s = x.split(',');
-                    return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7])]
-                }
-            );
-            $('#table4').DataTable(
-                {
-                    data: dataSet,
-                    destroy: true,
-                    responsive: true,
-                    order: [],
-                    columns: [
-                        {'title': ''},
-                        {'title': 'L1000 Signature ID'},
-                        {'title': 'Drug'},
-                        {'title': 'Up/Down'},
-                        {'title': 'Dose'},
-                        {'title': 'Cell line'},
-                        {'title': 'Time point'},
-                        {'title': 'Mean Pearson Correlation'}
-                    ]
-                })
+        .then(response => {
+            return {ok: response.ok, text: response.text()}
+        })
+        .then(async data => {
+            $('#table4-blank').hide();
+            if (data.ok) {
+                let text = await data.text;
+                let dataSet = text.trim().split('\n').slice(1, 100).map(x => {
+                        let s = x.split(',');
+                        return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7])]
+                    }
+                );
+                $('#table4').DataTable(
+                    {
+                        data: dataSet,
+                        destroy: true,
+                        responsive: true,
+                        order: [],
+                        columns: [
+                            {'title': ''},
+                            {'title': 'L1000 Signature ID'},
+                            {'title': 'Drug'},
+                            {'title': 'Up/Down'},
+                            {'title': 'Dose'},
+                            {'title': 'Cell line'},
+                            {'title': 'Time point'},
+                            {'title': 'Mean Pearson Correlation'}
+                        ]
+                    })
+                $('#tab4-down').show();
+            } else {
+                $('#table4-blank').show();
+                $('#tab4-down').hide();
+            }
         });
 }
 
@@ -106,8 +145,8 @@ function display_results(data) {
     $('#struct-img').attr('alt', `Predicted secondary structure of ${data.gene}.`)
     $('#struct-img-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/secondary_structure/${data.fig_data.structure}`)
     $('#appyter-url').attr('href', `https://appyters.maayanlab.cloud/lncRNA_Appyter/${data.appyter_id}`)
-    $('#appyter-tab1').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/gene_correlations/${data.gene}_correlated_genes.csv`)
-    $('#appyter-tab2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/gene_correlations/${data.gene}_correlated_lncRNAs.csv`)
+    $('#tab1-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/gene_correlations/${data.gene}_correlated_genes.csv`)
+    $('#tab2-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/gene_correlations/${data.gene}_correlated_lncRNAs.csv`)
     $('#appyter-fig1-net').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network.html`)
     $('#appyter-fig1-node-meta').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network_node_metadata.csv`)
     $('#appyter-fig1-edge-meta').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network_edge_metadata.csv`)
@@ -150,8 +189,8 @@ function display_results(data) {
     $('#fig7-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/cell_lines/figures/static/${data.gene}_${data.fig_data.fig7_cell_line}_rank1.png`)
     $('#fig7-mod-title').text(`Figure 8. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig7_cell_line}.`)
     $('#fig7-cell').text(data.fig_data.fig7_cell_line)
-    $('#tab7-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_up.csv`)
-    $('#tab8-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_down.csv`)
+    $('#tab3-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_up.csv`)
+    $('#tab4-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_down.csv`)
     $('#results__appyter-card').show();
 }
 
