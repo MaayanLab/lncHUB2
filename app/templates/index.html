@@ -91,8 +91,8 @@
                         <p id="struct-desc" style="font-size: 0.8rem; font-style: italic;"><a
                                 id="struct-img-down"
                                 href=""><i
-                                class="fas fa-file-download"></i></a> Predicted secondary structure of <span
-                                class="gene-name">.</span></p>
+                                class="fas fa-file-download"></i></a> Secondary structure of <span
+                                class="gene-name"> predicted with RNAfold [1].</span></p>
                     </div>
                 </div>
 
@@ -179,7 +179,7 @@
                 <h5 class="mt-4">Enrichment analysis applied to the top 200 genes most correlated with <span
                         class="gene-name"></span></h5>
 
-                <p>The top 200 genes most correlated with <span class="gene-name"></span> are submitted to Enrichr [2-4]
+                <p>The top 200 genes most correlated with <span class="gene-name"></span> are submitted to Enrichr [3-5]
                     for
                     enrichment analysis. NOTE: Only genes with official Entrez gene symbols are submitted to Enrichr.
                     Ensembl IDs
@@ -319,7 +319,7 @@
 
                 <h5 class="mt-4">Expression of <span class="gene-name"></span> across tissues and cell lines</h5>
                 <p>This part of the report provides the Z-score (Normalized Median Expression) for the
-                    lncRNA <span class="gene-name"></span> in various tissues and cell lines. Samples from Recount3 [1]
+                    lncRNA <span class="gene-name"></span> in various tissues and cell lines. Samples from Recount3 [2]
                     were
                     automatically
                     labelled by tissue type or cell line of origin. Tissue and cell line
@@ -416,9 +416,9 @@
                 </div>
                 <h5 class="mt-4">Visualizing lncRNAs based on their gene expression similarity across tissues and cell
                     lines</h5>
-                <p>We applied UMAP [5] to visualize lncRNA expression across 3,000 randomly selected samples (with
+                <p>We applied UMAP [6] to visualize lncRNA expression across 3,000 randomly selected samples (with
                     tissue type
-                    and cell line labels) from Recount3[1]. Samples were first log2 transformed and quantile normalized
+                    and cell line labels) from Recount3[2]. Samples were first log2 transformed and quantile normalized
                     along
                     the gene axis, then UMAP was applied to the lncRNA expression data with samples as features. Each
                     data point
@@ -500,7 +500,7 @@
                 <h5 class="mt-4">L1000 small molecules predicted to modulate <span class="gene-name"></span></h5>
                 <p>~1.4 million Level 5 L1000 chemical perturbation gene expression signatures were downloaded from
                     SigCom LINCS
-                    (https://maayanlab.cloud/sigcom-lincs) [6]. For each unique signature and lncRNA pair, a mean
+                    (https://maayanlab.cloud/sigcom-lincs) [7]. For each unique signature and lncRNA pair, a mean
                     Pearson
                     correlation coefficient was computed by taking the average Pearson coefficient between the lncRNA
                     and all genes
@@ -549,31 +549,32 @@
 
 
                 <h5 class="mt-4">References</h5>
-                <p class="mb-1" style="font-size: 0.8rem;">[1] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling
+                <p class="mb-1" style="font-size: 0.8rem;">[1] Lorenz, R., Bernhart, S.H., Höner zu Siederdissen, C. et al. ViennaRNA Package 2.0. Algorithms Mol Biol 6, 26 (2011). https://doi.org/10.1186/1748-7188-6-26
+                <p class="mb-1" style="font-size: 0.8rem;">[2] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling
                     JP, Imada EL,
                     Zhang D, Joseph L, Leek JT: Recount3:
                     summaries and queries for large-scale RNA-seq expression and splicing. bioRxiv
                     2021:2021.2005.2021.445138.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[2] Xie Z, Bailey A, Kuleshov MV, Clarke DJB, Evangelista JE,
+                <p class="mb-1" style="font-size: 0.8rem;">[3] Xie Z, Bailey A, Kuleshov MV, Clarke DJB, Evangelista JE,
                     Jenkins SL,
                     Lachmann A, Wojciechowicz ML,
                     Kropiwnicki E, Jagodnik KM: Gene Set Knowledge Discovery with Enrichr. Current Protocols 2021,
                     1(3):e90.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[3] Chen EY, Tan CM, Kou Y, Duan Q, Wang Z, Meirelles GV,
+                <p class="mb-1" style="font-size: 0.8rem;">[4] Chen EY, Tan CM, Kou Y, Duan Q, Wang Z, Meirelles GV,
                     Clark NR,
                     Ma’ayan A: Enrichr: interactive and
                     collaborative HTML5 gene list enrichment analysis tool. BMC Bioinformatics 2013, 14(1):128.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[4] Kuleshov MV, Jones MR, Rouillard AD, Fernandez NF, Duan
+                <p class="mb-1" style="font-size: 0.8rem;">[5] Kuleshov MV, Jones MR, Rouillard AD, Fernandez NF, Duan
                     Q, Wang Z,
                     Koplev S, Jenkins SL, Jagodnik KM,
                     Lachmann A: Enrichr: a comprehensive gene set enrichment analysis web server 2016 update. Nucleic
                     Acids Research
                     2016, 44(W1):W90-W97.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[5] McInnes L, Healy J, Melville J: Umap: Uniform manifold
+                <p class="mb-1" style="font-size: 0.8rem;">[6] McInnes L, Healy J, Melville J: UMAP: Uniform manifold
                     approximation
                     and projection for dimension reduction.
                     arXiv preprint arXiv:180203426 2018.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[6] Evangelista et al. SigCom LINCS: Data and Metadata Search
+                <p class="mb-1" style="font-size: 0.8rem;">[7] Evangelista et al. SigCom LINCS: Data and Metadata Search
                     Engine for
                     Gene Expression Signatures. 2021. In
                     preparation.</p>
