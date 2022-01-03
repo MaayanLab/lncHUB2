@@ -72,7 +72,7 @@
                         style="font-size: 1rem; font-weight: 400; background: aliceblue; border-radius: 4px; border: 1px solid #bddffd;"
                         target="_blank"
                         rel="noopener noreferrer"
-                        href=""><span id="appyter-action"></span> <img
+                        href=""><span id="appyter-action"></span><img
                         src="{{ url_for('static', filename='appyters_logo.svg') }}" class="img-fluid"
                         style="width: 10%"
                         alt="Appyters"></a></h4>
@@ -103,7 +103,8 @@
                             that are most
                             correlated with <span class="gene-name"></span>.</p>
                         <div class="table-responsive-sm">
-                            <p id="table-blank1" style="display: none; font-style: italic;">There are no lncRNAs correlated with <span class="gene-name"></span>.</p>
+                            <p id="table-blank1" style="display: none; font-style: italic;">There are no lncRNAs
+                                correlated with <span class="gene-name"></span>.</p>
                             <table id="table1" class="compact hover order-column row-border"
                                    style="width:100%"></table>
                         </div>
@@ -121,7 +122,8 @@
                             that correlate most with
                             <span class="gene-name"></span> based on their Pearson correlation coefficients.</p>
                         <div class="table-responsive-sm">
-                            <p id="table2-blank" style="display: none; font-style: italic;">There are no lncRNAs correlated with <span class="gene-name"></span>.</p>
+                            <p id="table2-blank" style="display: none; font-style: italic;">There are no lncRNAs
+                                correlated with <span class="gene-name"></span>.</p>
                             <table id="table2" class="compact hover order-column row-border"
                                    style="width:100%"></table>
                         </div>
@@ -208,7 +210,8 @@
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
                             Figure 2. Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA
-                            <span class="gene-name"></span>. Terms are ranked by averaging the Pearson correlation coefficients between each gene in a gene set and <span class="gene-name"></span>.
+                            <span class="gene-name"></span>. Terms are ranked by averaging the Pearson correlation
+                            coefficients between each gene in a gene set and <span class="gene-name"></span>.
                         </p>
                         <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig2-down1"
                                                                                            href="">predicted_functions/MGI
@@ -244,7 +247,9 @@
                                     data-bs-target="#fig3-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 3. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA <span class="gene-name"></span>. Terms are ranked by averaging the Pearson correlation coefficients between each gene in a gene set and <span class="gene-name"></span>.
+                            Figure 3. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA <span
+                                class="gene-name"></span>. Terms are ranked by averaging the Pearson correlation
+                            coefficients between each gene in a gene set and <span class="gene-name"></span>.
                         </p>
                         <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig3-down1"
                                                                                            href="">predicted_functions/KEGG
@@ -281,12 +286,16 @@
                                     data-bs-target="#fig8-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 4. Predicted transcription factors from ChEA 2016 and ENCODE ChIP-seq 2015 libraries for the lncRNA <span class="gene-name"></span>. Terms are ranked by averaging the Pearson correlation coefficients between each gene in a gene set and <span class="gene-name"></span>.
+                            Figure 4. Predicted transcription factors from ChEA 2016 and ENCODE ChIP-seq 2015 libraries
+                            for the lncRNA <span class="gene-name"></span>. Terms are ranked by averaging the Pearson
+                            correlation coefficients between each gene in a gene set and <span class="gene-name"></span>.
                         </p>
                         <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig8-down1"
-                                                                                           href="">predicted_functions/ChEA_<span class="gene-name"></span>.csv</a></p>
+                                                                                           href="">predicted_functions/ChEA_<span
+                                class="gene-name"></span>.csv</a></p>
                         <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig8-down2"
-                                                                                           href="">predicted_functions/ENCODE_<span class="gene-name"></span>.csv</a></p>
+                                                                                           href="">predicted_functions/ENCODE_<span
+                                class="gene-name"></span>.csv</a></p>
                         <div class="modal fade" id="fig8-mod" tabindex="-1" aria-labelledby="fig8-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -308,7 +317,13 @@
                 </div>
 
                 <h5 class="mt-4">Expression of <span class="gene-name"></span> across tissues and cell lines</h5>
-                <p>This part of the report provides the Z-score (Normalized Median Expression) for the lncRNA <span class="gene-name"></span> in various tissues and cell lines. Samples from Recount3 [2] were automatically labelled by tissue type or cell line of origin. Tissue and cell line samples were log2 transformed and quantile normalized separately. Tissues and cell lines with less than 20 samples were removed and the median expression of <span class="gene-name"></span> was then calculated for each tissue type and cell line. Z-scores were computed along the lncRNA axis to compare expression levels across all tissues and cell lines.</p>
+                <p>This part of the report provides the Z-score (Normalized Median Expression) for the lncRNA <span
+                        class="gene-name"></span> in various tissues and cell lines. Samples from Recount3 [2] were
+                    automatically labelled by tissue type or cell line of origin. Tissue and cell line samples were log2
+                    transformed and quantile normalized separately. Tissues and cell lines with less than 20 samples
+                    were removed and the median expression of <span class="gene-name"></span> was then calculated for
+                    each tissue type and cell line. Z-scores were computed along the lncRNA axis to compare expression
+                    levels across all tissues and cell lines.</p>
 
                 <div class="row">
                     <div class="col-sm">
@@ -498,7 +513,8 @@
                 </p>
 
                 <div class="table-responsive-sm">
-                    <p id="table3-blank" style="display: none; font-style: italic;">There are no small molecules predicted to specifically up-regulate the expression of <span class="gene-name"></span>.</p>
+                    <p id="table3-blank" style="display: none; font-style: italic;">There are no small molecules
+                        predicted to specifically up-regulate the expression of <span class="gene-name"></span>.</p>
                     <table id="table3" class="compact hover order-column row-border"
                            style="width:100%"></table>
                 </div>
@@ -515,7 +531,8 @@
                 </p>
 
                 <div class="table-responsive-sm">
-                    <p id="table4-blank" style="display: none; font-style: italic;">There are no small molecules predicted to specifically down-regulate the expression of <span class="gene-name"></span>.</p>
+                    <p id="table4-blank" style="display: none; font-style: italic;">There are no small molecules
+                        predicted to specifically down-regulate the expression of <span class="gene-name"></span>.</p>
                     <table id="table4" class="compact hover order-column row-border"
                            style="width:100%"></table>
                 </div>
@@ -527,7 +544,8 @@
 
 
                 <h5 class="mt-4">References</h5>
-                <p class="mb-1" style="font-size: 0.8rem;">[1] Lorenz, R., Bernhart, S.H., Höner zu Siederdissen, C. et al. ViennaRNA Package 2.0. Algorithms Mol Biol 6, 26 (2011). https://doi.org/10.1186/1748-7188-6-26
+                <p class="mb-1" style="font-size: 0.8rem;">[1] Lorenz, R., Bernhart, S.H., Höner zu Siederdissen, C. et
+                    al. ViennaRNA Package 2.0. Algorithms Mol Biol 6, 26 (2011). https://doi.org/10.1186/1748-7188-6-26
                 <p class="mb-1" style="font-size: 0.8rem;">[2] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling
                     JP, Imada EL,
                     Zhang D, Joseph L, Leek JT: Recount3:
@@ -593,27 +611,30 @@
                 </a>
             </div>
             <div class="col-md-2 col-sm">
-                <div class="row my-2 ms-2">
+                <div class="row">
+                    <div class="col-12">
                     <!-- Twitted share button -->
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button"
+                    <a href="https://twitter.com/intent/tweet"
+                       class="twitter-share-button"
                        data-text="lncHUB2: Predicted biological functions for long non-coding RNAs based on co-expression"
-                       data-url="https://{{ base_path }}/lncHUB2" data-via="MaayanLab"
-                       data-hashtags="lncRNA, long non-coding RNA"
-                       data-show-count="false">Tweet</a>
+                       data-url="https://{{ base_path }}/lncHUB2"
+                       data-via="MaayanLab"
+                       data-hashtags="lncRNA">Tweet</a>
+                    </div>
                 </div>
-                <div class="row my-2 ms-2">
+                <div class="row mb-1">
+                    <div class="col-12">
                     <!-- LinkedIn share button -->
                     <script type="IN/Share" data-url="https://{{ base_path }}/lncHUB2"></script>
+                    </div>
                 </div>
                 <!-- Facebook share button -->
-                <div class="row my-2 ms-2">
-                    <div class="fb-share-button" data-href="https://{{ base_path }}/lncHUB2"
-                         data-layout="button" data-size="small">
-                        <div class="fb-share-button" data-href="https://{{ base_path }}/lncHUB2" data-layout="button"
-                             data-size="small">
-                            <a target="_blank"
-                               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2F{{ base_path }}%lncHUB2&amp;src=sdkpreparse"
-                               class="fb-xfbms-parse-ignore">Share</a></div>
+                <div class="row">
+                    <div class="col-12">
+                    <div class="fb-share-button" data-href="https://maayanlab.cloud/lncHUB2" data-layout="button"
+                         data-size="small"><a target="_blank"
+                                              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmaayanlab.cloud%2FlncHUB2&amp;src=sdkpreparse"
+                                              class="fb-xfbml-parse-ignore">Share</a></div>
                     </div>
                 </div>
             </div>

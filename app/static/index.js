@@ -131,9 +131,9 @@ function draw_tables(gene) {
 
 function display_results(data) {
     if (data.is_ready === true) {
-        $('#appyter-action').text('Open in ')
+        $('#appyter-action').text('Open in')
     } else {
-        $('#appyter-action').text('Start a new appyter in ')
+        $('#appyter-action').text('Start a new appyter in')
     }
 
     // Update all gene names in text
