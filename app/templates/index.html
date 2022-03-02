@@ -63,9 +63,34 @@
     </div>
     <!-- Appyter Loader -->
     <div id="results" class="row justify-content-center my-3">
+        <div class="col-2">
+            <nav id="navbar-toc"
+                 class="navbar navbar-light bg-light flex-column align-items-stretch p-3 sticky-top" style="display: none;">
+                <a class="navbar-brand" href="#">Report about the Long Non-coding RNA (lncRNA) <span class="gene-name"></span></a>
+                <nav class="nav nav-pills flex-column">
+                    <a class="nav-link" href="#item-1">Top genes and lncRNAs correlated with <span class="gene-name"></span></a>
+                    <a class="nav-link" href="#item-2">Interactive network visualization of the top 100 genes correlated with <span
+                            class="gene-name"></span></a>
+                    <a class="nav-link" href="#item-3">Predicted biological functions of <span class="gene-name"></span></a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link" href="#item-3-1">Enrichment analysis applied to the top 200 genes most correlated with <span
+                        class="gene-name"></span></a>
+                        </nav>
+                    <a class="nav-link" href="#item-4">Expression of <span class="gene-name"></span> across tissues and cell lines</a>
+                    <a class="nav-link" href="#item-5">Visualizing lncRNAs based on their gene expression similarity across tissues and cell
+                    lines</a>
+                    <a class="nav-link" href="#item-6">L1000 small molecules predicted to modulate <span class="gene-name"></span></a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link" href="#item-6-1">L1000 small molecules predicted to up-regulate <span class="gene-name"></span></a>
+                        <a class="nav-link" href="#item-6-2">L1000 small molecules predicted to down-regulate <span class="gene-name"></span></a>
+                    </nav>
+                    <a class="nav-link" href="#item-7">References</a>
+                </nav>
+            </nav>
+        </div>
         <p id="results__not-in-db" style="font-style: italic; display: none;"></p>
-        <div id="results__appyter-card" class="col card m-2" style="display: none;">
-            <div class="card-body">
+        <div id="results__appyter-card" class="col-9 card m-2" style="display: none; position: relative">
+            <div class="card-body" style="position: relative" data-bs-spy="scroll" data-bs-target="#navbar-toc">
                 <h4 class="card-title">Report about the Long Non-coding RNA (lncRNA) <span class="gene-name"></span> <a
                         class="p-1"
                         id="appyter-url"
@@ -98,7 +123,7 @@
 
                 <div class="row">
                     <div class="col-sm">
-                        <h5 class="mt-4">Top genes correlated with <span class="gene-name"></span></h5>
+                        <h5 id="item-1" class="mt-4">Top genes correlated with <span class="gene-name"></span></h5>
                         <p style="height: 5rem;">Using the loaded lncRNA-gene correlation matrix, we report the genes
                             that are most
                             correlated with <span class="gene-name"></span>.</p>
@@ -137,7 +162,7 @@
                     </div>
                 </div>
 
-                <h5 class="mt-4">Interactive network visualization of the top 100 genes correlated with <span
+                <h5 id="item-2" class="mt-4">Interactive network visualization of the top 100 genes correlated with <span
                         class="gene-name"></span></h5>
                 <p>Interactive network visualization of the top 100 genes correlated with <span
                         class="gene-name"></span>. Each node
@@ -178,7 +203,7 @@
                         href="">coexpression_network/<span
                         class="gene-name"></span>_network_edge_metadata.csv</a></p>
 
-                <h5 class="mt-4">Enrichment analysis applied to the top 200 genes most correlated with <span
+                <h5 id="item-3" class="mt-4">Enrichment analysis applied to the top 200 genes most correlated with <span
                         class="gene-name"></span></h5>
 
                 <p>The top 200 genes most correlated with <span class="gene-name"></span> are submitted to Enrichr [3-5]
@@ -190,7 +215,7 @@
                     Enrichr.</p>
 
 
-                <h5 class="mt-4">Predicted biological functions of <span class="gene-name"></span></h5>
+                <h5 id="item-3-1" class="mt-4">Predicted biological functions of <span class="gene-name"></span></h5>
                 <p>For each Enrichr library, we compute the mean Pearson correlation coefficients for each gene set by
                     averaging the
                     Pearson correlation coefficients between each gene in the gene set and <span
@@ -316,7 +341,7 @@
                     </div>
                 </div>
 
-                <h5 class="mt-4">Expression of <span class="gene-name"></span> across tissues and cell lines</h5>
+                <h5 id="item-4" class="mt-4">Expression of <span class="gene-name"></span> across tissues and cell lines</h5>
                 <p>This part of the report provides the Z-score (Normalized Median Expression) for the lncRNA <span
                         class="gene-name"></span> in various tissues and cell lines. Samples from Recount3 [2] were
                     automatically labelled by tissue type or cell line of origin. Tissue and cell line samples were log2
@@ -407,7 +432,7 @@
 
                     </div>
                 </div>
-                <h5 class="mt-4">Visualizing lncRNAs based on their gene expression similarity across tissues and cell
+                <h5 id="item-5" class="mt-4">Visualizing lncRNAs based on their gene expression similarity across tissues and cell
                     lines</h5>
                 <p>We applied UMAP [6] to visualize lncRNA expression across 3,000 randomly selected samples (with
                     tissue type
@@ -490,7 +515,7 @@
                     </div>
                 </div>
 
-                <h5 class="mt-4">L1000 small molecules predicted to modulate <span class="gene-name"></span></h5>
+                <h5 id="item-6" class="mt-4">L1000 small molecules predicted to modulate <span class="gene-name"></span></h5>
                 <p>~1.4 million Level 5 L1000 chemical perturbation gene expression signatures were downloaded from
                     SigCom LINCS
                     (https://maayanlab.cloud/sigcom-lincs) [7]. For each unique signature and lncRNA pair, a mean
@@ -507,7 +532,7 @@
                     up-regulated genes for a specific small molecule, then this small molecule is predicted to
                     up-regulate
                     <span class="gene-name"></span>.</p>
-                <h5 class="mt-4">L1000 small molecules predicted to up-Regulate <span class="gene-name"></span></h5>
+                <h5 id="item-6-1" class="mt-4">L1000 small molecules predicted to up-regulate <span class="gene-name"></span></h5>
                 <p>The prioritized small molecules below are predicted to specifically up-regulate <span
                         class="gene-name"></span>.
                 </p>
@@ -525,7 +550,7 @@
                     the lncRNA
                     <span class="gene-name"></span>.</p>
 
-                <h5 class="mt-4">L1000 small molecules predicted to down-regulate <span class="gene-name"></span></h5>
+                <h5 id="item-6-2" class="mt-4">L1000 small molecules predicted to down-regulate <span class="gene-name"></span></h5>
                 <p>The prioritized small molecules below are predicted to specifically down-regulate <span
                         class="gene-name"></span>.
                 </p>
@@ -543,7 +568,7 @@
                     <span class="gene-name"></span>.</p>
 
 
-                <h5 class="mt-4">References</h5>
+                <h5 id="item-7" class="mt-4">References</h5>
                 <p class="mb-1" style="font-size: 0.8rem;">[1] Lorenz, R., Bernhart, S.H., Höner zu Siederdissen, C. et
                     al. ViennaRNA Package 2.0. Algorithms Mol Biol 6, 26 (2011). https://doi.org/10.1186/1748-7188-6-26
                 <p class="mb-1" style="font-size: 0.8rem;">[2] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling

@@ -16,6 +16,19 @@ def route_index():
     return flask.render_template('index.html', base_path=BASE_PATH)
 
 
+@app.route(f'{ROOT_PATH}/test', methods=['GET'])
+def route_test():
+    return flask.render_template('test.html', base_path=BASE_PATH)
+
+
+@app.route(f'{ROOT_PATH}/range/<range>', methods=['GET'])
+def route_range(range):
+
+    data = {}
+    return json.dumps({'success': True, 'data': data}), 200, {'ContentType': 'application/json'}
+
+
+
 @app.route(f'{ROOT_PATH}/search/<gene>', methods=['GET'])
 def route_search(gene):
     data = {}

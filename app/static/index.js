@@ -192,6 +192,7 @@ function display_results(data) {
     $('#tab3-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_up.csv`)
     $('#tab4-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_down.csv`)
     $('#results__appyter-card').show();
+    $('#navbar-toc').show();
 }
 
 function example(gene) {
@@ -207,7 +208,15 @@ function search(gene) {
         .then(response => response.json())
         .then(r => {
             if (r.data.lncrna === true) {
+                let res_element = $('#results');
                 display_results(r.data);
+                res_element.show();
+                // Scroll to 'Results' on 'Submit' click
+                $('body').animate({
+                    scrollTop: res_element.offset().top
+                }, 300, function () {
+                    window.location.hash = '#results';
+                });
             } else {
                 $('#not-lncRNA').show()
                 $('#not-lncRNA-msg').text(`${gene} does not appear among the 15,862 processed long non-coding RNAs.`)
