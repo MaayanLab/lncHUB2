@@ -63,34 +63,34 @@
     </div>
     <!-- Appyter Loader -->
     <div id="results" class="row justify-content-center my-3">
-        <div class="col-2">
+        <div class="col-3">
             <nav id="navbar-toc"
                  class="navbar navbar-light bg-light flex-column align-items-stretch p-3 sticky-top" style="display: none;">
-                <a class="navbar-brand" href="#">Report about the Long Non-coding RNA (lncRNA) <span class="gene-name"></span></a>
                 <nav class="nav nav-pills flex-column">
+                    <a class="nav-link" href="#results__appyter-card">↑</a>
                     <a class="nav-link" href="#item-1">Top genes and lncRNAs correlated with <span class="gene-name"></span></a>
                     <a class="nav-link" href="#item-2">Interactive network visualization of the top 100 genes correlated with <span
                             class="gene-name"></span></a>
-                    <a class="nav-link" href="#item-3">Predicted biological functions of <span class="gene-name"></span></a>
-                    <nav class="nav nav-pills flex-column">
-                        <a class="nav-link" href="#item-3-1">Enrichment analysis applied to the top 200 genes most correlated with <span
+                    <a class="nav-link" href="#item-3">Enrichment analysis applied to the top 200 genes most correlated with <span
                         class="gene-name"></span></a>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ms-3 my-1" href="#item-3-1">Predicted biological functions of <span class="gene-name"></span></a>
                         </nav>
                     <a class="nav-link" href="#item-4">Expression of <span class="gene-name"></span> across tissues and cell lines</a>
                     <a class="nav-link" href="#item-5">Visualizing lncRNAs based on their gene expression similarity across tissues and cell
                     lines</a>
                     <a class="nav-link" href="#item-6">L1000 small molecules predicted to modulate <span class="gene-name"></span></a>
                     <nav class="nav nav-pills flex-column">
-                        <a class="nav-link" href="#item-6-1">L1000 small molecules predicted to up-regulate <span class="gene-name"></span></a>
-                        <a class="nav-link" href="#item-6-2">L1000 small molecules predicted to down-regulate <span class="gene-name"></span></a>
+                        <a class="nav-link ms-3 my-1" href="#item-6-1">L1000 small molecules predicted to up-regulate <span class="gene-name"></span></a>
+                        <a class="nav-link ms-3 my-1" href="#item-6-2">L1000 small molecules predicted to down-regulate <span class="gene-name"></span></a>
                     </nav>
                     <a class="nav-link" href="#item-7">References</a>
                 </nav>
             </nav>
         </div>
         <p id="results__not-in-db" style="font-style: italic; display: none;"></p>
-        <div id="results__appyter-card" class="col-9 card m-2" style="display: none; position: relative">
-            <div class="card-body" style="position: relative" data-bs-spy="scroll" data-bs-target="#navbar-toc">
+        <div id="results__appyter-card" class="col-9 card" style="display: none;">
+            <div class="card-body">
                 <h4 class="card-title">Report about the Long Non-coding RNA (lncRNA) <span class="gene-name"></span> <a
                         class="p-1"
                         id="appyter-url"
@@ -452,6 +452,7 @@
                                     data-bs-target="#fig6-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
+                            <a id="fig7-app" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                             Figure 7. UMAP
                             was applied
                             to 3,000 randomly
@@ -487,6 +488,7 @@
                                     data-bs-target="#fig7-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
+                            <a id="fig8-app" target="_blank"><i class="fas fa-external-link-alt"></i></a>
                             Figure 8. UMAP
                             was applied
                             to 3,000 randomly
