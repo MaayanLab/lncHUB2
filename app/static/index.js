@@ -203,9 +203,21 @@ function example(gene) {
 }
 
 
+function convert_coordinates(coordinates) {
+    fetch(`coordinates/${coordinates}`)
+        .then(response => response.json())
+        .then(r => {
+            let genes = r.data.map(x => `<a href="#" onclick="example('${x}');">${x}</a>`);
+            $('#coordinates-lncRNA').show()
+            $('#coordinates-lncRNA-msg').html(`${genes.join(", ")} found in this range`)
+        });
+}
+
+
 function search(gene) {
     $('#results__appyter-card').hide();
     $('#not-lncRNA').hide()
+
     fetch(`search/${gene}`)
         .then(response => response.json())
         .then(r => {
@@ -220,8 +232,19 @@ function search(gene) {
                     window.location.hash = '#results';
                 });
             } else {
-                $('#not-lncRNA').show()
-                $('#not-lncRNA-msg').text(`${gene} does not appear among the 15,862 processed long non-coding RNAs.`)
+                let chr = '';
+                if (gene.split(':').length === 2) {
+                    chr = gene.split(':')[0].slice(0, 3)
+                }
+
+                if (chr !== '') {
+                    convert_coordinates(gene);
+                }
+                else {
+                    $('#not-lncRNA').show()
+                    $('#not-lncRNA-msg').text(`${gene} does not appear among the 15,862 processed long non-coding RNAs.`)
+
+                }
             }
         });
 }

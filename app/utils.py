@@ -1,5 +1,6 @@
 import requests
 import json
+import numpy as np
 
 
 def get_appyter_id(gene):
@@ -36,6 +37,17 @@ def fetch_appyter_data(gene):
     fig6_tissue = fig6_tissues[1].split(',')[0]
     fig7_cell_line = fig7_cell_lines[1].split(',')[0]
     return {'fig6_tissue': fig6_tissue, 'fig7_cell_line': fig7_cell_line, 'enrichr': enrichr_link}
+
+
+def lnc_range(coordinates_json, input_coor):
+    chr = input_coor.split(':')[0]
+    i_start = int(input_coor.split(':')[1].split('-')[0])
+    i_end = int(input_coor.split(':')[1].split('-')[1])
+
+    chr_coor = np.array(coordinates_json[chr]['coordinates']['c'])
+    starts = chr_coor[(chr_coor >= i_start) & (chr_coor <= i_end)]
+
+    return [coordinates_json[chr]['start'][str(start)][0] for start in starts]
 
 
 if __name__ == '__main__':
