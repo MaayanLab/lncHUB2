@@ -40,6 +40,7 @@ def fetch_appyter_data(gene):
 
 
 def lnc_range(coordinates_json, input_coor):
+    input_coor = input_coor.replace(',', '')
     chr = input_coor.split(':')[0]
     i_start = int(input_coor.split(':')[1].split('-')[0])
     i_end = int(input_coor.split(':')[1].split('-')[1])
@@ -47,7 +48,7 @@ def lnc_range(coordinates_json, input_coor):
     chr_coor = np.array(coordinates_json[chr]['coordinates']['c'])
     starts = chr_coor[(chr_coor >= i_start) & (chr_coor <= i_end)]
 
-    return [coordinates_json[chr]['start'][str(start)][0] for start in starts]
+    return list(set(coordinates_json[chr]['start'][str(start)][0] for start in starts))
 
 
 if __name__ == '__main__':
