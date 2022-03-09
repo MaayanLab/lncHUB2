@@ -9,6 +9,7 @@ BASE_PATH = os.environ.get('BASE_PATH', 'maayanlab.cloud')
 app = flask.Flask(__name__, static_url_path=ROOT_PATH + 'static')
 lncrns = json.load(open(os.path.join(app.static_folder, "lncrna_mapping.json")))
 lnc_coordinates = json.load(open(os.path.join(app.static_folder, "lncrna_coordinates.json")))
+lnc_coordinates_mapping = json.load(open(os.path.join(app.static_folder, "lncrna_coordinates_mapping.json")))
 gene_struct_mapping = json.load(open(os.path.join(app.static_folder, "ss_mapping.json")))
 
 
@@ -26,6 +27,11 @@ def route_test():
 def route_range(coordinates):
     data = utils.lnc_range(lnc_coordinates, coordinates)
     return json.dumps({'success': True, 'data': data}), 200, {'ContentType': 'application/json'}
+
+
+@app.route(f'{ROOT_PATH}/gene/<gene>', methods=['GET'])
+def route_gene(gene):
+    return json.dumps({'success': True, 'data': lnc_coordinates_mapping[gene]}), 200, {'ContentType': 'application/json'}
 
 
 @app.route(f'{ROOT_PATH}/search/<gene>', methods=['GET'])

@@ -207,9 +207,17 @@ function convert_coordinates(coordinates) {
     fetch(`coordinates/${coordinates}`)
         .then(response => response.json())
         .then(r => {
-            let genes = r.data.map(x => `<a href="#" onclick="example('${x}');">${x}</a>`);
-            $('#coordinates-lncRNA').show()
-            $('#coordinates-lncRNA-msg').html(`${genes.join(", ")} found in this range`)
+            if (r.data.length === 0) {
+                $('#coordinates-lncRNA').show()
+                $('#coordinates-lncRNA-msg').text('This range doesn\'t have any lncRNAs.')
+            } else if (r.data.length <= 5) {
+                let genes = r.data.map(x => `<a href="#" onclick="example('${x}');">${x}</a>`);
+                $('#coordinates-lncRNA').show()
+                $('#coordinates-lncRNA-msg').html(`${genes.join(", ")} found in this range.`)
+            } else {
+                $('#coordinates-lncRNA').show()
+                $('#coordinates-lncRNA-msg').text('This coordinates range contains at least five lncRNAs. Consider reducing it.')
+            }
         });
 }
 
@@ -217,11 +225,22 @@ function convert_coordinates(coordinates) {
 function search(gene) {
     $('#results__appyter-card').hide();
     $('#not-lncRNA').hide()
+    $('#coordinates-lncRNA').hide()
 
     fetch(`search/${gene}`)
         .then(response => response.json())
         .then(r => {
             if (r.data.lncrna === true) {
+
+                fetch(`gene/${gene}`)
+                    .then(response => response.json())
+                    .then(r => {
+                        let d = r.data;
+                        let start = d.start, end = d.end, chr = d.chr;
+                        $('#lncrn-coor').text(`${chr}:${start}-${end}`)
+                        $('#ucsc-url').attr('href', `https://genome.ucsc.edu/cgi-bin/hgTracks?db=hg38&lastVirtModeType=default&lastVirtModeExtraState=&virtModeType=default&virtMode=0&nonVirtPosition=&position=${chr}%3A${start}-${end}`)
+                    })
+
                 let res_element = $('#results');
                 display_results(r.data);
                 res_element.show();
@@ -239,8 +258,7 @@ function search(gene) {
 
                 if (chr !== '') {
                     convert_coordinates(gene);
-                }
-                else {
+                } else {
                     $('#not-lncRNA').show()
                     $('#not-lncRNA-msg').text(`${gene} does not appear among the 15,862 processed long non-coding RNAs.`)
 
@@ -299,8 +317,7 @@ function search(gene) {
         events: {
             input: {
                 selection: (event) => {
-                    const selection = event.detail.selection.value;
-                    autoCompleteJS.input.value = selection;
+                    autoCompleteJS.input.value = event.detail.selection.value;
                     search(event.detail.selection.value);
                 }
             }
