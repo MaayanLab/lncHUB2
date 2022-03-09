@@ -204,6 +204,7 @@ function example(gene) {
 
 
 function convert_coordinates(coordinates) {
+    $('#navbar-toc').hide();
     fetch(`coordinates/${coordinates}`)
         .then(response => response.json())
         .then(r => {
