@@ -1,4 +1,94 @@
-function draw_tables(gene) {
+function draw_tables(gene, appyter_id) {
+    fetch(`https://appyters.maayanlab.cloud/lncHUB2/${appyter_id}/gene_info/${gene}_gene_coordinates.csv`)
+        .then(response => {
+            return {ok: response.ok, text: response.text()}
+        })
+        .then(async data => {
+            if (data.ok) {
+                let text = await data.text;
+                let dataSet = text.trim().split('\n').slice(1, 101).map(x => {
+                    let s = x.split(',');
+                    // return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseInt(s[7]), s[8], `${s[12]}:${s[9]}-${s[10]}`, s[11]]
+                    return [s[4], s[5], s[6], parseInt(s[7]), s[8], `${s[12]}:${s[9]}-${s[10]}`, s[11]]
+
+                });
+
+                $('#table-coordinates').DataTable(
+                    {
+                        data: dataSet,
+                        destroy: true,
+                        responsive: true,
+                        order: [],
+                        columns: [
+                            // {'title': ''},
+                            // {'title': 'Gene name'},
+                            // {'title': 'Ensembl gene id'},
+                            // {'title': 'HGNC id'},
+                            {'title': 'Type'},
+                            {'title': 'Transcript name'},
+                            {'title': 'Ensembl transcript id'},
+                            {'title': 'Exon number'},
+                            {'title': 'Ensembl exon id'},
+                            {'title': 'Coordinates'},
+                            {'title': 'Strand'}]
+                    })
+            }
+        })
+
+    fetch(`https://appyters.maayanlab.cloud/lncHUB2/${appyter_id}/gene_info/${gene}_canonical_sequence.csv`)
+        .then(response => {
+            return {ok: response.ok, text: response.text()}
+        })
+        .then(async data => {
+            if (data.ok) {
+                let text = await data.text;
+                let dataSet = text.trim().split('\n').slice(1, 10).map(x => {
+                    let s = x.split(',');
+                    return [s[2], s[3], s[5]]
+                });
+
+                $('#table-transc-can').DataTable(
+                    {
+                        data: dataSet,
+                        destroy: true,
+                        responsive: true,
+                        order: [],
+                        columns: [
+                            {'title': 'Ensembl transcript id'},
+                            {'title': 'Description'},
+                            {'title': 'Sequence'},
+                        ]
+                    })
+            }
+        })
+
+    fetch(`https://appyters.maayanlab.cloud/lncHUB2/${appyter_id}/gene_info/${gene}_alternative_sequence.csv`)
+        .then(response => {
+            return {ok: response.ok, text: response.text()}
+        })
+        .then(async data => {
+            if (data.ok) {
+                let text = await data.text;
+                let dataSet = text.trim().split('\n').slice(1, 10).map(x => {
+                    let s = x.split(',');
+                    return [s[2], s[3], s[5]]
+                });
+
+                $('#table-transc-alt').DataTable(
+                    {
+                        data: dataSet,
+                        destroy: true,
+                        responsive: true,
+                        order: [],
+                        columns: [
+                            {'title': 'Ensembl transcript id'},
+                            {'title': 'Description'},
+                            {'title': 'Sequence'},
+                        ]
+                    })
+            }
+        })
+
     $('#table1-blank').hide()
     fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_correlated_genes.csv`)
         .then(response => {
@@ -140,17 +230,24 @@ function display_results(data) {
     $("span.gene-name").each(function (element) {
         $(this).text(data.gene)
     });
-    draw_tables(data.gene)
+    draw_tables(data.gene, data.appyter_id)
     $('#struct-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/secondary_structure/${data.fig_data.structure}`)
     $('#struct-img').attr('alt', `Predicted secondary structure of ${data.gene}.`)
     $('#struct-img-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/secondary_structure/${data.fig_data.structure}`)
-    $('#appyter-url').attr('href', `https://appyters.maayanlab.cloud/lncRNA_Appyter/${data.appyter_id}`)
-    $('#tab1-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/gene_correlations/${data.gene}_correlated_genes.csv`)
+    $('#appyter-url').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}`)
+    $('#tab-coord-down').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/gene_info/${data.gene}_gene_coordinates.csv`)
+    $('#table-transc-can-down').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/gene_info/${data.gene}_canonical_sequence.csv`)
+    $('#table-transc-alt-down').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/gene_info/${data.gene}_alternative_sequence.csv`)
     $('#tab2-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/gene_correlations/${data.gene}_correlated_lncRNAs.csv`)
     $('#appyter-fig1-net').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network.html`)
     $('#appyter-fig1-node-meta').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network_node_metadata.csv`)
     $('#appyter-fig1-edge-meta').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network_edge_metadata.csv`)
     $('#appyter-enrichr-url').attr('href', data.fig_data.enrichr)
+    $('#fig-pub-img').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.png`)
+    $('#fig-pub-down-png').attr('src', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.png`)
+    $('#fig-pub-down-pdf').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.pdf`)
+    $('#fig-pub-down-svg').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.svg`)
+    $('#fig-pub-down-csv').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.csv`)
     $('#fig2-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure2.png`)
     $('#fig2-img').attr('alt', `Figure 2. Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
     $('#fig2-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure2.png`)
@@ -183,12 +280,12 @@ function display_results(data) {
     $('#fig7-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/cell_lines/figures/static/${data.gene}_${data.fig_data.fig7_cell_line}_rank1.png`)
     $('#fig7-mod-title').text(`Figure 8. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig7_cell_line}.`)
     $('#fig7-cell').text(data.fig_data.fig7_cell_line)
-    $('#fig7-app').attr('href', `https://appyters.maayanlab.cloud/lncRNA_Appyter/${data.appyter_id}/#visualizing-all-lncrnas-based-on-their-gene-expression-similarity-across-tissues`)
+    $('#fig7-app').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/#visualizing-all-lncrnas-based-on-their-gene-expression-similarity-across-tissues`)
     $('#fig8-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure4.png`)
     $('#fig8-img').attr('alt', `Figure 4. Predicted transcription factors from ChEA 2016 and ENCODE ChIP-seq 2015 libraries for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
     $('#fig8-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure4.png`)
     $('#fig8-mod-title').text(`Figure 4. Predicted transcription factors from ChEA 2016 and ENCODE ChIP-seq 2015 libraries for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
-    $('#fig8-app').attr('href', `https://appyters.maayanlab.cloud/lncRNA_Appyter/${data.appyter_id}/#visualizing-all-lncrnas-based-on-their-gene-expression-similarity-across-cell-lines`)
+    $('#fig8-app').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/#visualizing-all-lncrnas-based-on-their-gene-expression-similarity-across-cell-lines`)
     $('#fig8-down1').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/ChEA_${data.gene}.csv`)
     $('#fig8-down2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/ENCODE_${data.gene}.csv`)
     $('#tab3-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_up.csv`)

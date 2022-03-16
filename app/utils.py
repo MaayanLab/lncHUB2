@@ -4,7 +4,7 @@ import numpy as np
 
 
 def get_appyter_id(gene):
-    url = "https://appyters.maayanlab.cloud/lncRNA_Appyter/"
+    url = "https://appyters.maayanlab.cloud/lncHUB2/"
 
     payload = json.dumps({
         "gene": gene,
@@ -20,7 +20,7 @@ def get_appyter_id(gene):
 
 
 def check_status(appyter_id, gene):
-    url = f'https://appyters.maayanlab.cloud/lncRNA_Appyter/{appyter_id}/l1000_sm_predictions/{gene}_l1000_sm_predictions_down.csv'
+    url = f'https://appyters.maayanlab.cloud/lncHUB2/{appyter_id}/l1000_sm_predictions/{gene}_l1000_sm_predictions_down.csv'
     response = requests.get(url)
     return True if response.status_code == 200 else False
 

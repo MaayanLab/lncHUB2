@@ -1,3 +1,11 @@
 .dataTables_wrapper {
     font-size: 0.85rem;
 }
+
+.format-download {
+    text-decoration: none !important;
+    border: 1px solid #0d6efd;
+    border-radius: 4px;
+    padding-right: 7px;
+    padding-left: 7px;
+}
