@@ -8,4 +8,11 @@
     border-radius: 4px;
     padding-right: 7px;
     padding-left: 7px;
+    font-style: normal;
+    font-size: 0.7rem;
+}
+
+.cp-btn {
+    border: none;
+    background: white;
 }

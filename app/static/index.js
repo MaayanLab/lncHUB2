@@ -1,3 +1,28 @@
+function copy_to_clipboard(text) {
+    navigator.clipboard.writeText(text).then(function () {
+        console.log('Async: Copying to clipboard was successful!');
+    }, function (err) {
+        console.error('Async: Could not copy text: ', err);
+    });
+}
+
+function fill_enrichment(gene, appyter_id) {
+    for (const d of ['positively', 'negatively']) {
+        for (const n of [25, 50, 100, 200, 300, 500]) {
+        fetch(`https://appyters.maayanlab.cloud/lncHUB2/${appyter_id}/enrichment_analysis/${gene}_top_${n}_${d}_correlated_genes_Enrichr_link.txt`)
+        .then(response => {
+            return {ok: response.ok, text: response.text()}
+        })
+        .then(async data => {
+            if (data.ok) {
+                let link = await data.text;
+                $(`#enr${n}-${d[0]}`).attr('href', link)
+            }
+        })
+        }
+    }
+}
+
 function draw_tables(gene, appyter_id) {
     fetch(`https://appyters.maayanlab.cloud/lncHUB2/${appyter_id}/gene_info/${gene}_gene_coordinates.csv`)
         .then(response => {
@@ -44,7 +69,7 @@ function draw_tables(gene, appyter_id) {
                 let text = await data.text;
                 let dataSet = text.trim().split('\n').slice(1, 10).map(x => {
                     let s = x.split(',');
-                    return [s[2], s[3], s[5]]
+                    return [s[2], s[3].split(' ').join('; '), `<button class="cp-btn" onclick="copy_to_clipboard('${s[5]}')"><i class="fas fa-copy"></i></button>`]
                 });
 
                 $('#table-transc-can').DataTable(
@@ -56,7 +81,7 @@ function draw_tables(gene, appyter_id) {
                         columns: [
                             {'title': 'Ensembl transcript id'},
                             {'title': 'Description'},
-                            {'title': 'Sequence'},
+                            {'title': 'Copy sequence to clipboard'},
                         ]
                     })
             }
@@ -71,7 +96,7 @@ function draw_tables(gene, appyter_id) {
                 let text = await data.text;
                 let dataSet = text.trim().split('\n').slice(1, 10).map(x => {
                     let s = x.split(',');
-                    return [s[2], s[3], s[5]]
+                    return [s[2], s[3].split(' ').join('; '), `<button class="cp-btn" onclick="copy_to_clipboard('${s[5]}')"><i class="fas fa-copy"></i></button>`]
                 });
 
                 $('#table-transc-alt').DataTable(
@@ -83,7 +108,7 @@ function draw_tables(gene, appyter_id) {
                         columns: [
                             {'title': 'Ensembl transcript id'},
                             {'title': 'Description'},
-                            {'title': 'Sequence'},
+                            {'title': 'Copy sequence to clipboard'},
                         ]
                     })
             }
@@ -231,6 +256,7 @@ function display_results(data) {
         $(this).text(data.gene)
     });
     draw_tables(data.gene, data.appyter_id)
+    fill_enrichment(data.gene, data.appyter_id)
     $('#struct-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/secondary_structure/${data.fig_data.structure}`)
     $('#struct-img').attr('alt', `Predicted secondary structure of ${data.gene}.`)
     $('#struct-img-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/secondary_structure/${data.fig_data.structure}`)
@@ -242,9 +268,9 @@ function display_results(data) {
     $('#appyter-fig1-net').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network.html`)
     $('#appyter-fig1-node-meta').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network_node_metadata.csv`)
     $('#appyter-fig1-edge-meta').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network_edge_metadata.csv`)
-    $('#appyter-enrichr-url').attr('href', data.fig_data.enrichr)
-    $('#fig-pub-img').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.png`)
-    $('#fig-pub-down-png').attr('src', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.png`)
+    // $('#appyter-enrichr-url').attr('href', data.fig_data.enrichr)
+    $('#fig-pub-img').attr('src', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.png`)
+    $('#fig-pub-down-png').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.png`)
     $('#fig-pub-down-pdf').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.pdf`)
     $('#fig-pub-down-svg').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.svg`)
     $('#fig-pub-down-csv').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.csv`)
@@ -290,6 +316,9 @@ function display_results(data) {
     $('#fig8-down2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/ENCODE_${data.gene}.csv`)
     $('#tab3-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_up.csv`)
     $('#tab4-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_down.csv`)
+
+
+
     $('#results__appyter-card').show();
     $('#navbar-toc').show();
 }

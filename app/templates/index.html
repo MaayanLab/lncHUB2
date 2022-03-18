@@ -47,7 +47,7 @@
                 </button>
             </div>
             <p class="small text-muted">For example <a href="#" onclick="example('HOTAIR');">HOTAIR</a>, <a href="#"
-                                                             onclick="example('MALAT1');">MALAT1</a>,
+                                                                                                            onclick="example('MALAT1');">MALAT1</a>,
                 <a href="#" onclick="example('ENSG00000245532');">ENSG00000245532</a>, <a href="#"
                                                                                           onclick="example('chr7:27,198,574-27,207,260');">chr7:27,198,574-27,207,260</a>
             </p>
@@ -138,8 +138,8 @@
                                      style="border: 0.25px solid darkgray; border-radius: 4px;">
                                 <p id="struct-desc" style="font-size: 0.8rem; font-style: italic;"><a
                                         id="struct-img-down"
-                                        href=""><i
-                                        class="fas fa-file-download"></i></a> Secondary structure of <span
+                                        class="format-download"
+                                        href="">PNG</a> Secondary structure of <span
                                         class="gene-name"></span> predicted with RNAfold [1].</p>
                             </div>
                         </div>
@@ -149,11 +149,11 @@
                                 <p>The genomic coordinates for <span class="gene-name"></span> are provided from GENCODE
                                     (gencode.v38.long_noncoding_RNAs.gtf)[1].</p>
                                 <table id="table-coordinates" class="compact hover order-column row-border"
-                                   style="width:100%"></table>
+                                       style="width:100%"></table>
                                 <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
                                         id="tab-coord-down"
-                                        href=""><i
-                                        class="fas fa-file-download"></i></a> Table 1. Genomic coordinates for <span
+                                        class="format-download"
+                                        href="">CSV</a> Table 1. Genomic coordinates for <span
                                         class="gene-name"></span>.</p>
                             </div>
                         </div>
@@ -164,19 +164,19 @@
                                     provided from Ensembl (Homo_sapiens.GRCh38.ncrna.fa)[2].</p>
 
                                 <table id="table-transc-can" class="compact hover order-column row-border"
-                                   style="width:100%"></table>
+                                       style="width:100%"></table>
                                 <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
                                         id="table-transc-can-down"
-                                        href=""><i
-                                        class="fas fa-file-download"></i></a> Table 2. Canonical transcript sequence for
+                                        class="format-download"
+                                        href="">CSV</a> Table 2. Canonical transcript sequence for
                                     <span
                                             class="gene-name"></span>.</p>
                                 <table id="table-transc-alt" class="compact hover order-column row-border"
-                                   style="width:100%"></table>
+                                       style="width:100%"></table>
                                 <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
                                         id="table-transc-alt-down"
-                                        href=""><i
-                                        class="fas fa-file-download"></i></a> Table 3. Alternative transcript
+                                        class="format-download"
+                                        href="">CSV</a> Table 3. Alternative transcript
                                     sequence(s) for <span
                                             class="gene-name"></span>.</p>
                             </div>
@@ -190,12 +190,17 @@
                                     GENCODE[1], and any previous symbols found in the HGNC database[3] along with the
                                     terms ‘lncRNA’ or ‘long non-coding RNA’ were used to query PubMed (e.g.,
                                     “(ENSG00000228630 OR HOTAIR) AND (lncRNA OR long non-coding RNA)”)</p>
-                                                        <img id="fig-pub-img" src=""
-                             class="img-fluid p-3 bg-light"
-                             alt="">
-                                <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"> Figure 1. Publications mentioning the lncRNA <span class="gene-name"></span>. 1102 total publications mentioned <span class="gene-name"></span> from 1992 to 2021<span
-                                        class="gene-name"></span>.</p>
-                                <p class="mb-2 small"><a id="fig-pub-down-png" class="format-download" href="">PNG</a> <a id="fig-pub-down-svg" class="format-download" href="">SVG</a> <a id="fig-pub-down-pdf" class="format-download" href="">PDF</a> <a id="fig-pub-down-csv" class="format-download" href="">CSV</a></p>
+                                <img id="fig-pub-img" src=""
+                                     class="img-fluid p-3 bg-light"
+                                     alt="" style="width: 600px;">
+                                <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"> Figure 1. Publications
+                                    mentioning the lncRNA <span class="gene-name"></span>. 1102 total publications
+                                    mentioned <span class="gene-name"></span> from 1992 to 2021 <span
+                                            class="gene-name"></span>.</p>
+                                <p class="mb-2 small"><a id="fig-pub-down-png" class="format-download" href="">PNG</a>
+                                    <a id="fig-pub-down-svg" class="format-download" href="">SVG</a> <a
+                                            id="fig-pub-down-pdf" class="format-download" href="">PDF</a> <a
+                                            id="fig-pub-down-csv" class="format-download" href="">CSV</a></p>
 
                             </div>
                         </div>
@@ -215,9 +220,8 @@
                                    style="width:100%"></table>
                         </div>
                         <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
-                                id="tab1-down"
-                                href=""><i
-                                class="fas fa-file-download"></i></a> Table 1. The Top 20 genes correlated with <span
+                                id="tab1-down" class="format-download"
+                                href="">CVS</i></a> Table 4. Top 20 genes correlated with <span
                                 class="gene-name"></span> ranked by
                             Pearson’s correlation coefficients.</p>
                     </div>
@@ -234,9 +238,8 @@
                                    style="width:100%"></table>
                         </div>
                         <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
-                                id="tab2-down"
-                                href=""><i
-                                class="fas fa-file-download"></i></a> Table 2. Top 20 lncRNAs that correlate most with
+                                id="tab2-down" class="format-download"
+                                href="">CSV</a> Table 5. Top 20 lncRNAs that correlate most with
                             <span
                                     class="gene-name"></span> ranked by
                             Pearson correlation coefficients.</p>
@@ -293,8 +296,56 @@
                     enrichment analysis. NOTE: Only genes with official Entrez gene symbols are submitted to Enrichr.
                     Ensembl IDs
                     that do not map to an official gene symbol were dropped.</p>
-                <p><a id="appyter-enrichr-url" href="" target="_blank">Access the enrichment analysis results</a> at
-                    Enrichr.</p>
+                <h6>Enrichment analysis results for genes correlated with <span class="gene-name"></span></h6>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Number of genes</th>
+                        <th scope="col">Positively</th>
+                        <th scope="col">Negatively</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">25</th>
+                        <td><a id="enr25-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
+                        <td><a id="enr25-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">50</th>
+                        <td><a id="enr50-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
+                        <td><a id="enr50-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">100</th>
+                        <td><a id="enr100-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        </td>
+                        <td><a id="enr100-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">200</th>
+                        <td><a id="enr200-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        </td>
+                        <td><a id="enr200-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">300</th>
+                        <td><a id="enr300-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        </td>
+                        <td><a id="enr300-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">500</th>
+                        <td><a id="enr500-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        </td>
+                        <td><a id="enr500-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
 
 
                 <h5 id="item-3-1" class="mt-4">Predicted biological functions of <span class="gene-name"></span></h5>
@@ -316,16 +367,14 @@
                                     data-bs-target="#fig2-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 2. Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA
+                            Figure 2. Predicted MGI Mammalian Phenotypes Level 4 2021 <a id="fig2-down1"
+                                                                                         class="format-download"
+                                                                                         href="">CSV</a> and GO
+                            Biological Process 2021 <a id="fig2-down2" class="format-download" href="">CSV</a> for the
+                            lncRNA
                             <span class="gene-name"></span>. Terms are ranked by averaging the Pearson correlation
                             coefficients between each gene in a gene set and <span class="gene-name"></span>.
                         </p>
-                        <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig2-down1"
-                                                                                           href="">predicted_functions/MGI
-                            Mammalian Phenotype Level 4 2021_<span class="gene-name"></span>.csv</a></p>
-                        <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig2-down2"
-                                                                                           href="">predicted_functions/GO
-                            Biological Process 2021_<span class="gene-name"></span>.csv</a></p>
                         <div class="modal fade" id="fig2-mod" tabindex="-1" aria-labelledby="fig2-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -354,16 +403,13 @@
                                     data-bs-target="#fig3-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 3. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA <span
-                                class="gene-name"></span>. Terms are ranked by averaging the Pearson correlation
+                            Figure 3. Predicted KEGG 2021 Human <a id="fig3-down1" class="format-download"
+                                                                   href="">CSV</a> pathways and DisGeNET <a
+                                id="fig3-down2" class="format-download" href="">CSV</a> disease terms for the lncRNA
+                            <span
+                                    class="gene-name"></span>. Terms are ranked by averaging the Pearson correlation
                             coefficients between each gene in a gene set and <span class="gene-name"></span>.
                         </p>
-                        <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig3-down1"
-                                                                                           href="">predicted_functions/KEGG
-                            2021 Human_<span class="gene-name"></span>.csv</a></p>
-                        <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig3-down2"
-                                                                                           href="">predicted_functions/DisGeNET_<span
-                                class="gene-name"></span>.csv</a></p>
                         <div class="modal fade" id="fig3-mod" tabindex="-1" aria-labelledby="fig3-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -393,16 +439,13 @@
                                     data-bs-target="#fig8-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 4. Predicted transcription factors from ChEA 2016 and ENCODE ChIP-seq 2015 libraries
+                            Figure 4. Predicted transcription factors from ChEA 2016 <a id="fig8-down1"
+                                                                                        class="format-download" href="">CSV</a>
+                            and ENCODE ChIP-seq 2015 <a id="fig8-down2" class="format-download" href="">CSV</a>
+                            libraries
                             for the lncRNA <span class="gene-name"></span>. Terms are ranked by averaging the Pearson
                             correlation coefficients between each gene in a gene set and <span class="gene-name"></span>.
                         </p>
-                        <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig8-down1"
-                                                                                           href="">predicted_functions/ChEA_<span
-                                class="gene-name"></span>.csv</a></p>
-                        <p class="mb-2" style="font-size: 0.8rem">Download predictions: <a id="fig8-down2"
-                                                                                           href="">predicted_functions/ENCODE_<span
-                                class="gene-name"></span>.csv</a></p>
                         <div class="modal fade" id="fig8-mod" tabindex="-1" aria-labelledby="fig8-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -453,8 +496,7 @@
                         <p class="mb-2" style="font-size: 0.8rem">Download table with z-score (median expression) values
                             for <span
                                     class="gene-name"></span>
-                            in various tissue types: <a id="fig4-down" href="">tissue_and_cell_line_expression/<span
-                                    class="gene-name"></span>_tissue_zscore.csv</a></p>
+                            in various tissue types: <a id="fig4-down" class="format-download" href="">CSV</a></p>
                         <div class="modal fade" id="fig4-mod" tabindex="-1" aria-labelledby="fig4-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -492,9 +534,8 @@
                         <p class="mb-2" style="font-size: 0.8rem">Download table with z-score (median expression) values
                             for <span
                                     class="gene-name"></span>
-                            in various cell lines: <a id="fig5-down"
-                                                      href="">tissue_and_cell_line_expression/<span
-                                    class="gene-name"></span>_cell_line_zscore.csv</a></p>
+                            in various cell lines: <a id="fig5-down" class="format-download"
+                                                      href="">CSV</a></p>
                         <div class="modal fade" id="fig5-mod" tabindex="-1" aria-labelledby="fig5-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
@@ -632,9 +673,9 @@
                            style="width:100%"></table>
                 </div>
 
-                <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a id="tab3-down"
-                                                                                  href=""><i
-                        class="fas fa-file-download"></i></a> Table 3. L1000 small molecules predicted to up-regulate
+                <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a id="tab3-down" class="format-download"
+                                                                                  href="">CSV</a> Table 6. L1000 small
+                    molecules predicted to up-regulate
                     the lncRNA
                     <span class="gene-name"></span>.</p>
 
@@ -650,9 +691,9 @@
                     <table id="table4" class="compact hover order-column row-border"
                            style="width:100%"></table>
                 </div>
-                <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a id="tab4-down"
-                                                                                  href=""><i
-                        class="fas fa-file-download"></i></a> Table 4. L1000 small molecules predicted to down-regulate
+                <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a id="tab4-down" class="format-download"
+                                                                                  href="">CSV</a> Table 7. L1000 small
+                    molecules predicted to down-regulate
                     the lncRNA
                     <span class="gene-name"></span>.</p>
 
