@@ -139,7 +139,10 @@
                                 <p id="struct-desc" style="font-size: 0.8rem; font-style: italic;"><a
                                         id="struct-img-down"
                                         class="format-download"
-                                        href="">PNG</a> Secondary structure of <span
+                                        href="">PNG</a> <a
+                                        id="struct-img-down-ps"
+                                        class="format-download"
+                                        href="">PS</a> Secondary structure of <span
                                         class="gene-name"></span> predicted with RNAfold [1].</p>
                             </div>
                         </div>
@@ -209,24 +212,43 @@
 
                 <div class="row">
                     <div class="col-sm">
-                        <h5 id="item-1" class="mt-4">Top genes correlated with <span class="gene-name"></span></h5>
+                        <h5 class="mt-4">Top genes positevely correlated with <span class="gene-name"></span></h5>
                         <p style="height: 5rem;">Using the loaded lncRNA-gene correlation matrix, we report the genes
                             that are most
                             correlated with <span class="gene-name"></span>.</p>
                         <div class="table-responsive-sm">
-                            <p id="table-blank1" style="display: none; font-style: italic;">There are no lncRNAs
+                            <p id="table-blank1p" style="display: none; font-style: italic;">There are no lncRNAs
                                 correlated with <span class="gene-name"></span>.</p>
-                            <table id="table1" class="compact hover order-column row-border"
+                            <table id="table1p" class="compact hover order-column row-border"
                                    style="width:100%"></table>
                         </div>
                         <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
-                                id="tab1-down" class="format-download"
-                                href="">CVS</i></a> Table 4. Top 20 genes correlated with <span
+                                id="tab1p-down" class="format-download"
+                                href="">CSV</i></a> Table 4a. Top 20 genes positevely correlated with <span
                                 class="gene-name"></span> ranked by
                             Pearson’s correlation coefficients.</p>
                     </div>
                     <div class="col-sm">
-                        <h5 class="mt-4">Top lncRNAs correlated with <span class="gene-name"></span></h5>
+                        <h5 class="mt-4">Top genes negatively correlated with <span class="gene-name"></span></h5>
+                        <p style="height: 5rem;">Using the loaded lncRNA-gene correlation matrix, we report the genes
+                            that are most
+                            correlated with <span class="gene-name"></span>.</p>
+                        <div class="table-responsive-sm">
+                            <p id="table-blank1n" style="display: none; font-style: italic;">There are no lncRNAs
+                                correlated with <span class="gene-name"></span>.</p>
+                            <table id="table1n" class="compact hover order-column row-border"
+                                   style="width:100%"></table>
+                        </div>
+                        <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
+                                id="tab1n-down" class="format-download"
+                                href="">CSV</i></a> Table 4b. Top 20 genes negatively correlated with <span
+                                class="gene-name"></span> ranked by
+                            Pearson’s correlation coefficients.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-sm-6">
+                        <h5 class="mt-4">Top lncRNAs positevely correlated with <span class="gene-name"></span></h5>
                         <p style="height: 5rem;">Below we list the top 20 lncRNAs, out of all 15,862 lncRNAs within our
                             database,
                             that correlate most with
@@ -244,6 +266,7 @@
                                     class="gene-name"></span> ranked by
                             Pearson correlation coefficients.</p>
                     </div>
+
                 </div>
 
                 <h5 id="item-2" class="mt-4">Interactive network visualization of the top 100 genes correlated with
@@ -275,18 +298,13 @@
 
                 <p class="mb-2" style="font-size: 0.8rem">Download interactive network
                     visualization of the
-                    top 100 genes correlated with <span class="gene-name"></span>: <a
-                            id="appyter-fig1-net"
-                            href="">coexpression_network/<span
-                            class="gene-name"></span>_network.html</a></p>
-                <p class="mb-2" style="font-size: 0.8rem">Download Node metadata: <a
-                        id="appyter-fig1-node-meta"
-                        href="">coexpression_network/<span
-                        class="gene-name"></span>_network_node_metadata.csv</a></p>
-                <p class="mb-2" style="font-size: 0.8rem">Download Edge metadata: <a
-                        id="appyter-fig1-edge-meta"
-                        href="">coexpression_network/<span
-                        class="gene-name"></span>_network_edge_metadata.csv</a></p>
+                    top 100 genes correlated with <span class="gene-name"></span> <a
+                            id="appyter-fig1-net" class="format-download"
+                            href="">HTML</a>, node metadata <a
+                            id="appyter-fig1-node-meta" class="format-download"
+                            href="">CSV</a>, edge metadata <a
+                            id="appyter-fig1-edge-meta" class="format-download"
+                            href="">CSV</a>.</p>
 
                 <h5 id="item-3" class="mt-4">Enrichment analysis applied to the top 200 genes most correlated with <span
                         class="gene-name"></span></h5>
@@ -347,7 +365,6 @@
                     </tbody>
                 </table>
 
-
                 <h5 id="item-3-1" class="mt-4">Predicted biological functions of <span class="gene-name"></span></h5>
                 <p>For each Enrichr library, we compute the mean Pearson correlation coefficients for each gene set by
                     averaging the
@@ -360,22 +377,27 @@
 
                 <div class="row">
                     <div class="col-sm">
-                        <img id="fig2-img" src="" class="img-fluid p-3 bg-light" alt="">
-                        <p id="fig2-desc" style="font-size: 0.8rem; font-style: italic;"
+                        <img id="fig-mgi-go-r-img" src="" class="img-fluid p-3 bg-light" alt="">
+                        <p id="fig-mgi-go-r-desc" style="font-size: 0.8rem; font-style: italic;"
                            class="mb-2 px-3 pb-2 bg-light">
                             <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
-                                    data-bs-target="#fig2-mod">
+                                    data-bs-target="#fig-mgi-go-r-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 2. Predicted MGI Mammalian Phenotypes Level 4 2021 <a id="fig2-down1"
-                                                                                         class="format-download"
-                                                                                         href="">CSV</a> and GO
-                            Biological Process 2021 <a id="fig2-down2" class="format-download" href="">CSV</a> for the
-                            lncRNA
-                            <span class="gene-name"></span>. Terms are ranked by averaging the Pearson correlation
-                            coefficients between each gene in a gene set and <span class="gene-name"></span>.
+                            <a id="fig-mgi-go-r-img-png" href="" class="format-download">PNG</a>
+                            <a id="fig-mgi-go-r-img-svg" href="" class="format-download">SVG</a>
+                            <a id="fig-mgi-go-r-img-pdf" href="" class="format-download">PDF</a>
+                            Figure 3a. Predicted MGI Mammalian Phenotypes Level 4 2021 <a id="fig-mgi-go-r-down1"
+                                                                                          class="format-download"
+                                                                                          href="">CSV</a> and GO
+                            Biological Process 2021 <a id="fig-mgi-go-r-down2" class="format-download" href="">CSV</a>
+                            for the lncRNA <span class="gene-name"></span>. Terms are ranked
+                            by the right-tailed p-value for the mean Pearson correlation coefficient calculated between
+                            each gene set and
+                            <span class="gene-name"></span>.
                         </p>
-                        <div class="modal fade" id="fig2-mod" tabindex="-1" aria-labelledby="fig2-mod-title"
+                        <div class="modal fade" id="fig-mgi-go-r-mod" tabindex="-1"
+                             aria-labelledby="fig-mgi-go-r-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
@@ -384,69 +406,37 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <img id="fig2-mod-img" src="" class="img-fluid" alt="">
+                                        <img id="fig-mgi-go-r-mod-img" src="" class="img-fluid" alt="">
                                     </div>
                                     <div class="modal-footer">
-                                        <p class="modal-title" id="fig2-mod-title"></p>
+                                        <p class="modal-title" id="fig-mgi-go-r-mod-title"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm">
-                        <img id="fig3-img" src=""
-                             class="img-fluid p-3 bg-light"
-                             alt="">
-                        <p style="font-size: 0.8rem; font-style: italic;" class="mb-2 px-3 pb-2 bg-light">
-                            <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
-                                    data-bs-target="#fig3-mod">
-                                <i class="fas fa-expand-arrows-alt"></i>
-                            </button>
-                            Figure 3. Predicted KEGG 2021 Human <a id="fig3-down1" class="format-download"
-                                                                   href="">CSV</a> pathways and DisGeNET <a
-                                id="fig3-down2" class="format-download" href="">CSV</a> disease terms for the lncRNA
-                            <span
-                                    class="gene-name"></span>. Terms are ranked by averaging the Pearson correlation
-                            coefficients between each gene in a gene set and <span class="gene-name"></span>.
-                        </p>
-                        <div class="modal fade" id="fig3-mod" tabindex="-1" aria-labelledby="fig3-mod-title"
-                             aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <img id="fig3-mod-img" src="" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <p class="modal-title" id="fig3-mod-title"></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col col-sm-6">
-                        <img id="fig8-img" src="" class="img-fluid p-3 bg-light" alt="">
-                        <p id="fig8-desc" style="font-size: 0.8rem; font-style: italic;"
+                        <img id="fig-mgi-go-l-img" src="" class="img-fluid p-3 bg-light" alt="">
+                        <p id="fig-mgi-go-l-desc" style="font-size: 0.8rem; font-style: italic;"
                            class="mb-2 px-3 pb-2 bg-light">
                             <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
-                                    data-bs-target="#fig8-mod">
+                                    data-bs-target="#fig-mgi-go-l-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 4. Predicted transcription factors from ChEA 2016 <a id="fig8-down1"
-                                                                                        class="format-download" href="">CSV</a>
-                            and ENCODE ChIP-seq 2015 <a id="fig8-down2" class="format-download" href="">CSV</a>
-                            libraries
-                            for the lncRNA <span class="gene-name"></span>. Terms are ranked by averaging the Pearson
-                            correlation coefficients between each gene in a gene set and <span class="gene-name"></span>.
+                            <a id="fig-mgi-go-l-img-png" href="" class="format-download">PNG</a>
+                            <a id="fig-mgi-go-l-img-svg" href="" class="format-download">SVG</a>
+                            <a id="fig-mgi-go-l-img-pdf" href="" class="format-download">PDF</a>
+                            Figure 3b. Predicted MGI Mammalian Phenotypes Level 4 2021 <a id="fig-mgi-go-l-down1"
+                                                                                          class="format-download"
+                                                                                          href="">CSV</a> and GO
+                            Biological Process 2021 <a id="fig-mgi-go-l-down2" class="format-download" href="">CSV</a>
+                            for the lncRNA <span class="gene-name"></span>. Terms are ranked
+                            by the left-tailed p-value for the mean Pearson correlation coefficient calculated between
+                            each gene set and
+                            <span class="gene-name"></span>.
                         </p>
-                        <div class="modal fade" id="fig8-mod" tabindex="-1" aria-labelledby="fig8-mod-title"
+                        <div class="modal fade" id="fig-mgi-go-l-mod" tabindex="-1"
+                             aria-labelledby="fig-mgi-go-l-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
@@ -455,49 +445,39 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <img id="fig8-mod-img" src="" class="img-fluid" alt="">
+                                        <img id="fig-mgi-go-l-mod-img" src="" class="img-fluid" alt="">
                                     </div>
                                     <div class="modal-footer">
-                                        <p class="modal-title" id="fig8-mod-title"></p>
+                                        <p class="modal-title" id="fig-mgi-go-l-mod-title"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <h5 id="item-4" class="mt-4">Expression of <span class="gene-name"></span> across tissues and cell lines
-                </h5>
-                <p>This part of the report provides the Z-score (Normalized Median Expression) for the lncRNA <span
-                        class="gene-name"></span> in various tissues and cell lines. Samples from Recount3 [2] were
-                    automatically labelled by tissue type or cell line of origin. Tissue and cell line samples were log2
-                    transformed and quantile normalized separately. Tissues and cell lines with less than 20 samples
-                    were removed and the median expression of <span class="gene-name"></span> was then calculated for
-                    each tissue type and cell line. Z-scores were computed along the lncRNA axis to compare expression
-                    levels across all tissues and cell lines.</p>
 
                 <div class="row">
                     <div class="col-sm">
-                        <img id="fig4-img" src=""
-                             class="img-fluid p-3 bg-light"
-                             alt="">
-                        <p style="font-size: 0.8rem; font-style: italic;" class="mb-2 px-3 pb-2 bg-light">
+                        <img id="fig-kegg-dgn-r-img" src="" class="img-fluid p-3 bg-light" alt="">
+                        <p id="fig-kegg-dgn-r-desc" style="font-size: 0.8rem; font-style: italic;"
+                           class="mb-2 px-3 pb-2 bg-light">
                             <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
-                                    data-bs-target="#fig4-mod">
+                                    data-bs-target="#fig-kegg-dgn-r-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 5.
-                            Z-score (median
-                            expression) for the lncRNA
-                            <span class="gene-name"></span> in
-                            various
-                            tissue types.
+                            <a id="fig-kegg-dgn-r-img-png" href="" class="format-download">PNG</a>
+                            <a id="fig-kegg-dgn-r-img-svg" href="" class="format-download">SVG</a>
+                            <a id="fig-kegg-dgn-r-img-pdf" href="" class="format-download">PDF</a>
+
+                            Figure 4a. Predicted KEGG pathways <a id="fig-kegg-dgn-r-down1" class="format-download"
+                                                                  href="">CSV</a> and DisGeNET disease <a
+                                id="fig-kegg-dgn-r-down2" class="format-download" href="">CSV</a> terms for the
+                            lncRNA <span class="gene-name"></span>. Terms are ranked by the right-tailed p-value for
+                            the mean Pearson correlation coefficient calculated between each gene set and <span
+                                class="gene-name"></span>.
                         </p>
-                        <p class="mb-2" style="font-size: 0.8rem">Download table with z-score (median expression) values
-                            for <span
-                                    class="gene-name"></span>
-                            in various tissue types: <a id="fig4-down" class="format-download" href="">CSV</a></p>
-                        <div class="modal fade" id="fig4-mod" tabindex="-1" aria-labelledby="fig4-mod-title"
+                        <div class="modal fade" id="fig-kegg-dgn-r-mod" tabindex="-1"
+                             aria-labelledby="fig-kegg-dgn-r-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
@@ -506,37 +486,36 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <img id="fig4-mod-img" src="" class="img-fluid" alt="">
+                                        <img id="fig-kegg-dgn-r-mod-img" src="" class="img-fluid" alt="">
                                     </div>
                                     <div class="modal-footer">
-                                        <p class="modal-title" id="fig4-mod-title"></p>
+                                        <p class="modal-title" id="fig-kegg-dgn-r-mod-title"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm">
-                        <img id="fig5-img" src=""
-                             class="img-fluid p-5 bg-light"
-                             alt="">
-                        <p style="font-size: 0.8rem; font-style: italic;" class="mb-2 px-3 pb-2 bg-light">
+                        <img id="fig-kegg-dgn-l-img" src="" class="img-fluid p-3 bg-light" alt="">
+                        <p id="fig-kegg-dgn-l-desc" style="font-size: 0.8rem; font-style: italic;"
+                           class="mb-2 px-3 pb-2 bg-light">
                             <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
-                                    data-bs-target="#fig5-mod">
+                                    data-bs-target="#fig-kegg-dgn-l-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            Figure 6.
-                            Z-score (median
-                            expression) for the lncRNA
-                            <span class="gene-name"></span> in the
-                            top 30
-                            cell lines.
+                            <a id="fig-kegg-dgn-l-img-png" href="" class="format-download">PNG</a>
+                            <a id="fig-kegg-dgn-l-img-svg" href="" class="format-download">SVG</a>
+                            <a id="fig-kegg-dgn-l-img-pdf" href="" class="format-download">PDF</a>
+
+                            Figure 4b. Predicted KEGG pathways <a id="fig-kegg-dgn-l-down1" class="format-download"
+                                                                  href="">CSV</a> and DisGeNET disease <a
+                                id="fig-kegg-dgn-l-down2" class="format-download" href="">CSV</a> terms for the
+                            lncRNA <span class="gene-name"></span>. Terms are ranked by the left-tailed p-value for
+                            the mean Pearson correlation coefficient calculated between each gene set and <span
+                                class="gene-name"></span>.
                         </p>
-                        <p class="mb-2" style="font-size: 0.8rem">Download table with z-score (median expression) values
-                            for <span
-                                    class="gene-name"></span>
-                            in various cell lines: <a id="fig5-down" class="format-download"
-                                                      href="">CSV</a></p>
-                        <div class="modal fade" id="fig5-mod" tabindex="-1" aria-labelledby="fig5-mod-title"
+                        <div class="modal fade" id="fig-kegg-dgn-l-mod" tabindex="-1"
+                             aria-labelledby="fig-kegg-dgn-l-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
@@ -545,48 +524,37 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <img id="fig5-mod-img" src="" class="img-fluid" alt="">
+                                        <img id="fig-kegg-dgn-l-mod-img" src="" class="img-fluid" alt="">
                                     </div>
                                     <div class="modal-footer">
-                                        <p class="modal-title" id="fig5-mod-title"></p>
+                                        <p class="modal-title" id="fig-kegg-dgn-l-mod-title"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <h5 id="item-5" class="mt-4">Visualizing lncRNAs based on their gene expression similarity across
-                    tissues and cell
-                    lines</h5>
-                <p>We applied UMAP [6] to visualize lncRNA expression across 3,000 randomly selected samples (with
-                    tissue type
-                    and cell line labels) from Recount3[2]. Samples were first log2 transformed and quantile normalized
-                    along
-                    the gene axis, then UMAP was applied to the lncRNA expression data with samples as features. Each
-                    data point
-                    represents a single lncRNA (n=15,862). The black arrow is pointing to the location of <span
-                            class="gene-name"></span>.</p>
                 <div class="row">
                     <div class="col-sm">
-                        <img id="fig6-img" src=""
-                             class="img-fluid p-3 bg-light"
-                             alt="">
-                        <p style="font-size: 0.8rem; font-style: italic;" class="mb-2 px-3 pb-2 bg-light">
+                        <img id="fig-chea-enc-r-img" src="" class="img-fluid p-3 bg-light" alt="">
+                        <p id="fig-chea-enc-r-desc" style="font-size: 0.8rem; font-style: italic;"
+                           class="mb-2 px-3 pb-2 bg-light">
                             <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
-                                    data-bs-target="#fig6-mod">
+                                    data-bs-target="#fig-chea-enc-r-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            <a id="fig7-app" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                            Figure 7. UMAP
-                            was applied
-                            to 3,000 randomly
-                            selected samples (with tissue type labels) from Recount3.
-                            Each data
-                            point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in <span
-                                id="fig6-tissue"></span>.
+                            <a id="fig-chea-enc-r-img-png" href="" class="format-download">PNG</a>
+                            <a id="fig-chea-enc-r-img-svg" href="" class="format-download">SVG</a>
+                            <a id="fig-chea-enc-r-img-pdf" href="" class="format-download">PDF</a>
+                            Figure 5a. Predicted ChEA <a id="fig-chea-enc-r-down1" class="format-download"
+                                                         href="">CSV</a>
+                            and ENCODE <a id="fig-chea-enc-r-down2" class="format-download" href="">CSV</a> terms
+                            for the lncRNA <span class="gene-name"></span>. Terms are ranked by the right-tailed
+                            p-value for the mean Pearson correlation coefficient calculated between each gene set
+                            and <span class="gene-name"></span>.
                         </p>
-                        <div class="modal fade" id="fig6-mod" tabindex="-1" aria-labelledby="fig6-mod-title"
+                        <div class="modal fade" id="fig-chea-enc-r-mod" tabindex="-1"
+                             aria-labelledby="fig-chea-enc-r-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
@@ -595,34 +563,35 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <img id="fig6-mod-img" src="" class="img-fluid" alt="">
+                                        <img id="fig-chea-enc-r-mod-img" src="" class="img-fluid" alt="">
                                     </div>
                                     <div class="modal-footer">
-                                        <p class="modal-title" id="fig6-mod-title"></p>
+                                        <p class="modal-title" id="fig-chea-enc-r-mod-title"></p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm">
-                        <img id="fig7-img" src=""
-                             class="img-fluid p-3 bg-light"
-                             alt="">
-                        <p style="font-size: 0.8rem; font-style: italic;" class="mb-2 px-3 pb-2 bg-light">
+                        <img id="fig-chea-enc-l-img" src="" class="img-fluid p-3 bg-light" alt="">
+                        <p id="fig-chea-enc-l-desc" style="font-size: 0.8rem; font-style: italic;"
+                           class="mb-2 px-3 pb-2 bg-light">
                             <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
-                                    data-bs-target="#fig7-mod">
+                                    data-bs-target="#fig-chea-enc-l-mod">
                                 <i class="fas fa-expand-arrows-alt"></i>
                             </button>
-                            <a id="fig8-app" target="_blank"><i class="fas fa-external-link-alt"></i></a>
-                            Figure 8. UMAP
-                            was applied
-                            to 3,000 randomly
-                            selected samples (with cell line labels) from Recount3. Each
-                            data
-                            point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in <span
-                                id="fig7-cell"></span>.
+                            <a id="fig-chea-enc-l-img-png" href="" class="format-download">PNG</a>
+                            <a id="fig-chea-enc-l-img-svg" href="" class="format-download">SVG</a>
+                            <a id="fig-chea-enc-l-img-pdf" href="" class="format-download">PDF</a>
+                            Figure 5b. Predicted ChEA <a id="fig-chea-enc-l-down1" class="format-download"
+                                                         href="">CSV</a>
+                            and ENCODE <a id="fig-chea-enc-l-down2" class="format-download" href="">CSV</a> terms
+                            for the lncRNA <span class="gene-name"></span>. Terms are ranked by the left-tailed
+                            p-value for the mean Pearson correlation coefficient calculated between each gene set
+                            and <span class="gene-name"></span>.
                         </p>
-                        <div class="modal fade" id="fig7-mod" tabindex="-1" aria-labelledby="fig7-mod-title"
+                        <div class="modal fade" id="fig-chea-enc-l-mod" tabindex="-1"
+                             aria-labelledby="fig-chea-enc-l-mod-title"
                              aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
@@ -631,10 +600,10 @@
                                                 aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <img id="fig7-mod-img" src="" class="img-fluid" alt="">
+                                        <img id="fig-chea-enc-l-mod-img" src="" class="img-fluid" alt="">
                                     </div>
                                     <div class="modal-footer">
-                                        <p class="modal-title" id="fig7-mod-title"></p>
+                                        <p class="modal-title" id="fig-chea-enc-l-mod-title"></p>
                                     </div>
                                 </div>
                             </div>
@@ -642,92 +611,270 @@
                     </div>
                 </div>
 
-                <h5 id="item-6" class="mt-4">L1000 small molecules predicted to modulate <span class="gene-name"></span>
-                </h5>
-                <p>~1.4 million Level 5 L1000 chemical perturbation gene expression signatures were downloaded from
-                    SigCom LINCS
-                    (https://maayanlab.cloud/sigcom-lincs) [7]. For each unique signature and lncRNA pair, a mean
-                    Pearson
-                    correlation coefficient was computed by taking the average Pearson coefficient between the lncRNA
-                    and all genes
-                    in the signature. All 15,862 lncRNAs were then ranked by mean Pearson correlation coefficient, and
-                    the top 1,000
-                    lncRNAs with the highest coefficients were retained for each signature. The top 500 lncRNA-L1000
-                    signature
-                    associations are reported here for <span class="gene-name"></span>, separated by direction. If <span
-                            class="gene-name"></span> is highly
-                    correlated with the
-                    up-regulated genes for a specific small molecule, then this small molecule is predicted to
-                    up-regulate
-                    <span class="gene-name"></span>.</p>
-                <h5 id="item-6-1" class="mt-4">L1000 small molecules predicted to up-regulate <span
-                        class="gene-name"></span></h5>
-                <p>The prioritized small molecules below are predicted to specifically up-regulate <span
-                        class="gene-name"></span>.
-                </p>
-
-                <div class="table-responsive-sm">
-                    <p id="table3-blank" style="display: none; font-style: italic;">There are no small molecules
-                        predicted to specifically up-regulate the expression of <span class="gene-name"></span>.</p>
-                    <table id="table3" class="compact hover order-column row-border"
-                           style="width:100%"></table>
-                </div>
-
-                <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a id="tab3-down" class="format-download"
-                                                                                  href="">CSV</a> Table 6. L1000 small
-                    molecules predicted to up-regulate
-                    the lncRNA
-                    <span class="gene-name"></span>.</p>
-
-                <h5 id="item-6-2" class="mt-4">L1000 small molecules predicted to down-regulate <span
-                        class="gene-name"></span></h5>
-                <p>The prioritized small molecules below are predicted to specifically down-regulate <span
-                        class="gene-name"></span>.
-                </p>
-
-                <div class="table-responsive-sm">
-                    <p id="table4-blank" style="display: none; font-style: italic;">There are no small molecules
-                        predicted to specifically down-regulate the expression of <span class="gene-name"></span>.</p>
-                    <table id="table4" class="compact hover order-column row-border"
-                           style="width:100%"></table>
-                </div>
-                <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a id="tab4-down" class="format-download"
-                                                                                  href="">CSV</a> Table 7. L1000 small
-                    molecules predicted to down-regulate
-                    the lncRNA
-                    <span class="gene-name"></span>.</p>
-
-
-                <h5 id="item-7" class="mt-4">References</h5>
-                <p class="mb-1" style="font-size: 0.8rem;">[1] Frankish A, Diekhans M, Jungreis I, Lagarde J, Loveland
-                    Jane E, Mudge JM, Sisu C, Wright JC, Armstrong J, Barnes I: GENCODE 2021. Nucleic Acids Research
-                    2021, 49(D1):D916-D923.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[2] Howe KL, Achuthan P, Allen J, Allen J, Alvarez-Jarreta J,
-                    Amode MR, Armean IM, Azov AG, Bennett R, Bhai J: Ensembl 2021. Nucleic Acids Research 2021,
-                    49(D1):D884-D891.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[3] Tweedie S, Braschi B, Gray K, Jones TEM, Seal Ruth L,
-                    Yates B, Bruford EA: Genenames.org: the HGNC and VGNC resources in 2021. Nucleic Acids Research
-                    2021, 49(D1):D939-D946.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[4] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling
-                    JP, Imada EL, Zhang D, Joseph L, Leek JT: recount3: summaries and queries for large-scale RNA-seq
-                    expression and splicing. bioRxiv 2021:2021.2005.2021.445138.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[5] Xie Z, Bailey A, Kuleshov MV, Clarke DJB, Evangelista JE,
-                    Jenkins SL, Lachmann A, Wojciechowicz ML, Kropiwnicki E, Jagodnik KM: Gene Set Knowledge Discovery
-                    with Enrichr. Current Protocols 2021, 1(3):e90.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[6] Chen EY, Tan CM, Kou Y, Duan Q, Wang Z, Meirelles GV,
-                    Clark NR, Ma’ayan A: Enrichr: interactive and collaborative HTML5 gene list enrichment analysis
-                    tool. BMC Bioinformatics 2013, 14(1):128.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[7] Kuleshov MV, Jones MR, Rouillard AD, Fernandez NF, Duan
-                    Q, Wang Z, Koplev S, Jenkins SL, Jagodnik KM, Lachmann A: Enrichr: a comprehensive gene set
-                    enrichment analysis web server 2016 update. Nucleic Acids Research 2016, 44(W1):W90-W97.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[8] McInnes L, Healy J, Melville J: Umap: Uniform manifold
-                    approximation and projection for dimension reduction. arXiv preprint arXiv:180203426 2018.</p>
-                <p class="mb-1" style="font-size: 0.8rem;">[9] Evangelista et al. SigCom LINCS: Data and Metadata Search
-                    Engine for Gene Expression Signatures. 2021. In preparation.</p>
             </div>
+
+            <h5 id="item-4" class="mt-4">Expression of <span class="gene-name"></span> across tissues and cell lines
+            </h5>
+            <p>This part of the report provides the Z-score (Normalized Median Expression) for the lncRNA <span
+                    class="gene-name"></span> in various tissues and cell lines. Samples from Recount3 [2] were
+                automatically labelled by tissue type or cell line of origin. Tissue and cell line samples were log2
+                transformed and quantile normalized separately. Tissues and cell lines with less than 20 samples
+                were removed and the median expression of <span class="gene-name"></span> was then calculated for
+                each tissue type and cell line. Z-scores were computed along the lncRNA axis to compare expression
+                levels across all tissues and cell lines.</p>
+
+            <div class="row">
+                <div class="col-sm">
+                    <img id="fig4-img" src=""
+                         class="img-fluid p-3 bg-light"
+                         alt="">
+                    <p style="font-size: 0.8rem; font-style: italic;" class="mb-2 px-3 pb-2 bg-light">
+                        <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
+                                data-bs-target="#fig4-mod">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </button>
+                        Figure 5.
+                        Z-score (median
+                        expression) for the lncRNA
+                        <span class="gene-name"></span> in
+                        various
+                        tissue types.
+                    </p>
+                    <p class="mb-2" style="font-size: 0.8rem">Download table with z-score (median expression) values
+                        for <span
+                                class="gene-name"></span>
+                        in various tissue types: <a id="fig4-down" class="format-download" href="">CSV</a></p>
+                    <div class="modal fade" id="fig4-mod" tabindex="-1" aria-labelledby="fig4-mod-title"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img id="fig4-mod-img" src="" class="img-fluid" alt="">
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="modal-title" id="fig4-mod-title"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <img id="fig5-img" src=""
+                         class="img-fluid p-5 bg-light"
+                         alt="">
+                    <p style="font-size: 0.8rem; font-style: italic;" class="mb-2 px-3 pb-2 bg-light">
+                        <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
+                                data-bs-target="#fig5-mod">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </button>
+                        Figure 6.
+                        Z-score (median
+                        expression) for the lncRNA
+                        <span class="gene-name"></span> in the
+                        top 30
+                        cell lines.
+                    </p>
+                    <p class="mb-2" style="font-size: 0.8rem">Download table with z-score (median expression) values
+                        for <span
+                                class="gene-name"></span>
+                        in various cell lines: <a id="fig5-down" class="format-download"
+                                                  href="">CSV</a></p>
+                    <div class="modal fade" id="fig5-mod" tabindex="-1" aria-labelledby="fig5-mod-title"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img id="fig5-mod-img" src="" class="img-fluid" alt="">
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="modal-title" id="fig5-mod-title"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <h5 id="item-5" class="mt-4">Visualizing lncRNAs based on their gene expression similarity across
+                tissues and cell
+                lines</h5>
+            <p>We applied UMAP [6] to visualize lncRNA expression across 3,000 randomly selected samples (with
+                tissue type
+                and cell line labels) from Recount3[2]. Samples were first log2 transformed and quantile normalized
+                along
+                the gene axis, then UMAP was applied to the lncRNA expression data with samples as features. Each
+                data point
+                represents a single lncRNA (n=15,862). The black arrow is pointing to the location of <span
+                        class="gene-name"></span>.</p>
+            <div class="row">
+                <div class="col-sm">
+                    <img id="fig6-img" src=""
+                         class="img-fluid p-3 bg-light"
+                         alt="">
+                    <p style="font-size: 0.8rem; font-style: italic;" class="mb-2 px-3 pb-2 bg-light">
+                        <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
+                                data-bs-target="#fig6-mod">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </button>
+                        <a id="fig7-app" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        Figure 7. UMAP
+                        was applied
+                        to 3,000 randomly
+                        selected samples (with tissue type labels) from Recount3.
+                        Each data
+                        point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in <span
+                            id="fig6-tissue"></span>.
+                    </p>
+                    <div class="modal fade" id="fig6-mod" tabindex="-1" aria-labelledby="fig6-mod-title"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img id="fig6-mod-img" src="" class="img-fluid" alt="">
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="modal-title" id="fig6-mod-title"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm">
+                    <img id="fig7-img" src=""
+                         class="img-fluid p-3 bg-light"
+                         alt="">
+                    <p style="font-size: 0.8rem; font-style: italic;" class="mb-2 px-3 pb-2 bg-light">
+                        <button type="button" class="btn btn-light btn-sm py-0" data-bs-toggle="modal"
+                                data-bs-target="#fig7-mod">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                        </button>
+                        <a id="fig8-app" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+                        Figure 8. UMAP
+                        was applied
+                        to 3,000 randomly
+                        selected samples (with cell line labels) from Recount3. Each
+                        data
+                        point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in <span
+                            id="fig7-cell"></span>.
+                    </p>
+                    <div class="modal fade" id="fig7-mod" tabindex="-1" aria-labelledby="fig7-mod-title"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <img id="fig7-mod-img" src="" class="img-fluid" alt="">
+                                </div>
+                                <div class="modal-footer">
+                                    <p class="modal-title" id="fig7-mod-title"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h5 id="item-6" class="mt-4">L1000 small molecules predicted to modulate <span class="gene-name"></span>
+            </h5>
+            <p>~1.4 million Level 5 L1000 chemical perturbation gene expression signatures were downloaded from
+                SigCom LINCS
+                (https://maayanlab.cloud/sigcom-lincs) [7]. For each unique signature and lncRNA pair, a mean
+                Pearson
+                correlation coefficient was computed by taking the average Pearson coefficient between the lncRNA
+                and all genes
+                in the signature. All 15,862 lncRNAs were then ranked by mean Pearson correlation coefficient, and
+                the top 1,000
+                lncRNAs with the highest coefficients were retained for each signature. The top 500 lncRNA-L1000
+                signature
+                associations are reported here for <span class="gene-name"></span>, separated by direction. If <span
+                        class="gene-name"></span> is highly
+                correlated with the
+                up-regulated genes for a specific small molecule, then this small molecule is predicted to
+                up-regulate
+                <span class="gene-name"></span>.</p>
+            <h5 id="item-6-1" class="mt-4">L1000 small molecules predicted to up-regulate <span
+                    class="gene-name"></span></h5>
+            <p>The prioritized small molecules below are predicted to specifically up-regulate <span
+                    class="gene-name"></span>.
+            </p>
+
+            <div class="table-responsive-sm">
+                <p id="table3-blank" style="display: none; font-style: italic;">There are no small molecules
+                    predicted to specifically up-regulate the expression of <span class="gene-name"></span>.</p>
+                <table id="table3" class="compact hover order-column row-border"
+                       style="width:100%"></table>
+            </div>
+
+            <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a id="tab3-down" class="format-download"
+                                                                              href="">CSV</a> Table 6. L1000 small
+                molecules predicted to up-regulate
+                the lncRNA
+                <span class="gene-name"></span>.</p>
+
+            <h5 id="item-6-2" class="mt-4">L1000 small molecules predicted to down-regulate <span
+                    class="gene-name"></span></h5>
+            <p>The prioritized small molecules below are predicted to specifically down-regulate <span
+                    class="gene-name"></span>.
+            </p>
+
+            <div class="table-responsive-sm">
+                <p id="table4-blank" style="display: none; font-style: italic;">There are no small molecules
+                    predicted to specifically down-regulate the expression of <span class="gene-name"></span>.</p>
+                <table id="table4" class="compact hover order-column row-border"
+                       style="width:100%"></table>
+            </div>
+            <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a id="tab4-down" class="format-download"
+                                                                              href="">CSV</a> Table 7. L1000 small
+                molecules predicted to down-regulate
+                the lncRNA
+                <span class="gene-name"></span>.</p>
+
+
+            <h5 id="item-7" class="mt-4">References</h5>
+            <p class="mb-1" style="font-size: 0.8rem;">[1] Frankish A, Diekhans M, Jungreis I, Lagarde J, Loveland
+                Jane E, Mudge JM, Sisu C, Wright JC, Armstrong J, Barnes I: GENCODE 2021. Nucleic Acids Research
+                2021, 49(D1):D916-D923.</p>
+            <p class="mb-1" style="font-size: 0.8rem;">[2] Howe KL, Achuthan P, Allen J, Allen J, Alvarez-Jarreta J,
+                Amode MR, Armean IM, Azov AG, Bennett R, Bhai J: Ensembl 2021. Nucleic Acids Research 2021,
+                49(D1):D884-D891.</p>
+            <p class="mb-1" style="font-size: 0.8rem;">[3] Tweedie S, Braschi B, Gray K, Jones TEM, Seal Ruth L,
+                Yates B, Bruford EA: Genenames.org: the HGNC and VGNC resources in 2021. Nucleic Acids Research
+                2021, 49(D1):D939-D946.</p>
+            <p class="mb-1" style="font-size: 0.8rem;">[4] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling
+                JP, Imada EL, Zhang D, Joseph L, Leek JT: recount3: summaries and queries for large-scale RNA-seq
+                expression and splicing. bioRxiv 2021:2021.2005.2021.445138.</p>
+            <p class="mb-1" style="font-size: 0.8rem;">[5] Xie Z, Bailey A, Kuleshov MV, Clarke DJB, Evangelista JE,
+                Jenkins SL, Lachmann A, Wojciechowicz ML, Kropiwnicki E, Jagodnik KM: Gene Set Knowledge Discovery
+                with Enrichr. Current Protocols 2021, 1(3):e90.</p>
+            <p class="mb-1" style="font-size: 0.8rem;">[6] Chen EY, Tan CM, Kou Y, Duan Q, Wang Z, Meirelles GV,
+                Clark NR, Ma’ayan A: Enrichr: interactive and collaborative HTML5 gene list enrichment analysis
+                tool. BMC Bioinformatics 2013, 14(1):128.</p>
+            <p class="mb-1" style="font-size: 0.8rem;">[7] Kuleshov MV, Jones MR, Rouillard AD, Fernandez NF, Duan
+                Q, Wang Z, Koplev S, Jenkins SL, Jagodnik KM, Lachmann A: Enrichr: a comprehensive gene set
+                enrichment analysis web server 2016 update. Nucleic Acids Research 2016, 44(W1):W90-W97.</p>
+            <p class="mb-1" style="font-size: 0.8rem;">[8] McInnes L, Healy J, Melville J: Umap: Uniform manifold
+                approximation and projection for dimension reduction. arXiv preprint arXiv:180203426 2018.</p>
+            <p class="mb-1" style="font-size: 0.8rem;">[9] Evangelista et al. SigCom LINCS: Data and Metadata Search
+                Engine for Gene Expression Signatures. 2021. In preparation.</p>
         </div>
     </div>
-    <!-- Results -->
+</div>
+<!-- Results -->
 </div>
 
 {% endblock %}

@@ -24,7 +24,7 @@ function fill_enrichment(gene, appyter_id) {
 }
 
 function draw_tables(gene, appyter_id) {
-    fetch(`https://appyters.maayanlab.cloud/lncHUB2/${appyter_id}/gene_info/${gene}_gene_coordinates.csv`)
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_info/${gene}_gene_coordinates.csv`)
         .then(response => {
             return {ok: response.ok, text: response.text()}
         })
@@ -60,7 +60,7 @@ function draw_tables(gene, appyter_id) {
             }
         })
 
-    fetch(`https://appyters.maayanlab.cloud/lncHUB2/${appyter_id}/gene_info/${gene}_canonical_sequence.csv`)
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_info/${gene}_canonical_sequence.csv`)
         .then(response => {
             return {ok: response.ok, text: response.text()}
         })
@@ -87,7 +87,7 @@ function draw_tables(gene, appyter_id) {
             }
         })
 
-    fetch(`https://appyters.maayanlab.cloud/lncHUB2/${appyter_id}/gene_info/${gene}_alternative_sequence.csv`)
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_info/${gene}_alternative_sequence.csv`)
         .then(response => {
             return {ok: response.ok, text: response.text()}
         })
@@ -114,8 +114,8 @@ function draw_tables(gene, appyter_id) {
             }
         })
 
-    $('#table1-blank').hide()
-    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_correlated_genes.csv`)
+    $('#table1p-blank').hide()
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_positively_correlated_genes.csv`)
         .then(response => {
             return {ok: response.ok, text: response.text()}
         })
@@ -123,7 +123,7 @@ function draw_tables(gene, appyter_id) {
                 if (data.ok) {
                     let text = await data.text;
                     let dataSet = text.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
-                    $('#table1').DataTable(
+                    $('#table1p').DataTable(
                         {
                             data: dataSet,
                             destroy: true,
@@ -134,15 +134,43 @@ function draw_tables(gene, appyter_id) {
                                 {'title': 'Pearson\'s Correlation Coefficient'}
                             ]
                         })
-                    $('#tab1-down').show()
+                    $('#tab1p-down').show()
                 } else {
-                    $('#table1-blank').show();
-                    $('#tab1-down').hide();
+                    $('#table1p-blank').show();
+                    $('#tab1p-down').hide();
                 }
             }
         );
 
-    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_correlated_lncRNAs.csv`)
+        $('#table1n-blank').hide()
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_negatively_correlated_genes.csv`)
+        .then(response => {
+            return {ok: response.ok, text: response.text()}
+        })
+        .then(async data => {
+                if (data.ok) {
+                    let text = await data.text;
+                    let dataSet = text.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
+                    $('#table1n').DataTable(
+                        {
+                            data: dataSet,
+                            destroy: true,
+                            responsive: true,
+                            order: [],
+                            columns: [
+                                {'title': 'Gene'},
+                                {'title': 'Pearson\'s Correlation Coefficient'}
+                            ]
+                        })
+                    $('#tab1n-down').show()
+                } else {
+                    $('#table1n-blank').show();
+                    $('#tab1n-down').hide();
+                }
+            }
+        );
+
+    fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_positively_correlated_lncRNAs.csv`)
         .then(response => {
             return {ok: response.ok, text: response.text()}
         })
@@ -179,7 +207,7 @@ function draw_tables(gene, appyter_id) {
                 let text = await data.text;
                 let dataSet = text.trim().split('\n').slice(1, 100).map(x => {
                         let s = x.split(',');
-                        return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7])]
+                        return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7]), parseFloat(s[7])]
                     }
                 );
                 $('#table3').DataTable(
@@ -196,7 +224,8 @@ function draw_tables(gene, appyter_id) {
                             {'title': 'Dose'},
                             {'title': 'Cell line'},
                             {'title': 'Time point'},
-                            {'title': 'Mean Pearson Correlation'}
+                            {'title': 'Mean Pearson Correlation'},
+                            {'title': 'P-value'}
                         ]
                     })
                 $('#tab3-down').show()
@@ -216,7 +245,7 @@ function draw_tables(gene, appyter_id) {
                 let text = await data.text;
                 let dataSet = text.trim().split('\n').slice(1, 100).map(x => {
                         let s = x.split(',');
-                        return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7])]
+                        return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7]), parseFloat(s[7])]
                     }
                 );
                 $('#table4').DataTable(
@@ -233,7 +262,8 @@ function draw_tables(gene, appyter_id) {
                             {'title': 'Dose'},
                             {'title': 'Cell line'},
                             {'title': 'Time point'},
-                            {'title': 'Mean Pearson Correlation'}
+                            {'title': 'Mean Pearson Correlation'},
+                            {'title': 'P-value'}
                         ]
                     })
                 $('#tab4-down').show();
@@ -245,6 +275,7 @@ function draw_tables(gene, appyter_id) {
 }
 
 function display_results(data) {
+    console.log(data)
     if (data.is_ready === true) {
         $('#appyter-action').text('Open in')
     } else {
@@ -255,69 +286,110 @@ function display_results(data) {
     $("span.gene-name").each(function (element) {
         $(this).text(data.gene)
     });
+
+    let struct_img_down_ps = `${data.fig_data.structure.slice(0,-4)}.ps`
+    let aws = `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}`
     draw_tables(data.gene, data.appyter_id)
     fill_enrichment(data.gene, data.appyter_id)
-    $('#struct-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/secondary_structure/${data.fig_data.structure}`)
+    $('#struct-img').attr('src', `${aws}/secondary_structure/${data.fig_data.structure}`)
     $('#struct-img').attr('alt', `Predicted secondary structure of ${data.gene}.`)
-    $('#struct-img-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/secondary_structure/${data.fig_data.structure}`)
-    $('#appyter-url').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}`)
-    $('#tab-coord-down').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/gene_info/${data.gene}_gene_coordinates.csv`)
-    $('#table-transc-can-down').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/gene_info/${data.gene}_canonical_sequence.csv`)
-    $('#table-transc-alt-down').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/gene_info/${data.gene}_alternative_sequence.csv`)
-    $('#tab2-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/gene_correlations/${data.gene}_correlated_lncRNAs.csv`)
-    $('#appyter-fig1-net').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network.html`)
-    $('#appyter-fig1-node-meta').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network_node_metadata.csv`)
-    $('#appyter-fig1-edge-meta').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/coexpression_network/${data.gene}_network_edge_metadata.csv`)
+    $('#struct-img-down').attr('href', `${aws}/secondary_structure/${data.fig_data.structure}`)
+    $('#struct-img-down-ps').attr('href', `${aws}/secondary_structure/${struct_img_down_ps}`)
+    $('#appyter-url').attr('href', `${aws}`)
+    $('#tab-coord-down').attr('href', `${aws}/gene_info/${data.gene}_gene_coordinates.csv`)
+    $('#table-transc-can-down').attr('href', `${aws}/gene_info/${data.gene}_canonical_sequence.csv`)
+    $('#table-transc-alt-down').attr('href', `${aws}/gene_info/${data.gene}_alternative_sequence.csv`)
+    $('#tab2-down').attr('href', `${aws}/gene_correlations/${data.gene}_correlated_lncRNAs.csv`)
+    $('#appyter-fig1-net').attr('href', `${aws}/coexpression_network/${data.gene}_network.html`)
+    $('#appyter-fig1-node-meta').attr('href', `${aws}/coexpression_network/${data.gene}_network_node_metadata.csv`)
+    $('#appyter-fig1-edge-meta').attr('href', `${aws}/coexpression_network/${data.gene}_network_edge_metadata.csv`)
     // $('#appyter-enrichr-url').attr('href', data.fig_data.enrichr)
-    $('#fig-pub-img').attr('src', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.png`)
-    $('#fig-pub-down-png').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.png`)
-    $('#fig-pub-down-pdf').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.pdf`)
-    $('#fig-pub-down-svg').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.svg`)
-    $('#fig-pub-down-csv').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/autorif/${data.gene}_autorif.csv`)
-    $('#fig2-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure2.png`)
-    $('#fig2-img').attr('alt', `Figure 2. Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
-    $('#fig2-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure2.png`)
-    $('#fig2-mod-title').text(`Figure 2. Predicted MGI Mammalian Phenotypes and GO Biological Processes for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
-    $('#fig2-down1').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/MGI Mammalian Phenotype Level 4 2021_${data.gene}.csv`)
-    $('#fig2-down2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/GO Biological Process 2021_${data.gene}.csv`)
-    $('#fig3-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure3.png`)
-    $('#fig3-img').attr('alt', `Figure 3. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
-    $('#fig3-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure3.png`)
-    $('#fig3-mod-title').text(`Figure 3. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
-    $('#fig3-down1').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/KEGG 2021 Human_${data.gene}.csv`)
-    $('#fig3-down2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/DisGeNET_${data.gene}.csv`)
-    $('#fig4-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_zscore_tissue_expression.png`)
+    $('#fig-pub-img').attr('src', `${aws}/autorif/${data.gene}_autorif.png`)
+    $('#fig-pub-down-png').attr('href', `${aws}/autorif/${data.gene}_autorif.png`)
+    $('#fig-pub-down-pdf').attr('href', `${aws}/autorif/${data.gene}_autorif.pdf`)
+    $('#fig-pub-down-svg').attr('href', `${aws}/autorif/${data.gene}_autorif.svg`)
+    $('#fig-pub-down-csv').attr('href', `${aws}/autorif/${data.gene}_autorif.csv`)
+
+    $('#fig4-img').attr('src', `${aws}/tissue_and_cell_line_expression/${data.gene}_zscore_tissue_expression.png`)
     $('#fig4-img').attr('alt', `Figure 5. Z-score (median expression) for the lncRNA ${data.gene} in various tissue types.`)
-    $('#fig4-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_zscore_tissue_expression.png`)
+    $('#fig4-mod-img').attr('src', `${aws}/tissue_and_cell_line_expression/${data.gene}_zscore_tissue_expression.png`)
     $('#fig4-mod-title').text(`Figure 5. Z-score (median expression) for the lncRNA ${data.gene} in various tissue types.`)
-    $('#fig4-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_tissue_zscore.csv`)
-    $('#fig5-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_zscore_cell_line_expression.png`)
+    $('#fig4-down').attr('href', `${aws}/tissue_and_cell_line_expression/${data.gene}_tissue_zscore.csv`)
+    $('#fig5-img').attr('src', `${aws}/tissue_and_cell_line_expression/${data.gene}_zscore_cell_line_expression.png`)
     $('#fig5-img').attr('alt', `Figure 6. Z-score (median expression) for the lncRNA ${data.gene} in the top 30 cell lines.`)
-    $('#fig5-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_zscore_cell_line_expression.png`)
+    $('#fig5-mod-img').attr('src', `${aws}/tissue_and_cell_line_expression/${data.gene}_zscore_cell_line_expression.png`)
     $('#fig5-mod-title').text(`Figure 6. Z-score (median expression) for the lncRNA ${data.gene} in the top 30 cell lines.`)
-    $('#fig5-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/tissue_and_cell_line_expression/${data.gene}_cell_line_zscore.csv`)
-    $('#fig6-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/tissues/figures/static/${data.gene}_${data.fig_data.fig6_tissue}_rank1.png`)
+    $('#fig5-down').attr('href', `${aws}/tissue_and_cell_line_expression/${data.gene}_cell_line_zscore.csv`)
+    $('#fig6-img').attr('src', `${aws}/umap/tissues/figures/static/${data.gene}_${data.fig_data.fig6_tissue}_rank1.png`)
     $('#fig6-img').attr('alt', `Figure 7. UMAP was applied to 3,000 randomly selected samples (with tissue type labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig6_tissue}.`)
-    $('#fig6-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/tissues/figures/static/${data.gene}_${data.fig_data.fig6_tissue}_rank1.png`)
+    $('#fig6-mod-img').attr('src', `${aws}/umap/tissues/figures/static/${data.gene}_${data.fig_data.fig6_tissue}_rank1.png`)
     $('#fig6-mod-title').text(`Figure 7. UMAP was applied to 3,000 randomly selected samples (with tissue type labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig6_tissue}.`)
     $('#fig6-tissue').text(data.fig_data.fig6_tissue)
-    $('#fig7-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/cell_lines/figures/static/${data.gene}_${data.fig_data.fig7_cell_line}_rank1.png`)
+    $('#fig7-img').attr('src', `${aws}/umap/cell_lines/figures/static/${data.gene}_${data.fig_data.fig7_cell_line}_rank1.png`)
     $('#fig7-img').attr('alt', `Figure 8. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig7_cell_line}.`)
-    $('#fig7-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/umap/cell_lines/figures/static/${data.gene}_${data.fig_data.fig7_cell_line}_rank1.png`)
+    $('#fig7-mod-img').attr('src', `${aws}/umap/cell_lines/figures/static/${data.gene}_${data.fig_data.fig7_cell_line}_rank1.png`)
     $('#fig7-mod-title').text(`Figure 8. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig7_cell_line}.`)
     $('#fig7-cell').text(data.fig_data.fig7_cell_line)
-    $('#fig7-app').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/#visualizing-all-lncrnas-based-on-their-gene-expression-similarity-across-tissues`)
-    $('#fig8-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure4.png`)
-    $('#fig8-img').attr('alt', `Figure 4. Predicted transcription factors from ChEA 2016 and ENCODE ChIP-seq 2015 libraries for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
-    $('#fig8-mod-img').attr('src', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/${data.gene}_biological_function_predictions_figure4.png`)
-    $('#fig8-mod-title').text(`Figure 4. Predicted transcription factors from ChEA 2016 and ENCODE ChIP-seq 2015 libraries for the lncRNA ${data.gene}. Terms are ranked by averaging the mean Pearson correlation coefficients between each gene in a gene set and ${data.gene}.`)
-    $('#fig8-app').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/${data.appyter_id}/#visualizing-all-lncrnas-based-on-their-gene-expression-similarity-across-cell-lines`)
-    $('#fig8-down1').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/ChEA_${data.gene}.csv`)
-    $('#fig8-down2').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/predicted_functions/ENCODE_${data.gene}.csv`)
-    $('#tab3-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_up.csv`)
-    $('#tab4-down').attr('href', `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_down.csv`)
+    $('#fig7-app').attr('href', `${aws}/#visualizing-all-lncrnas-based-on-their-gene-expression-similarity-across-tissues`)
+    $('#tab3-down').attr('href', `${aws}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_up.csv`)
+    $('#tab4-down').attr('href', `${aws}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_down.csv`)
 
 
+    // Enrichment figures
+    $('#fig-mgi-go-r-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f1_right-tailed-pvalue.png`)
+    $('#fig-mgi-go-r-img').attr('alt', `Figure 3a. Predicted MGI Mammalian Phenotypes Level 4 2021 and GO Biological Process 2021 for the lncRNA ${data.gene}. Terms are ranked by the right-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-mgi-go-r-img-png').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f1_right-tailed-pvalue.png`)
+    $('#fig-mgi-go-r-img-svg').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f1_right-tailed-pvalue.svg`)
+    $('#fig-mgi-go-r-img-pdf').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f1_right-tailed-pvalue.pdf`)
+    $('#fig-mgi-go-r-mod-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f1_right-tailed-pvalue.png`)
+    $('#fig-mgi-go-r-mod-title').text(`Figure 3a. Predicted MGI Mammalian Phenotypes Level 4 2021 and GO Biological Process 2021 for the lncRNA ${data.gene}. Terms are ranked by the right-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-mgi-go-r-down1').attr('href', `${aws}/predicted_functions/${data.gene}_MGI Mammalian Phenotype Level 4 2021_right-tailed-pvalue.csv`)
+    $('#fig-mgi-go-r-down2').attr('href', `${aws}/predicted_functions/${data.gene}_GO Biological Process 2021_right-tailed-pvalue.csv`)
+    $('#fig-mgi-go-l-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f4_left-tailed-pvalue.png`)
+    $('#fig-mgi-go-l-img').attr('alt', `Figure 3b. Predicted MGI Mammalian Phenotypes Level 4 2021 and GO Biological Process 2021 for the lncRNA ${data.gene}. Terms are ranked by the left-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-mgi-go-l-img-png').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f4_left-tailed-pvalue.png`)
+    $('#fig-mgi-go-l-img-svg').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f4_left-tailed-pvalue.svg`)
+    $('#fig-mgi-go-l-img-pdf').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f4_left-tailed-pvalue.pdf`)
+    $('#fig-mgi-go-l-mod-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f4_left-tailed-pvalue.png`)
+    $('#fig-mgi-go-l-mod-title').text(`Figure 3b. Predicted MGI Mammalian Phenotypes Level 4 2021 and GO Biological Process 2021 for the lncRNA ${data.gene}. Terms are ranked by the left-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-mgi-go-l-down1').attr('href', `${aws}/predicted_functions/${data.gene}_MGI Mammalian Phenotype Level 4 2021_left-tailed-pvalue.csv`)
+    $('#fig-mgi-go-l-down2').attr('href', `${aws}/predicted_functions/${data.gene}_GO Biological Process 2021_left-tailed-pvalue.csv`)
+    $('#fig-kegg-dgn-r-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f2_right-tailed-pvalue.png`)
+    $('#fig-kegg-dgn-r-img').attr('alt', `Figure 4a. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA ${data.gene}. Terms are ranked by the right-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-kegg-dgn-r-img-png').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f2_right-tailed-pvalue.png`)
+    $('#fig-kegg-dgn-r-img-svg').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f2_right-tailed-pvalue.svg`)
+    $('#fig-kegg-dgn-r-img-pdf').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f2_right-tailed-pvalue.pdf`)
+    $('#fig-kegg-dgn-r-mod-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f2_right-tailed-pvalue.png`)
+    $('#fig-kegg-dgn-r-mod-title').text(`Figure 4a. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA ${data.gene}. Terms are ranked by the right-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-kegg-dgn-r-down1').attr('href', `${aws}/predicted_functions/${data.gene}_KEGG 2021 Human_right-tailed-pvalue.csv`)
+    $('#fig-kegg-dgn-r-down2').attr('href', `${aws}/predicted_functions/${data.gene}_DisGeNET_right-tailed-pvalue.csv`)
+    $('#fig-kegg-dgn-l-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f5_left-tailed-pvalue.png`)
+    $('#fig-kegg-dgn-l-img').attr('alt', `Figure 4b. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA ${data.gene}. Terms are ranked by the left-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-kegg-dgn-l-img-png').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f5_left-tailed-pvalue.png`)
+    $('#fig-kegg-dgn-l-img-svg').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f5_left-tailed-pvalue.svg`)
+    $('#fig-kegg-dgn-l-img-pdf').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f5_left-tailed-pvalue.pdf`)
+    $('#fig-kegg-dgn-l-mod-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f5_left-tailed-pvalue.png`)
+    $('#fig-kegg-dgn-l-mod-title').text(`Figure 4b. Predicted KEGG pathways and DisGeNET disease terms for the lncRNA ${data.gene}. Terms are ranked by the left-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-kegg-dgn-l-down1').attr('href', `${aws}/predicted_functions/${data.gene}_KEGG 2021 Human_left-tailed-pvalue.csv`)
+    $('#fig-kegg-dgn-l-down2').attr('href', `${aws}/predicted_functions/${data.gene}_DisGeNET_left-tailed-pvalue.csv`)
+    $('#fig-chea-enc-r-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f3_right-tailed-pvalue.png`)
+    $('#fig-chea-enc-r-img').attr('alt', `Figure 5a. Predicted ChEA and ENCODE terms for the lncRNA ${data.gene}. Terms are ranked by the right-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-chea-enc-r-img-png').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f3_right-tailed-pvalue.png`)
+    $('#fig-chea-enc-r-img-svg').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f3_right-tailed-pvalue.svg`)
+    $('#fig-chea-enc-r-img-pdf').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f3_right-tailed-pvalue.pdf`)
+    $('#fig-chea-enc-r-mod-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f3_right-tailed-pvalue.png`)
+    $('#fig-chea-enc-r-mod-title').text(`Figure 5a. Predicted ChEA and ENCODE terms for the lncRNA ${data.gene}. Terms are ranked by the right-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-chea-enc-r-down1').attr('href', `${aws}/predicted_functions/${data.gene}_KEGG 2021 Human_right-tailed-pvalue.csv`)
+    $('#fig-chea-enc-r-down2').attr('href', `${aws}/predicted_functions/${data.gene}_DisGeNET_right-tailed-pvalue.csv`)
+    $('#fig-chea-enc-l-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f6_left-tailed-pvalue.png`)
+    $('#fig-chea-enc-l-img').attr('alt', `Figure 5b. Predicted ChEA and ENCODE terms for the lncRNA ${data.gene}. Terms are ranked by the left-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-chea-enc-l-img-png').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f6_left-tailed-pvalue.png`)
+    $('#fig-chea-enc-l-img-svg').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f6_left-tailed-pvalue.svg`)
+    $('#fig-chea-enc-l-img-pdf').attr('href', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f6_left-tailed-pvalue.pdf`)
+    $('#fig-chea-enc-l-mod-img').attr('src', `${aws}/predicted_functions/${data.gene}_biological_function_predictions_f6_left-tailed-pvalue.png`)
+    $('#fig-chea-enc-l-mod-title').text(`Figure 5b. Predicted ChEA and ENCODE terms for the lncRNA ${data.gene}. Terms are ranked by the left-tailed p-value for the mean Pearson correlation coefficient calculated between each gene set and ${data.gene}.`)
+    $('#fig-chea-enc-l-down1').attr('href', `${aws}/predicted_functions/${data.gene}_KEGG 2021 Human_left-tailed-pvalue.csv`)
+    $('#fig-chea-enc-l-down2').attr('href', `${aws}/predicted_functions/${data.gene}_DisGeNET_left-tailed-pvalue.csv`)
 
     $('#results__appyter-card').show();
     $('#navbar-toc').show();
