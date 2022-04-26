@@ -9,7 +9,7 @@ function copy_to_clipboard(text) {
 function fill_enrichment(gene, appyter_id) {
     for (const d of ['positively', 'negatively']) {
         for (const n of [25, 50, 100, 200, 300, 500]) {
-        fetch(`https://appyters.maayanlab.cloud/lncHUB2/${appyter_id}/enrichment_analysis/${gene}_top_${n}_${d}_correlated_genes_Enrichr_link.txt`)
+        fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/enrichment_analysis/${gene}_top_${n}_${d}_correlated_genes_Enrichr_link.txt`)
         .then(response => {
             return {ok: response.ok, text: response.text()}
         })
