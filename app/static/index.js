@@ -9,16 +9,16 @@ function copy_to_clipboard(text) {
 function fill_enrichment(gene, appyter_id) {
     for (const d of ['positively', 'negatively']) {
         for (const n of [25, 50, 100, 200, 300, 500]) {
-        fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/enrichment_analysis/${gene}_top_${n}_${d}_correlated_genes_Enrichr_link.txt`)
-        .then(response => {
-            return {ok: response.ok, text: response.text()}
-        })
-        .then(async data => {
-            if (data.ok) {
-                let link = await data.text;
-                $(`#enr${n}-${d[0]}`).attr('href', link)
-            }
-        })
+            fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/enrichment_analysis/${gene}_top_${n}_${d}_correlated_genes_Enrichr_link.txt`)
+                .then(response => {
+                    return {ok: response.ok, text: response.text()}
+                })
+                .then(async data => {
+                    if (data.ok) {
+                        let link = await data.text;
+                        $(`#enr${n}-${d[0]}`).attr('href', link)
+                    }
+                })
         }
     }
 }
@@ -142,7 +142,7 @@ function draw_tables(gene, appyter_id) {
             }
         );
 
-        $('#table1n-blank').hide()
+    $('#table1n-blank').hide()
     fetch(`https://maayanlab-public.s3.amazonaws.com/lnchub2/${gene}/gene_correlations/${gene}_negatively_correlated_genes.csv`)
         .then(response => {
             return {ok: response.ok, text: response.text()}
@@ -207,7 +207,13 @@ function draw_tables(gene, appyter_id) {
                 let text = await data.text;
                 let dataSet = text.trim().split('\n').slice(1, 100).map(x => {
                         let s = x.split(',');
-                        return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7]), parseFloat(s[7])]
+                        let pval = parseFloat(s[8]);
+                        if (pval >= 0.01) {
+                            pval = pval.toFixed(2)
+                        } else {
+                            pval = pval.toExponential(2)
+                        }
+                        return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7]), pval]
                     }
                 );
                 $('#table3').DataTable(
@@ -245,7 +251,13 @@ function draw_tables(gene, appyter_id) {
                 let text = await data.text;
                 let dataSet = text.trim().split('\n').slice(1, 100).map(x => {
                         let s = x.split(',');
-                        return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7]), parseFloat(s[7])]
+                        let pval = parseFloat(s[8]);
+                        if (pval >= 0.01) {
+                            pval = pval.toFixed(2)
+                        } else {
+                            pval = pval.toExponential(2)
+                        }
+                        return [parseInt(s[0]), s[1], s[2], s[3], s[4], s[5], s[6], parseFloat(s[7]), pval]
                     }
                 );
                 $('#table4').DataTable(
@@ -287,7 +299,7 @@ function display_results(data) {
         $(this).text(data.gene)
     });
 
-    let struct_img_down_ps = `${data.fig_data.structure.slice(0,-4)}.ps`
+    let struct_img_down_ps = `${data.fig_data.structure.slice(0, -4)}.ps`
     let aws = `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}`
     draw_tables(data.gene, data.appyter_id)
     fill_enrichment(data.gene, data.appyter_id)
