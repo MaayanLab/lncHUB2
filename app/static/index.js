@@ -459,7 +459,7 @@ function search(gene) {
                 $('body').animate({
                     scrollTop: res_element.offset().top
                 }, 300, function () {
-                    window.location.hash = '#results';
+                    window.location.hash = `#${gene}`;
                 });
             } else {
                 let chr = '';
