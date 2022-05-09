@@ -320,7 +320,7 @@ function display_results(data) {
     $('#fig-pub-down-png').attr('href', `${aws}/autorif/${data.gene}_autorif.png`)
     $('#fig-pub-down-pdf').attr('href', `${aws}/autorif/${data.gene}_autorif.pdf`)
     $('#fig-pub-down-svg').attr('href', `${aws}/autorif/${data.gene}_autorif.svg`)
-    $('#fig-pub-down-csv').attr('href', `${aws}/autorif/${data.gene}_autorif.csv`)
+    $('#fig-pub-down-csv').attr('href', `${aws}/autorif/${data.gene}_autorif_results.csv`)
 
     $('#fig4-img').attr('src', `${aws}/tissue_and_cell_line_expression/${data.gene}_zscore_tissue_expression.png`)
     $('#fig4-img').attr('alt', `Figure 5. Z-score (median expression) for the lncRNA ${data.gene} in various tissue types.`)
@@ -343,6 +343,8 @@ function display_results(data) {
     $('#fig7-mod-title').text(`Figure 8. UMAP was applied to 3,000 randomly selected samples (with cell line labels) from Recount3. Each data point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in ${data.fig_data.fig7_cell_line}.`)
     $('#fig7-cell').text(data.fig_data.fig7_cell_line)
     $('#fig7-app').attr('href', `${aws}/#visualizing-all-lncrnas-based-on-their-gene-expression-similarity-across-tissues`)
+    $('#tab1p-down').attr('href', `${aws}/gene_correlations/${gene}_positively_correlated_genes.csv`)
+    $('#tab1n-down').attr('href', `${aws}/gene_correlations/${gene}_negatively_correlated_genes.csv`)
     $('#tab3-down').attr('href', `${aws}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_up.csv`)
     $('#tab4-down').attr('href', `${aws}/l1000_sm_predictions/${data.gene}_l1000_sm_predictions_down.csv`)
 
