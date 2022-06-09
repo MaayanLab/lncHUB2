@@ -2,7 +2,7 @@ version: '3'
 services:
   app:
     build: .
-    image: maayanlab/lncrnafp:1.1.6
+    image: maayanlab/lncrnafp:1.1.7
     environment:
       - ROOT_PATH=/lncHUB2/
       - BASE_PATH=https://maayanalab.cloud
