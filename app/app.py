@@ -48,5 +48,5 @@ def route_search(gene):
         is_ready = utils.check_status(appyter_id, gene)
         data['is_ready'] = is_ready
         data['fig_data'] = utils.fetch_appyter_data(gene)
-        data['fig_data']['structure'] = gene_struct_mapping[gene]
+        data['fig_data']['structure'] = gene_struct_mapping.get(gene, 'no_structure')
     return json.dumps({'success': True, 'data': data}), 200, {'ContentType': 'application/json'}

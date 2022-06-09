@@ -303,10 +303,17 @@ function display_results(data) {
     let aws = `https://maayanlab-public.s3.amazonaws.com/lnchub2/${data.gene}`
     draw_tables(data.gene, data.appyter_id)
     fill_enrichment(data.gene, data.appyter_id)
-    $('#struct-img').attr('src', `${aws}/secondary_structure/${data.fig_data.structure}`)
-    $('#struct-img').attr('alt', `Predicted secondary structure of ${data.gene}.`)
-    $('#struct-img-down').attr('href', `${aws}/secondary_structure/${data.fig_data.structure}`)
-    $('#struct-img-down-ps').attr('href', `${aws}/secondary_structure/${struct_img_down_ps}`)
+    if (data.fig_data.structure !== 'no_structure') {
+        $('#struct-img').attr('src', `${aws}/secondary_structure/${data.fig_data.structure}`).attr('alt', `Predicted secondary structure of ${data.gene}.`)
+        $('#struct-img-down').attr('href', `${aws}/secondary_structure/${data.fig_data.structure}`)
+        $('#struct-img-down-ps').attr('href', `${aws}/secondary_structure/${struct_img_down_ps}`)
+    }
+    else
+    {
+        $('#struct-img').attr('src', './static/no_structure.png').attr('alt', 'lncRNA is too long to reliably predict the structure')
+        $('#struct-img-down').attr('href', '')
+        $('#struct-img-down-ps').attr('href', '')
+    }
     $('#appyter-url').attr('href', `${aws}`)
     $('#tab-coord-down').attr('href', `${aws}/gene_info/${data.gene}_gene_coordinates.csv`)
     $('#table-transc-can-down').attr('href', `${aws}/gene_info/${data.gene}_canonical_sequence.csv`)
