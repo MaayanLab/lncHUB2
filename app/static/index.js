@@ -314,7 +314,7 @@ function display_results(data) {
         $('#struct-img-down').attr('href', '')
         $('#struct-img-down-ps').attr('href', '')
     }
-    $('#appyter-url').attr('href', `${aws}`)
+    $('#appyter-url').attr('href', `https://appyters.maayanlab.cloud/lncHUB2/#/?args.gene=${data.gene}&submit`)
     $('#tab-coord-down').attr('href', `${aws}/gene_info/${data.gene}_gene_coordinates.csv`)
     $('#table-transc-can-down').attr('href', `${aws}/gene_info/${data.gene}_canonical_sequence.csv`)
     $('#table-transc-alt-down').attr('href', `${aws}/gene_info/${data.gene}_alternative_sequence.csv`)
