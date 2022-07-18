@@ -3,8 +3,8 @@
 The web service to predict the biological functions of long non-coding RNAs from Recount3 using lncRNA-gene co-expression.
 
 ### Run in dev
-```npm start```
+```python run.py```
 ### Build for production
-```npm run build```
+```docker-compose build```
 ### Push to Docker
-```docker-compose build app && docker-compose push```
+```docker-compose push```
