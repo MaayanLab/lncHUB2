@@ -11,6 +11,8 @@ lncrns = json.load(open(os.path.join(app.static_folder, "lncrna_mapping.json")))
 lnc_coordinates = json.load(open(os.path.join(app.static_folder, "lncrna_coordinates.json")))
 lnc_coordinates_mapping = json.load(open(os.path.join(app.static_folder, "lncrna_coordinates_mapping.json")))
 gene_struct_mapping = json.load(open(os.path.join(app.static_folder, "ss_mapping.json")))
+hs_lncrns = json.load(open(os.path.join(app.static_folder, "lncRNAs.json")))
+mm_lncrns = json.load(open(os.path.join(app.static_folder, "mm_lncRNAs.json")))
 
 
 @app.route(ROOT_PATH, methods=['GET'])
@@ -37,16 +39,19 @@ def route_gene(gene):
 @app.route(f'{ROOT_PATH}/search/<gene>', methods=['GET'])
 def route_search(gene):
     data = {}
-    gene = gene.upper()
     gene = lncrns.get(gene, '')
     data['gene'] = gene
     lncrna = True if gene else False
     data['lncrna'] = lncrna
+    if gene in hs_lncrns:
+        species = 'human'
+    else:
+        species = 'mouse'
     if lncrna:
-        appyter_id = utils.get_appyter_id(gene)
+        appyter_id = utils.get_appyter_id(gene, species)
         data['appyter_id'] = appyter_id
         is_ready = utils.check_status(appyter_id, gene)
         data['is_ready'] = is_ready
-        data['fig_data'] = utils.fetch_appyter_data(gene)
+        data['fig_data'] = utils.fetch_appyter_data(gene, species)
         data['fig_data']['structure'] = gene_struct_mapping.get(gene, 'no_structure')
     return json.dumps({'success': True, 'data': data}), 200, {'ContentType': 'application/json'}

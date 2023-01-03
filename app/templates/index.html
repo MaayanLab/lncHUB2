@@ -34,25 +34,39 @@
     <div class="row justify-content-center my-5">
         <div class="col-8">
             <p>A long non-coding RNA (lncRNA) is a transcript with more than 200 nucleotides that is not translated into
-                protein. Based on gene-gene co-expression correlations created from Recount3's processed RNA-seq
-                samples, we present 15,862 landing pages for long non-coding RNAs that include median expression across
-                tissues and cell lines, predicted biological functions, pathway membership, and predicted small
-                molecules that may regulate their expression.</p>
-            <div class="input-group mt-4 mb-2">
-                <input id="search" type="text" autocapitalize="on" maxlength="50" class="form-control"
-                       aria-label="lncRNA"
-                       aria-describedby="search-button"/>
-                <button class="btn btn-outline-secondary" type="button" id="search-button"
-                        onclick="search($('#search').val())">Search
-                </button>
-            </div>
-            <p class="small text-muted">For example <a href="#" onclick="example('HOTAIR');">HOTAIR</a>, <a href="#"
-                                                                                                            onclick="example('MALAT1');">MALAT1</a>,
-                <a href="#" onclick="example('ENSG00000245532');">ENSG00000245532</a>, <a href="#"
-                                                                                          onclick="example('chr7:27,198,574-27,207,260');">chr7:27,198,574-27,207,260</a>
-            </p>
-            <div id="coordinates-lncRNA" class="row justify-content-center my-3" style="display: none;">
-                <p id="coordinates-lncRNA-msg" style="font-style: italic;"></p>
+                protein. Based on gene-gene co-expression correlations created from ARCHS4's processed RNA-seq
+                samples, we present 18,705 human and 11,274 mouse landing pages for long non-coding RNAs that include expression statistics across
+                tissues and cell lines, predicted biological functions, pathway membership, subcellular localization, and predicted small
+                molecules and CRISPR KO genes that may regulate their expression.</p>
+            <div class="row" style="flex-wrap: wrap;">
+                <div class="col-8">
+                    <div class="input-group mt-4 mb-2">
+                        <input id="search" type="text" autocapitalize="on" maxlength="50" class="form-control"
+                            aria-label="lncRNA"
+                            aria-describedby="search-button"/>
+                        <button class="btn btn-outline-secondary" type="button" id="search-button"
+                                onclick="search($('#search').val())">Search
+                        </button>
+                    </div>
+                
+                    <p id="examples" class="small text-muted">For example <a href="#" onclick="example('HOTAIR');">HOTAIR</a>, <a href="#"
+                                                                                                                    onclick="example('MALAT1');">MALAT1</a>,
+                        <a href="#" onclick="example('ENSG00000245532');">ENSG00000245532</a>, <a href="#"
+                                                                                                onclick="example('chr7:27,198,574-27,207,260');">chr7:27,198,574-27,207,260</a>
+                    </p>
+                    <div id="coordinates-lncRNA" class="row justify-content-center my-3" style="display: none;">
+                        <p id="coordinates-lncRNA-msg" style="font-style: italic;"></p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-lg-4 col-sm-12">
+                    <div class="ml-1 mt-4" style="width: 100px;">
+                        <label class="toggle" id="species-toggle">
+                            <input type="checkbox" id="species-val">
+                            <span class="slider"></span>
+                            <span class="labels" data-on="Mouse" data-off="Human"></span>
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -88,6 +102,7 @@
                         <a class="nav-link ms-3 my-1" href="#item-3-1">Predicted biological functions of <span
                                 class="gene-name"></span></a>
                     </nav>
+                    <a class="nav-link" href="#item-4-5"> Subcellular Localization of <span class="gene-name"></span></a>
                     <a class="nav-link" href="#item-4">Expression of <span class="gene-name"></span> across tissues and
                         cell lines</a>
                     <a class="nav-link" href="#item-5">Visualizing lncRNAs based on their gene expression similarity
@@ -99,6 +114,12 @@
                         <a class="nav-link ms-3 my-1" href="#item-6-1">L1000 small molecules predicted to up-regulate
                             <span class="gene-name"></span></a>
                         <a class="nav-link ms-3 my-1" href="#item-6-2">L1000 small molecules predicted to down-regulate
+                            <span class="gene-name"></span></a>
+                    </nav>
+                    <nav class="nav nav-pills flex-column">
+                        <a class="nav-link ms-3 my-1" href="#item-6-1">L1000 CRISPR KO genes predicted to up-regulate
+                            <span class="gene-name"></span></a>
+                        <a class="nav-link ms-3 my-1" href="#item-6-2">L1000 CRISPR KO genes predicted to down-regulate
                             <span class="gene-name"></span></a>
                     </nav>
                     <a class="nav-link" href="#item-7">References</a>
@@ -122,7 +143,7 @@
                     <span
                             class="gene-name"></span> (<a id="ucsc-url" href=""><span id="lncrn-coor"></span> <i
                             class="fas fa-external-link-alt small"></i></a>),
-                    displays the median expression of <span class="gene-name"></span> across tissues and cell-lines, and
+                    displays the expression statistics of <span class="gene-name"></span> across tissues and cell-lines, and
                     predicts
                     small molecules
                     that may
@@ -139,7 +160,7 @@
                                 <p id="struct-desc" style="font-size: 0.8rem; font-style: italic;"><a
                                         id="struct-img-down"
                                         class="format-download"
-                                        href="">PNG</a> <a
+                                        href="">JPG</a> <a
                                         id="struct-img-down-ps"
                                         class="format-download"
                                         href="">PS</a> Secondary structure of <span
@@ -150,7 +171,7 @@
                             <div class="col-sm">
                                 <h6>Genomic coordinates for <span class="gene-name"></span></h6>
                                 <p>The genomic coordinates for <span class="gene-name"></span> are provided from GENCODE
-                                    (gencode.v38.long_noncoding_RNAs.gtf)[1].</p>
+                                    (gencode.<span class="gencode"></span>.long_noncoding_RNAs.gtf)[1].</p>
                                 <table id="table-coordinates" class="compact hover order-column row-border"
                                        style="width:100%"></table>
                                 <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
@@ -164,7 +185,7 @@
                             <div class="col-sm">
                                 <h6>Transcript sequences for <span class="gene-name"></span></h6>
                                 <p>The canonical and alternative cDNA sequneces for <span class="gene-name"></span> are
-                                    provided from Ensembl (Homo_sapiens.GRCh38.ncrna.fa)[2].</p>
+                                    provided from Ensembl (<span class="ensembl"></span>.GRCh38.ncrna.fa)[2].</p>
 
                                 <table id="table-transc-can" class="compact hover order-column row-border"
                                        style="width:100%"></table>
@@ -249,7 +270,7 @@
                 <div class="row">
                     <div class="col col-sm-6">
                         <h5 class="mt-4">Top lncRNAs positively correlated with <span class="gene-name"></span></h5>
-                        <p style="height: 5rem;">Below we list the top 20 lncRNAs, out of all 15,862 lncRNAs within our
+                        <p style="height: 5rem;">Below we list the top 20 lncRNAs, out of all <span class="num-lnc"></span> lncRNAs within our
                             database,
                             that correlate most with
                             <span class="gene-name"></span> based on their Pearson correlation coefficients.</p>
@@ -610,18 +631,29 @@
                         </div>
                     </div>
                 </div>
-
             </div>
+            <h5 id="item-4-5" class="mt-4"> lncATLAS subcellular or predicted localization of
+                <span class="gene-name"></span></h5>
+            <div id='localization'>
+                <p> Cell information was sourced from lncATLAS[5]. If lncATLAS does not contain information for the entered lncRNA, 
+                    predicted scores will be shown in red. Predicted scores were calculated with unsupervised learning using 
+                    ranked correlations from ARCHS4 and the availble localization data from lncATLAS[5].</p>
+
+                <img id="localization-img" src=""
+                    class="img-fluid p-3 bg-light"
+                    alt="" style="width: 600px;">
+                <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"> Localization information for <span class="gene-name"></span> sourced from lncATLAS (blue) or the predicted localization (red) calculated using the correlation matrix and the avalible data from lncATLAS.</p>
+                <p class="mb-2 small"><a id="fig-local-png" class="format-download" href="">PNG</a><a id="local-csv" class="format-download" href="">CSV</a></p>
+            </div>
+
 
             <h5 id="item-4" class="mt-4">Expression of <span class="gene-name"></span> across tissues and cell lines
             </h5>
-            <p>This part of the report provides the Z-score (Normalized Median Expression) for the lncRNA <span
-                    class="gene-name"></span> in various tissues and cell lines. Samples from Recount3 [2] were
-                automatically labelled by tissue type or cell line of origin. Tissue and cell line samples were log2
-                transformed and quantile normalized separately. Tissues and cell lines with less than 20 samples
-                were removed and the median expression of <span class="gene-name"></span> was then calculated for
-                each tissue type and cell line. Z-scores were computed along the lncRNA axis to compare expression
-                levels across all tissues and cell lines.</p>
+            <p>This part of the report provides the median expression for the lncRNA <span
+                    class="gene-name"></span> in various tissues and cell lines. Samples from ARCHS4[4] were
+                automatically labelled by tissue type or cell line of origin. Tissues and cell lines with less than 20 samples
+                were removed and the median expression as well as other statistics of <span class="gene-name"></span> were then calculated for
+                each tissue type and cell line. </p>
 
             <div class="row">
                 <div class="col-sm">
@@ -634,13 +666,13 @@
                             <i class="fas fa-expand-arrows-alt"></i>
                         </button>
                         Figure 5.
-                        Z-score (median
-                        expression) for the lncRNA
+                        Expression statistics
+                        for the lncRNA
                         <span class="gene-name"></span> in
                         various
                         tissue types.
                     </p>
-                    <p class="mb-2" style="font-size: 0.8rem">Download table with z-score (median expression) values
+                    <p class="mb-2" style="font-size: 0.8rem">Download table with expression statistics
                         for <span
                                 class="gene-name"></span>
                         in various tissue types: <a id="fig4-down" class="format-download" href="">CSV</a></p>
@@ -672,13 +704,11 @@
                             <i class="fas fa-expand-arrows-alt"></i>
                         </button>
                         Figure 6.
-                        Z-score (median
-                        expression) for the lncRNA
+                        Expression statistics for the lncRNA
                         <span class="gene-name"></span> in the
-                        top 30
-                        cell lines.
+                        top 30 cell lines.
                     </p>
-                    <p class="mb-2" style="font-size: 0.8rem">Download table with z-score (median expression) values
+                    <p class="mb-2" style="font-size: 0.8rem">Download table with expression statistics
                         for <span
                                 class="gene-name"></span>
                         in various cell lines: <a id="fig5-down" class="format-download"
@@ -706,13 +736,13 @@
             <h5 id="item-5" class="mt-4">Visualizing lncRNAs based on their gene expression similarity across
                 tissues and cell
                 lines</h5>
-            <p>We applied UMAP [6] to visualize lncRNA expression across 3,000 randomly selected samples (with
+            <p>We applied UMAP[9] to visualize lncRNA expression across 3,000 randomly selected samples (with
                 tissue type
-                and cell line labels) from Recount3[2]. Samples were first log2 transformed and quantile normalized
+                and cell line labels) from ARCHS4[4]. Samples were first log2 transformed and quantile normalized
                 along
                 the gene axis, then UMAP was applied to the lncRNA expression data with samples as features. Each
                 data point
-                represents a single lncRNA (n=15,862). The black arrow is pointing to the location of <span
+                represents a single lncRNA (n=<span class="num-lnc"></span>). The black arrow is pointing to the location of <span
                         class="gene-name"></span>.</p>
             <div class="row">
                 <div class="col-sm">
@@ -728,9 +758,9 @@
                         Figure 7. UMAP
                         was applied
                         to 3,000 randomly
-                        selected samples (with tissue type labels) from Recount3.
+                        selected samples (with tissue type labels) from ARCHS4.
                         Each data
-                        point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in <span
+                        point represents a lncRNA (n=<span class="num-lnc"></span>) and are colored by log median expression in <span
                             id="fig6-tissue"></span>.
                     </p>
                     <div class="modal fade" id="fig6-mod" tabindex="-1" aria-labelledby="fig6-mod-title"
@@ -764,9 +794,9 @@
                         Figure 8. UMAP
                         was applied
                         to 3,000 randomly
-                        selected samples (with cell line labels) from Recount3. Each
+                        selected samples (with cell line labels) from ARCHS4. Each
                         data
-                        point represents a lncRNA (n=15,862) and are colored by z-score (median expression) in <span
+                        point represents a lncRNA (n=<span class="num-lnc"></span>) and are colored by median expression in <span
                             id="fig7-cell"></span>.
                     </p>
                     <div class="modal fade" id="fig7-mod" tabindex="-1" aria-labelledby="fig7-mod-title"
@@ -789,7 +819,7 @@
                 </div>
             </div>
 
-            <h5 id="item-6" class="mt-4">L1000 small molecules predicted to modulate <span class="gene-name"></span>
+            <h5 id="item-6" class="mt-4">L1000 predictions to modulate <span class="gene-name"></span>
             </h5>
             <p>~1.4 million Level 5 L1000 chemical perturbation gene expression signatures were downloaded from
                 SigCom LINCS
@@ -797,7 +827,7 @@
                 Pearson
                 correlation coefficient was computed by taking the average Pearson coefficient between the lncRNA
                 and all genes
-                in the signature. All 15,862 lncRNAs were then ranked by mean Pearson correlation coefficient, and
+                in the signature. All <span class="num-lnc"></span> lncRNAs were then ranked by mean Pearson correlation coefficient, and
                 the top 1,000
                 lncRNAs with the highest coefficients were retained for each signature. The top 500 lncRNA-L1000
                 signature
@@ -844,6 +874,44 @@
                 the lncRNA
                 <span class="gene-name"></span>.</p>
 
+                <h5 id="item-6-3" class="mt-4">L1000 CRISPR KO genes predicted to up-regulate <span
+                    class="gene-name"></span></h5>
+            <p>The prioritized genes below are predicted to specifically up-regulate <span
+                    class="gene-name"></span>.
+            </p>
+
+            <div class="table-responsive-sm">
+                <p id="table5-blank" style="display: none; font-style: italic;">There are no CRISPR KO genes
+                    predicted to specifically up-regulate the expression of <span class="gene-name"></span>.</p>
+                <table id="table5" class="compact hover order-column row-border"
+                       style="width:100%"></table>
+            </div>
+
+            <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a id="tab5-down" class="format-download"
+                                                                              href="">CSV</a> Table 8. L1000 CRISPR KO
+                    genes predicted to up-regulate
+                the lncRNA
+                <span class="gene-name"></span>.</p>
+
+            <h5 id="item-6-4" class="mt-4">L1000 CRISPR KO genes predicted to down-regulate <span
+                    class="gene-name"></span></h5>
+            <p>The prioritized genes below are predicted to specifically down-regulate <span
+                    class="gene-name"></span>.
+            </p>
+
+            <div class="table-responsive-sm">
+                <p id="table6-blank" style="display: none; font-style: italic;">There are no CRISPR KO genes
+                    predicted to specifically down-regulate the expression of <span class="gene-name"></span>.</p>
+                <table id="table6" class="compact hover order-column row-border"
+                       style="width:100%"></table>
+            </div>
+            <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a id="tab6-down" class="format-download"
+                                                                              href="">CSV</a> Table 9. L1000 CRISPR KO
+                genes predicted to down-regulate
+                the lncRNA
+                <span class="gene-name"></span>.</p>
+            
+
 
             <h5 id="item-7" class="mt-4">References</h5>
             <p class="mb-1" style="font-size: 0.8rem;">[1] Frankish A, Diekhans M, Jungreis I, Lagarde J, Loveland
@@ -855,22 +923,20 @@
             <p class="mb-1" style="font-size: 0.8rem;">[3] Tweedie S, Braschi B, Gray K, Jones TEM, Seal Ruth L,
                 Yates B, Bruford EA: Genenames.org: the HGNC and VGNC resources in 2021. Nucleic Acids Research
                 2021, 49(D1):D939-D946.</p>
-            <p class="mb-1" style="font-size: 0.8rem;">[4] Wilks C, Zheng SC, Chen FY, Charles R, Solomon B, Ling
-                JP, Imada EL, Zhang D, Joseph L, Leek JT: recount3: summaries and queries for large-scale RNA-seq
-                expression and splicing. bioRxiv 2021:2021.2005.2021.445138.</p>
-            <p class="mb-1" style="font-size: 0.8rem;">[5] Xie Z, Bailey A, Kuleshov MV, Clarke DJB, Evangelista JE,
+            <p class="mb-1" style="font-size: 0.8rem;">[4] Lachmann A, Torre D, Keenan AB, Jagodnik KM, Lee HJ, Wang L, Silverstein MC, Ma'ayan A: Massive mining of publicly available RNA-seq data from human and mouse. Nature Communications 2018, 10;9(1):1366.
+            <p class="mb-1" style="font-size: 0.8rem;">[5] Mas-Ponte D, Carlevaro-Fita J, Palumbo E, Pulido TH, Guigo R, Johnson R. LncATLAS database for subcellular localization of long noncoding RNAs. Rna. 2017 Jul 1;23(7):1080-7.</p>
+            <p class="mb-1" style="font-size: 0.8rem;">[6] Xie Z, Bailey A, Kuleshov MV, Clarke DJB, Evangelista JE,
                 Jenkins SL, Lachmann A, Wojciechowicz ML, Kropiwnicki E, Jagodnik KM: Gene Set Knowledge Discovery
                 with Enrichr. Current Protocols 2021, 1(3):e90.</p>
-            <p class="mb-1" style="font-size: 0.8rem;">[6] Chen EY, Tan CM, Kou Y, Duan Q, Wang Z, Meirelles GV,
+            <p class="mb-1" style="font-size: 0.8rem;">[7] Chen EY, Tan CM, Kou Y, Duan Q, Wang Z, Meirelles GV,
                 Clark NR, Ma’ayan A: Enrichr: interactive and collaborative HTML5 gene list enrichment analysis
                 tool. BMC Bioinformatics 2013, 14(1):128.</p>
-            <p class="mb-1" style="font-size: 0.8rem;">[7] Kuleshov MV, Jones MR, Rouillard AD, Fernandez NF, Duan
+            <p class="mb-1" style="font-size: 0.8rem;">[8] Kuleshov MV, Jones MR, Rouillard AD, Fernandez NF, Duan
                 Q, Wang Z, Koplev S, Jenkins SL, Jagodnik KM, Lachmann A: Enrichr: a comprehensive gene set
                 enrichment analysis web server 2016 update. Nucleic Acids Research 2016, 44(W1):W90-W97.</p>
-            <p class="mb-1" style="font-size: 0.8rem;">[8] McInnes L, Healy J, Melville J: Umap: Uniform manifold
+            <p class="mb-1" style="font-size: 0.8rem;">[9] McInnes L, Healy J, Melville J: Umap: Uniform manifold
                 approximation and projection for dimension reduction. arXiv preprint arXiv:180203426 2018.</p>
-            <p class="mb-1" style="font-size: 0.8rem;">[9] Evangelista et al. SigCom LINCS: Data and Metadata Search
-                Engine for Gene Expression Signatures. 2021. In preparation.</p>
+            <p class="mb-1" style="font-size: 0.8rem;">[10] Evangelista JE, Clarke DJB, Xie Z, Lachmann A, Jeon M, Chen K, Jagodnik KM, Jenkins SL, Kuleshov MV, Wojciechowicz ML, Schürer SC, Medvedovic M, Ma'ayan A. SigCom LINCS: data and metadata search engine for a million gene expression signatures. Nucleic Acids Research 2022, 50(W1):W697–709..</p>
         </div>
     </div>
 </div>
@@ -883,29 +949,29 @@
 
 <footer class="footer">
 
-    <div class="container">
-        <div class="row justify-content-center m-5">
+    <div class="container mx-auto text-center">
+        <div class="row justify-content-center m-5 mx-auto">
             <div class="col-md-2 col-sm">
                 <a href="https://icahn.mssm.edu/research/bioinformatics" target="_blank" rel="noreferrer">
                     <img
-                            class="rounded"
+                            class="rounded m-2"
                             src="{{ url_for('static', filename='icahn_cb_logo.png') }}"
                             style="height: 5rem"
                             alt="Icahn School of Medicine at Mount Sinai Center of Bioinformatics logo"
                     />
                 </a>
             </div>
-            <div class="col-md-2 col-sm">
+            <div class="col-md-2 col-sm justify-content-center">
                 <a href="https://labs.icahn.mssm.edu/maayanlab/" target="_blank" rel="noreferrer">
                     <img
-                            class="rounded"
+                            class="rounded m-2"
                             src="{{ url_for('static', filename='maayanlab_logo.png') }}"
                             style="height: 5rem"
                             alt="Ma'ayan lab logo"
                     />
                 </a>
             </div>
-            <div class="col-md-2 col-sm ms-3">
+            <div class="col-md-2 col-sm mt-2">
                 <div class="row">
                     <div class="col-12">
                         <!-- Twitted share button -->
@@ -933,9 +999,30 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2 col-sm">
+            <div class="col-md-2 col-sm mt-2">
+                <div>
+                    <a class="btn btn-primary btn-group-sm mx-auto mb-2 d-block" style="font-size: 13px; background-color: #37adef; border-style: none; max-width: 200px;"
+                    href="https://github.com/MaayanLab/lncHUB2" target="_blank" rel="noopener noreferrer" role="button">
+                    <span class="badge badge-light mr-1">
+                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                        style="width: 1rem;">
+                    </span>
+                    View source code
+                    </a>
+                    <a class="btn btn-primary btn-group-sm mx-auto d-block" style="font-size: 13px; background-color: #37adef; border-style: none; max-width: 200px;"
+                    href="https://github.com/MaayanLab/lncHUB2/issues/new" target="_blank" rel="noopener noreferrer"
+                    role="button">
+                    <span class="badge badge-light mr-1">
+                        <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                        style="width: 1rem;">
+                    </span>
+                    Submit an issue
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-2 col-sm-2 m-2 mb-5">
                 <a href="https://www.youtube.com/watch?v=yIsGmpNvTrU" target="_blank">
-                    <img id="youtube" style="border-radius: 5px; min-width: 175px"
+                    <img id="youtube" style="border-radius: 5px; min-width: 175px; max-width: 175px;"
                          src="{{ url_for('static', filename='youtube_thumb.png') }}" class="img-fluid"
                          alt="lncHUB2 Tutorial Video">
                 </a>
