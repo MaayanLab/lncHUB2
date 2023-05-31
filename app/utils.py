@@ -25,19 +25,22 @@ def get_appyter_id(gene, species):
         'Accept': 'application/json',
         'Content-Type': 'application/json'
     }
-
-    response = requests.request("POST", url, headers=headers, data=payload)
-    return json.loads(response.text)['session_id']
+    try:
+        response = requests.request("POST", url, headers=headers, data=payload, timeout=5)
+        return json.loads(response.text)['session_id']
+    except: 
+        return ''
 
 
 def check_status(appyter_id, gene):
     url = f'https://appyters.maayanlab.cloud/lncHUB2/{appyter_id}/l1000_sm_predictions/{gene}_l1000_sm_predictions_down.csv'
-    response = requests.get(url)
-    return True if response.status_code == 200 else False
-
+    try:
+        response = requests.get(url, timeout=5)
+        return True if response.status_code == 200 else False
+    except:
+        return False
 
 def fetch_appyter_data(gene, species):
-    print(f'{base_url}/{species.lower()}/{gene}/tissue_and_cell_line_expression/{gene}_tissue_median_expr.csv')
     fig6_tissues = requests.get(
         f'{base_url}/{species.lower()}/{gene}/tissue_and_cell_line_expression/{gene}_tissue_median_expr.csv').text.strip().split(
         '\n')
@@ -66,3 +69,4 @@ def lnc_range(coordinates_json, input_coor):
 
 if __name__ == '__main__':
     print()
+    

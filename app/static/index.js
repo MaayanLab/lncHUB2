@@ -3,7 +3,7 @@ const base_path = 'https://maayanlab-public.s3.amazonaws.com/lnchub2/v2'
 
 const human_list = fetch(
     "static/lncRNAs.json"
-).then(data => data.json());                 
+).then(data => data.json());
 
 const mouse_list = fetch(
     "static/mm_lncRNAs.json"
@@ -15,9 +15,9 @@ var species = 'human'
 var num_lnc = '18,705'
 var gencode = 'v41'
 var ensembl = 'Homo_sapiens'
-$("#species-toggle").change(function(){
-    var isChecked= document.getElementById("species-val").checked;
-    if(!isChecked){
+$("#species-toggle").change(function () {
+    var isChecked = document.getElementById("species-val").checked;
+    if (!isChecked) {
         species = 'human'
         num_lnc = '18,705'
         gencode = 'v41'
@@ -29,7 +29,7 @@ $("#species-toggle").change(function(){
         document.getElementById("examples").innerHTML = `For example <a href="#" onclick="example('HOTAIR');">HOTAIR</a>, <a href="#" onclick="example('MALAT1');">MALAT1</a>,
                                     <a href="#" onclick="example('ENSG00000245532');">ENSG00000245532</a>, <a href="#"
                                     onclick="example('chr7:27,198,574-27,207,260');">chr7:27,198,574-27,207,260</a>`
-    } else{
+    } else {
         species = 'mouse'
         num_lnc = '11,274'
         gencode = 'vM30'
@@ -44,6 +44,61 @@ $("#species-toggle").change(function(){
     }
 });
 
+window.addEventListener('DOMContentLoaded', async () => {
+    var url = window.location.href;
+    if (!url.includes('#')) {
+        return;
+    }
+    var human_check = await human_list
+    var mouse_check = await mouse_list
+    var gene = url.split('#')[1];
+    if (human_check.includes(gene) || mouse_check.includes(gene)) {
+        var isChecked = document.getElementById("species-val").checked;
+        if ((human_check.includes(gene) && isChecked) || (mouse_check.includes(gene) && !isChecked)) {
+            document.getElementById("species-val").click()
+            search(gene)
+        } else {
+            search(gene)
+        }
+    }
+});
+
+
+// OPEN GENE LIST IN ENRICHR
+function enrich(options) {
+    if (typeof options.list === 'undefined') {
+        alert('No genes defined.');
+        return;
+    }
+
+    var description = options.description || "",
+        popup = options.popup || false,
+        form = document.createElement('form'),
+        listField = document.createElement('input'),
+        descField = document.createElement('input');
+
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', 'https://maayanlab.cloud/Enrichr/enrich');
+    if (popup) {
+        form.setAttribute('target', '_blank');
+    }
+    form.setAttribute('enctype', 'multipart/form-data');
+
+    listField.setAttribute('type', 'hidden');
+    listField.setAttribute('name', 'list');
+    listField.setAttribute('value', options.list);
+    form.appendChild(listField);
+
+    descField.setAttribute('type', 'hidden');
+    descField.setAttribute('name', 'description');
+    descField.setAttribute('value', description);
+    form.appendChild(descField);
+
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+}
+
 
 function copy_to_clipboard(text) {
     navigator.clipboard.writeText(text).then(function () {
@@ -57,25 +112,35 @@ function copy_to_clipboard(text) {
 
 function fill_enrichment(gene, appyter_id) {
     for (const d of ['positively', 'negatively']) {
-        for (const n of [25, 50, 100, 200, 300, 500]) {
-            fetch(`${base_path}/${species}/${gene}/enrichment_analysis/${gene}_top_${n}_${d}_correlated_genes_Enrichr_link.txt`)
-                .then(response => {
-                    return {ok: response.ok, text: response.text()}
-                })
-                .then(async data => {
-                    if (data.ok) {
-                        let link = await data.text;
-                        $(`#enr${n}-${d[0]}`).attr('href', link)
+        fetch(`${base_path}/${species}/${gene}/gene_correlations/${gene}_${d}_correlated_genes.csv`)
+            .then(response => {
+                return { ok: response.ok, text: response.text() }
+            })
+            .then(async data => {
+                if (data.ok) {
+                    let text = await data.text;
+                    let genes = text.trim().split('\n').map(x => x.split(',')[0]);
+                    for (const n of [25, 50, 100, 200, 300, 500]) {
+                        
+                        document.getElementById(`enr${n}-${d[0]}`).onclick = function () { 
+                            options = {}
+                            options.list = genes.splice(1, n).join('\n')
+                            options.description = `Top ${n} ${d} correlated genes with the lncRNA: ${gene}`
+                            options.popup = true
+                            enrich(options) 
+                        }
                     }
-                })
-        }
+                }
+            }
+        );
     }
 }
+
 
 function draw_tables(gene, appyter_id) {
     fetch(`${base_path}/${species}/${gene}/gene_info/${gene}_gene_coordinates.csv`)
         .then(response => {
-            return {ok: response.ok, text: response.text()}
+            return { ok: response.ok, text: response.text() }
         })
         .then(async data => {
             if (data.ok) {
@@ -98,20 +163,20 @@ function draw_tables(gene, appyter_id) {
                             // {'title': 'Gene name'},
                             // {'title': 'Ensembl gene id'},
                             // {'title': 'HGNC id'},
-                            {'title': 'Type'},
-                            {'title': 'Transcript name'},
-                            {'title': 'Ensembl transcript id'},
-                            {'title': 'Exon number'},
-                            {'title': 'Ensembl exon id'},
-                            {'title': 'Coordinates'},
-                            {'title': 'Strand'}]
+                            { 'title': 'Type' },
+                            { 'title': 'Transcript name' },
+                            { 'title': 'Ensembl transcript id' },
+                            { 'title': 'Exon number' },
+                            { 'title': 'Ensembl exon id' },
+                            { 'title': 'Coordinates' },
+                            { 'title': 'Strand' }]
                     })
             }
         })
 
     fetch(`${base_path}/${species}/${gene}/gene_info/${gene}_canonical_sequence.csv`)
         .then(response => {
-            return {ok: response.ok, text: response.text()}
+            return { ok: response.ok, text: response.text() }
         })
         .then(async data => {
             if (data.ok) {
@@ -128,9 +193,9 @@ function draw_tables(gene, appyter_id) {
                         responsive: true,
                         order: [],
                         columns: [
-                            {'title': 'Ensembl transcript id'},
-                            {'title': 'Description'},
-                            {'title': 'Copy sequence to clipboard'},
+                            { 'title': 'Ensembl transcript id' },
+                            { 'title': 'Description' },
+                            { 'title': 'Copy sequence to clipboard' },
                         ]
                     })
             }
@@ -138,7 +203,7 @@ function draw_tables(gene, appyter_id) {
 
     fetch(`${base_path}/${species}/${gene}/gene_info/${gene}_alternative_sequence.csv`)
         .then(response => {
-            return {ok: response.ok, text: response.text()}
+            return { ok: response.ok, text: response.text() }
         })
         .then(async data => {
             if (data.ok) {
@@ -155,9 +220,9 @@ function draw_tables(gene, appyter_id) {
                         responsive: true,
                         order: [],
                         columns: [
-                            {'title': 'Ensembl transcript id'},
-                            {'title': 'Description'},
-                            {'title': 'Copy sequence to clipboard'},
+                            { 'title': 'Ensembl transcript id' },
+                            { 'title': 'Description' },
+                            { 'title': 'Copy sequence to clipboard' },
                         ]
                     })
             }
@@ -166,68 +231,68 @@ function draw_tables(gene, appyter_id) {
     $('#table1p-blank').hide()
     fetch(`${base_path}/${species}/${gene}/gene_correlations/${gene}_positively_correlated_genes.csv`)
         .then(response => {
-            return {ok: response.ok, text: response.text()}
+            return { ok: response.ok, text: response.text() }
         })
         .then(async data => {
-                if (data.ok) {
-                    let text = await data.text;
-                    let dataSet = text.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
-                    $('#table1p').DataTable(
-                        {
-                            data: dataSet,
-                            destroy: true,
-                            responsive: true,
-                            order: [],
-                            columns: [
-                                {'title': 'Gene'},
-                                {'title': 'Pearson\'s Correlation Coefficient'}
-                            ]
-                        })
-                    $('#tab1p-down').show()
-                } else {
-                    $('#table1p-blank').show();
-                    $('#tab1p-down').hide();
-                }
+            if (data.ok) {
+                let text = await data.text;
+                let dataSet = text.trim().split('\n').slice(1, 101).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
+                $('#table1p').DataTable(
+                    {
+                        data: dataSet,
+                        destroy: true,
+                        responsive: true,
+                        order: [],
+                        columns: [
+                            { 'title': 'Gene' },
+                            { 'title': 'Pearson\'s Correlation Coefficient' }
+                        ]
+                    })
+                $('#tab1p-down').show()
+            } else {
+                $('#table1p-blank').show();
+                $('#tab1p-down').hide();
             }
+        }
         );
 
     $('#table1n-blank').hide()
     fetch(`${base_path}/${species}/${gene}/gene_correlations/${gene}_negatively_correlated_genes.csv`)
         .then(response => {
-            return {ok: response.ok, text: response.text()}
+            return { ok: response.ok, text: response.text() }
         })
         .then(async data => {
-                if (data.ok) {
-                    let text = await data.text;
-                    let dataSet = text.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
-                    $('#table1n').DataTable(
-                        {
-                            data: dataSet,
-                            destroy: true,
-                            responsive: true,
-                            order: [],
-                            columns: [
-                                {'title': 'Gene'},
-                                {'title': 'Pearson\'s Correlation Coefficient'}
-                            ]
-                        })
-                    $('#tab1n-down').show()
-                } else {
-                    $('#table1n-blank').show();
-                    $('#tab1n-down').hide();
-                }
+            if (data.ok) {
+                let text = await data.text;
+                let dataSet = text.trim().split('\n').slice(1, 101).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
+                $('#table1n').DataTable(
+                    {
+                        data: dataSet,
+                        destroy: true,
+                        responsive: true,
+                        order: [],
+                        columns: [
+                            { 'title': 'Gene' },
+                            { 'title': 'Pearson\'s Correlation Coefficient' }
+                        ]
+                    })
+                $('#tab1n-down').show()
+            } else {
+                $('#table1n-blank').show();
+                $('#tab1n-down').hide();
             }
+        }
         );
 
     fetch(`${base_path}/${species}/${gene}/gene_correlations/${gene}_positively_correlated_lncRNAs.csv`)
         .then(response => {
-            return {ok: response.ok, text: response.text()}
+            return { ok: response.ok, text: response.text() }
         })
         .then(async data => {
             $('#table2-blank').hide()
             if (data.ok) {
                 let text = await data.text;
-                let dataSet = text.trim().split('\n').slice(1, 100).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
+                let dataSet = text.trim().split('\n').slice(1, 101).map(x => [x.split(',')[0], parseFloat(x.split(',')[1])]);
                 $('#table2').DataTable(
                     {
                         data: dataSet,
@@ -235,8 +300,8 @@ function draw_tables(gene, appyter_id) {
                         responsive: true,
                         order: [],
                         columns: [
-                            {'title': 'Gene'},
-                            {'title': 'Pearson\'s Correlation Coefficient'}
+                            { 'title': 'Gene' },
+                            { 'title': 'Pearson\'s Correlation Coefficient' }
                         ]
                     })
                 $('#tab2-down').show()
@@ -248,22 +313,22 @@ function draw_tables(gene, appyter_id) {
 
     fetch(`${base_path}/${species}/${gene}/l1000_sm_predictions/${gene}_l1000_sm_predictions_up.csv`)
         .then(response => {
-            return {ok: response.ok, text: response.text()}
+            return { ok: response.ok, text: response.text() }
         })
         .then(async data => {
             $('#table3-blank').hide()
             if (data.ok) {
                 let text = await data.text;
                 let dataSet = text.trim().split('\n').slice(1, 100).map(x => {
-                        let s = x.split(',');
-                        let pval = parseFloat(s[4]);
-                        if (pval >= 0.01) {
-                            pval = pval.toFixed(2)
-                        } else {
-                            pval = pval.toExponential(2)
-                        }
-                        return [parseInt(s[0]), s[1], s[2], parseFloat(s[3]), pval]
+                    let s = x.split(',');
+                    let pval = parseFloat(s[4]);
+                    if (pval >= 0.01) {
+                        pval = pval.toFixed(2)
+                    } else {
+                        pval = pval.toExponential(2)
                     }
+                    return [parseInt(s[0]), s[1], s[2], parseFloat(s[3]), pval]
+                }
                 );
                 $('#table3').DataTable(
                     {
@@ -272,11 +337,11 @@ function draw_tables(gene, appyter_id) {
                         responsive: true,
                         order: [],
                         columns: [
-                            {'title': ''},
-                            {'title': 'Drug'},
-                            {'title': 'Up/Down'},
-                            {'title': 'Mean Pearson Correlation'},
-                            {'title': 'P-value'}
+                            { 'title': '' },
+                            { 'title': 'Drug' },
+                            { 'title': 'Up/Down' },
+                            { 'title': 'Mean Pearson Correlation' },
+                            { 'title': 'P-value' }
                         ]
                     })
                 $('#tab3-down').show()
@@ -288,22 +353,22 @@ function draw_tables(gene, appyter_id) {
 
     fetch(`${base_path}/${species}/${gene}/l1000_sm_predictions/${gene}_l1000_sm_predictions_down.csv`)
         .then(response => {
-            return {ok: response.ok, text: response.text()}
+            return { ok: response.ok, text: response.text() }
         })
         .then(async data => {
             $('#table4-blank').hide();
             if (data.ok) {
                 let text = await data.text;
                 let dataSet = text.trim().split('\n').slice(1, 100).map(x => {
-                        let s = x.split(',');
-                        let pval = parseFloat(s[4]);
-                        if (pval >= 0.01) {
-                            pval = pval.toFixed(2)
-                        } else {
-                            pval = pval.toExponential(2)
-                        }
-                        return [parseInt(s[0]), s[1], s[2], parseFloat(s[3]), pval]
+                    let s = x.split(',');
+                    let pval = parseFloat(s[4]);
+                    if (pval >= 0.01) {
+                        pval = pval.toFixed(2)
+                    } else {
+                        pval = pval.toExponential(2)
                     }
+                    return [parseInt(s[0]), s[1], s[2], parseFloat(s[3]), pval]
+                }
                 );
                 $('#table4').DataTable(
                     {
@@ -312,11 +377,11 @@ function draw_tables(gene, appyter_id) {
                         responsive: true,
                         order: [],
                         columns: [
-                            {'title': ''},
-                            {'title': 'Drug'},
-                            {'title': 'Up/Down'},
-                            {'title': 'Mean Pearson Correlation'},
-                            {'title': 'P-value'}
+                            { 'title': '' },
+                            { 'title': 'Drug' },
+                            { 'title': 'Up/Down' },
+                            { 'title': 'Mean Pearson Correlation' },
+                            { 'title': 'P-value' }
                         ]
                     })
                 $('#tab4-down').show();
@@ -328,22 +393,22 @@ function draw_tables(gene, appyter_id) {
 
     fetch(`${base_path}/${species}/${gene}/l1000_crispr_predictions/${gene}_l1000_crispr_predictions_up.csv`)
         .then(response => {
-            return {ok: response.ok, text: response.text()}
+            return { ok: response.ok, text: response.text() }
         })
         .then(async data => {
             $('#table5-blank').hide();
             if (data.ok) {
                 let text = await data.text;
                 let dataSet = text.trim().split('\n').slice(1, 100).map(x => {
-                        let s = x.split(',');
-                        let pval = parseFloat(s[4]);
-                        if (pval >= 0.01) {
-                            pval = pval.toFixed(2)
-                        } else {
-                            pval = pval.toExponential(2)
-                        }
-                        return [parseInt(s[0]), s[1], s[2], parseFloat(s[3]), pval]
+                    let s = x.split(',');
+                    let pval = parseFloat(s[4]);
+                    if (pval >= 0.01) {
+                        pval = pval.toFixed(2)
+                    } else {
+                        pval = pval.toExponential(2)
                     }
+                    return [parseInt(s[0]), s[1], s[2], parseFloat(s[3]), pval]
+                }
                 );
                 $('#table5').DataTable(
                     {
@@ -352,11 +417,11 @@ function draw_tables(gene, appyter_id) {
                         responsive: true,
                         order: [],
                         columns: [
-                            {'title': ''},
-                            {'title': 'Drug'},
-                            {'title': 'Up/Down'},
-                            {'title': 'Mean Pearson Correlation'},
-                            {'title': 'P-value'}
+                            { 'title': '' },
+                            { 'title': 'Drug' },
+                            { 'title': 'Up/Down' },
+                            { 'title': 'Mean Pearson Correlation' },
+                            { 'title': 'P-value' }
                         ]
                     })
                 $('#tab5-down').show();
@@ -369,22 +434,22 @@ function draw_tables(gene, appyter_id) {
 
     fetch(`${base_path}/${species}/${gene}/l1000_crispr_predictions/${gene}_l1000_crispr_predictions_down.csv`)
         .then(response => {
-            return {ok: response.ok, text: response.text()}
+            return { ok: response.ok, text: response.text() }
         })
         .then(async data => {
             $('#table6-blank').hide();
             if (data.ok) {
                 let text = await data.text;
                 let dataSet = text.trim().split('\n').slice(1, 100).map(x => {
-                        let s = x.split(',');
-                        let pval = parseFloat(s[4]);
-                        if (pval >= 0.01) {
-                            pval = pval.toFixed(2)
-                        } else {
-                            pval = pval.toExponential(2)
-                        }
-                        return [parseInt(s[0]), s[1], s[2], parseFloat(s[3]), pval]
+                    let s = x.split(',');
+                    let pval = parseFloat(s[4]);
+                    if (pval >= 0.01) {
+                        pval = pval.toFixed(2)
+                    } else {
+                        pval = pval.toExponential(2)
                     }
+                    return [parseInt(s[0]), s[1], s[2], parseFloat(s[3]), pval]
+                }
                 );
                 $('#table6').DataTable(
                     {
@@ -393,11 +458,11 @@ function draw_tables(gene, appyter_id) {
                         responsive: true,
                         order: [],
                         columns: [
-                            {'title': ''},
-                            {'title': 'Drug'},
-                            {'title': 'Up/Down'},
-                            {'title': 'Mean Pearson Correlation'},
-                            {'title': 'P-value'}
+                            { 'title': '' },
+                            { 'title': 'Drug' },
+                            { 'title': 'Up/Down' },
+                            { 'title': 'Mean Pearson Correlation' },
+                            { 'title': 'P-value' }
                         ]
                     })
                 $('#tab6-down').show();
@@ -414,7 +479,6 @@ function draw_tables(gene, appyter_id) {
 
 
 function display_results(data) {
-    console.log(data)
     if (data.is_ready === true) {
         $('#appyter-action').text('Open in')
     } else {
@@ -445,8 +509,7 @@ function display_results(data) {
         $('#struct-img-down').attr('href', `${base_path}/${species}/secondary-structures/${struct_img_down_jpg}`)
         $('#struct-img-down-ps').attr('href', `${base_path}/${species}/secondary-structures/${struct_img_down_ps}`)
     }
-    else
-    {
+    else {
         $('#struct-img').attr('src', './static/no_structure.png').attr('alt', 'lncRNA is too long to reliably predict the structure')
         $('#struct-img-down').attr('href', '')
         $('#struct-img-down-ps').attr('href', '')
@@ -455,7 +518,7 @@ function display_results(data) {
     $('#tab-coord-down').attr('href', `${aws2}/gene_info/${data.gene}_gene_coordinates.csv`)
     $('#table-transc-can-down').attr('href', `${aws2}/gene_info/${data.gene}_canonical_sequence.csv`)
     $('#table-transc-alt-down').attr('href', `${aws2}/gene_info/${data.gene}_alternative_sequence.csv`)
-    $('#tab2-down').attr('href', `${aws2}/gene_correlations/${data.gene}_correlated_lncRNAs.csv`)
+    $('#tab2-down').attr('href', `${aws2}/gene_correlations/${data.gene}_positively_correlated_lncRNAs.csv`)
 
     $('#appyter-fig1-net').attr('href', `${aws2}/coexpression_network/${data.gene}_network.html`)
     $('#appyter-fig1-node-meta').attr('href', `${aws2}/coexpression_network/${data.gene}_network_node_metadata.csv`)
@@ -576,12 +639,12 @@ function convert_coordinates(coordinates) {
                 $('#coordinates-lncRNA').show()
                 $('#coordinates-lncRNA-msg').text('This range doesn\'t have any lncRNAs.')
                 return;
-            } 
+            }
             var check_list = await human_list
             if (species == 'mouse') {
                 check_list = await mouse_list
             }
-            var genes_species = r.data.filter(function(value) {
+            var genes_species = r.data.filter(function (value) {
                 return check_list.includes(value);
             });
             let genes = genes_species.map(x => `<a href="#" onclick="example('${x}');">${x}</a>`);
@@ -589,7 +652,7 @@ function convert_coordinates(coordinates) {
                 $('#coordinates-lncRNA').show()
                 $('#coordinates-lncRNA-msg').text('This range doesn\'t have any lncRNAs.')
                 return;
-            } 
+            }
             else if (genes_species.length <= 5) {
                 $('#coordinates-lncRNA').show()
                 $('#coordinates-lncRNA-msg').html(`${genes.join(", ")} found in this range.`)
@@ -651,7 +714,7 @@ function search(gene) {
 }
 
 
-       
+
 
 (function () {
     $('#search').val('');
@@ -660,14 +723,14 @@ function search(gene) {
         placeHolder: "Input a gene symbol or an Ensembl ID",
         data: {
             src: function (query) {
-				if (species == 'mouse') {
-					return mouse_list
-				}
-				else {
-					return human_list
-				}
-			}
-            
+                if (species == 'mouse') {
+                    return mouse_list
+                }
+                else {
+                    return human_list
+                }
+            }
+
         },
         resultsList: {
             element: (list, data) => {

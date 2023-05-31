@@ -109,3 +109,11 @@
   background-color: aqua;
 
 }
+
+.thumbnail {
+  border-radius: 3%;
+}
+
+.autoComplete_wrapper>ul {
+  z-index: 10000 !important;
+}

@@ -245,7 +245,7 @@
                         </div>
                         <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
                                 id="tab1p-down" class="format-download"
-                                href="">CSV</i></a> Table 4a. Top 20 genes positively correlated with <span
+                                href="">CSV</i></a> Table 4a. Top 100 genes positively correlated with <span
                                 class="gene-name"></span> ranked by
                             Pearson’s correlation coefficients.</p>
                     </div>
@@ -262,7 +262,7 @@
                         </div>
                         <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
                                 id="tab1n-down" class="format-download"
-                                href="">CSV</i></a> Table 4b. Top 20 genes negatively correlated with <span
+                                href="">CSV</i></a> Table 4b. Top 100 genes negatively correlated with <span
                                 class="gene-name"></span> ranked by
                             Pearson’s correlation coefficients.</p>
                     </div>
@@ -270,7 +270,7 @@
                 <div class="row">
                     <div class="col col-sm-6">
                         <h5 class="mt-4">Top lncRNAs positively correlated with <span class="gene-name"></span></h5>
-                        <p style="height: 5rem;">Below we list the top 20 lncRNAs, out of all <span class="num-lnc"></span> lncRNAs within our
+                        <p style="height: 5rem;">Below we list the top 100 lncRNAs, out of all <span class="num-lnc"></span> lncRNAs within our
                             database,
                             that correlate most with
                             <span class="gene-name"></span> based on their Pearson correlation coefficients.</p>
@@ -282,7 +282,7 @@
                         </div>
                         <p class="mb-2" style="font-size: 0.8rem; font-style: italic;"><a
                                 id="tab2-down" class="format-download"
-                                href="">CSV</a> Table 5. Top 20 lncRNAs that correlate most with
+                                href="">CSV</a> Table 5. Top 100 lncRNAs that correlate most with
                             <span
                                     class="gene-name"></span> ranked by
                             Pearson correlation coefficients.</p>
@@ -347,40 +347,40 @@
                     <tbody>
                     <tr>
                         <th scope="row">25</th>
-                        <td><a id="enr25-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
-                        <td><a id="enr25-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
+                        <td><a id="enr25-p" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
+                        <td><a id="enr25-n" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">50</th>
-                        <td><a id="enr50-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
-                        <td><a id="enr50-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
+                        <td><a id="enr50-p" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
+                        <td><a id="enr50-n" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a></td>
                     </tr>
                     <tr>
                         <th scope="row">100</th>
-                        <td><a id="enr100-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        <td><a id="enr100-p" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </td>
-                        <td><a id="enr100-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        <td><a id="enr100-n" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">200</th>
-                        <td><a id="enr200-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        <td><a id="enr200-p" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </td>
-                        <td><a id="enr200-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        <td><a id="enr200-n" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">300</th>
-                        <td><a id="enr300-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        <td><a id="enr300-p" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </td>
-                        <td><a id="enr300-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        <td><a id="enr300-n" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     <tr>
                         <th scope="row">500</th>
-                        <td><a id="enr500-p" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        <td><a id="enr500-p" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </td>
-                        <td><a id="enr500-n" href=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                        <td><a id="enr500-n" onclick=""><i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                         </td>
                     </tr>
                     </tbody>
@@ -950,7 +950,13 @@
 <footer class="footer">
 
     <div class="container mx-auto text-center">
-        <div class="row justify-content-center m-5 mx-auto">
+        <div class="container mx-auto">
+            <p  style="font-size: 12px;">Please acknowledge lncHUB2 in your publications by citing the following reference:</p>
+            <div class="col-7 mx-auto">
+                <p class="text-justify"><a href="https://pubmed.ncbi.nlm.nih.gov/36869839/" target="_blank" style="font-size: 11px; border-style: none; max-width: 200px;">Marino GB, Wojciechowicz ML, Clarke DJB, Kuleshov MV, Xie Z, Jeon M, Lachmann A, Ma'ayan A. lncHUB2: aggregated and inferred knowledge about human and mouse lncRNAs. Database (Oxford). 2023 Mar 4;2023:baad009. doi: 10.1093/database/baad009.<a></p>
+            </div>
+        </div>
+        <div class="row justify-content-center m-5 mb-1 mx-auto">
             <div class="col-md-2 col-sm">
                 <a href="https://icahn.mssm.edu/research/bioinformatics" target="_blank" rel="noreferrer">
                     <img
@@ -1020,15 +1026,12 @@
                     </a>
                 </div>
             </div>
-            <div class="col-md-2 col-sm-2 m-2 mb-5">
-                <a href="https://www.youtube.com/watch?v=yIsGmpNvTrU" target="_blank">
-                    <img id="youtube" style="border-radius: 5px; min-width: 175px; max-width: 175px;"
-                         src="{{ url_for('static', filename='youtube_thumb.png') }}" class="img-fluid"
-                         alt="lncHUB2 Tutorial Video">
-                </a>
+            <div class="col-md-2 col-sm-2 m-2 mb-1">
+                <iframe class="thumbnail" width="200" height="100" src="https://www.youtube.com/embed/-geiZZHGc-0" title="lncHUB2: Aggregated and Inferred Knowledge about Human and Mouse lncRNAs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
         </div>
     </div>
+
 </footer>
 {% endblock %}
 
