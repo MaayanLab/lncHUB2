@@ -1,4 +1,4 @@
-FROM debian:stable
+FROM debian:oldstable
 
 RUN set -x \
   && echo "Preparing user..." \
