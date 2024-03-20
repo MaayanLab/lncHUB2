@@ -1,6 +1,7 @@
 
 const base_path = 'https://maayanlab-public.s3.amazonaws.com/lnchub2/v2'
 
+
 const human_list = fetch(
     "static/lncRNAs.json"
 ).then(data => data.json());
@@ -8,6 +9,34 @@ const human_list = fetch(
 const mouse_list = fetch(
     "static/mm_lncRNAs.json"
 ).then(data => data.json());
+
+const links_div = document.getElementById("links-div")
+
+async function createLinks() {
+    human_lncRnas = await human_list
+    
+    human_lncRnas.map(lncRNA => {
+        var a = document.createElement('a');
+        var linkText = document.createTextNode(lncRNA);
+        a.appendChild(linkText);
+        a.title = lncRNA;
+        a.href = `#${lncRNA}`;
+        links_div.appendChild(a);
+        links_div.appendChild(document.createElement('br'));
+    })
+    mouse_lncRnas = await mouse_list
+    mouse_lncRnas.map(lncRNA => {
+        var a = document.createElement('a');
+        var linkText = document.createTextNode(lncRNA);
+        a.appendChild(linkText);
+        a.title = lncRNA;
+        a.href = `#${lncRNA}`;
+        links_div.appendChild(a);
+        links_div.appendChild(document.createElement('br'));
+    })
+}
+
+createLinks()
 
 
 // update species based on toggle
