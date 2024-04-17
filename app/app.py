@@ -15,6 +15,7 @@ hs_lncrns = json.load(open(os.path.join(app.static_folder, "lncRNAs.json")))
 mm_lncrns = json.load(open(os.path.join(app.static_folder, "mm_lncRNAs.json")))
 
 
+
 @app.route(ROOT_PATH, methods=['GET'])
 def route_index():
     return flask.render_template('index.html', base_path=BASE_PATH)
@@ -35,6 +36,14 @@ def route_range(coordinates):
 def route_gene(gene):
     return json.dumps({'success': True, 'data': lnc_coordinates_mapping[gene]}), 200, {'ContentType': 'application/json'}
 
+@app.route(f'{ROOT_PATH}/lncarnas1')
+def site_map():
+  return flask.render_template('sitemap.xml')
+
+
+@app.route(f'{ROOT_PATH}/lncarnas2')
+def site_map2():
+  return flask.render_template('sitemap2.xml')
 
 @app.route(f'{ROOT_PATH}/search/<gene>', methods=['GET'])
 def route_search(gene):
